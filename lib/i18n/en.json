@@ -60,7 +60,7 @@
     "uterineHealth": "Uterine Health",
     "uterineHealthDesc": "Supports anti-aging & recovery",
     "skinClarity": "Skin Clarity",
-    "skinClarityDesc": "Reduces hormonal acne & glow"
+    "skinClarityDesc": "Clears hormonal acne for radiant glow"
   },
   "stats": {
     "happyCustomers": "Happy Customers",
@@ -92,7 +92,30 @@
   },
   "testimonials": {
     "label": "Real Stories",
-    "title": "Loved by Women"
+    "title": "Loved by Women",
+    "t1": "After 2 months of Bloomie, my cramps have significantly reduced. I used to dread my period but now it's so much more manageable!",
+    "t1Name": "Sarah L.",
+    "t1Title": "Verified Buyer",
+    "t2": "The pomegranate flavor is delicious! I drink it every morning. My skin has cleared up and my cycle is finally regular after years of irregularity.",
+    "t2Name": "Aisyah M.",
+    "t2Title": "Verified Buyer",
+    "t3": "I bought this for my mood swings and it's been a game-changer. I feel calmer, more energized, and my hormonal acne is almost gone.",
+    "t3Name": "Michelle T.",
+    "t3Title": "Verified Buyer"
+  },
+  "ingredientNames": {
+    "ginfortGinger": "Ginfort Ginger",
+    "frenchAstaxanthin": "French Astaxanthin",
+    "gojiBerry": "Goji Berry",
+    "usaAshwagandha": "USA Ashwagandha",
+    "dongQuai": "Dong Quai",
+    "usaChamomile": "USA Chamomile",
+    "chasteberry": "Chasteberry",
+    "magnesiumOxide": "Magnesium Oxide",
+    "cinnamon": "Cinnamon",
+    "vitaminBComplex": "Vitamin B Complex",
+    "spanishFerrousFumarate": "Spanish Ferrous Fumarate",
+    "pomegranate": "Pomegranate"
   },
   "cta": {
     "label": "Start Your Journey",

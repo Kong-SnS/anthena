@@ -26,50 +26,9 @@ import {
 } from "lucide-react"
 import type { Product } from "@/types"
 
-const benefits = [
-  { icon: Heart, title: "Menstrual Relief", desc: "Relieves cramps & regulates cycle" },
-  { icon: Sparkles, title: "Hormonal Balance", desc: "Improves PCOS & irregular periods" },
-  { icon: Moon, title: "Better Sleep", desc: "Stabilizes mood & reduces stress" },
-  { icon: Zap, title: "Energy Boost", desc: "Reduces fatigue during menstruation" },
-  { icon: Shield, title: "Uterine Health", desc: "Supports anti-aging & recovery" },
-  { icon: Droplets, title: "Skin Clarity", desc: "Reduces hormonal acne & glow" },
-]
-
-const ingredients = [
-  "Ginfort Ginger",
-  "French Astaxanthin",
-  "Goji Berry",
-  "USA Ashwagandha",
-  "Dong Quai",
-  "USA Chamomile",
-  "Chasteberry",
-  "Magnesium Oxide",
-  "Cinnamon",
-  "Vitamin B Complex",
-  "Spanish Ferrous Fumarate",
-  "Pomegranate",
-]
-
-const testimonials = [
-  {
-    name: "Sarah L.",
-    title: "Verified Buyer",
-    text: "After 2 months of Bloomie, my cramps have significantly reduced. I used to dread my period but now it's so much more manageable!",
-    rating: 5,
-  },
-  {
-    name: "Aisyah M.",
-    title: "Verified Buyer",
-    text: "The pomegranate flavor is delicious! I drink it every morning. My skin has cleared up and my cycle is finally regular after years of irregularity.",
-    rating: 5,
-  },
-  {
-    name: "Michelle T.",
-    title: "Verified Buyer",
-    text: "I bought this for my mood swings and it's been a game-changer. I feel calmer, more energized, and my hormonal acne is almost gone.",
-    rating: 5,
-  },
-]
+const benefitIcons = [Heart, Sparkles, Moon, Zap, Shield, Droplets]
+const benefitKeys = ["menstrualRelief", "hormonalBalance", "betterSleep", "energyBoost", "uterineHealth", "skinClarity"] as const
+const ingredientKeys = ["ginfortGinger", "frenchAstaxanthin", "gojiBerry", "usaAshwagandha", "dongQuai", "usaChamomile", "chasteberry", "magnesiumOxide", "cinnamon", "vitaminBComplex", "spanishFerrousFumarate", "pomegranate"] as const
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
@@ -272,21 +231,24 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           </AnimatedSection>
 
           <StaggerChildren className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10" staggerDelay={0.12}>
-              {benefits.map((b) => (
-                <StaggerItem key={b.title}>
-                  <div className="bg-white p-6 lg:p-8 text-center group hover:shadow-lg hover:-translate-y-1 hover:border-gold/30 border border-transparent transition-all duration-500 h-full">
-                    <div className="mx-auto w-12 h-12 rounded-full bg-blush-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
-                      <b.icon className="h-5 w-5 text-gold" />
+              {benefitKeys.map((key, i) => {
+                const Icon = benefitIcons[i]
+                return (
+                  <StaggerItem key={key}>
+                    <div className="bg-white p-6 lg:p-8 text-center group hover:shadow-lg hover:-translate-y-1 hover:border-gold/30 border border-transparent transition-all duration-500 h-full">
+                      <div className="mx-auto w-12 h-12 rounded-full bg-blush-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
+                        <Icon className="h-5 w-5 text-gold" />
+                      </div>
+                      <h3 className="font-medium text-sm tracking-wide mb-1.5">
+                        {t.benefits[key]}
+                      </h3>
+                      <p className="text-xs text-muted-foreground font-light">
+                        {t.benefits[`${key}Desc` as keyof typeof t.benefits]}
+                      </p>
                     </div>
-                    <h3 className="font-medium text-sm tracking-wide mb-1.5">
-                      {b.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground font-light">
-                      {b.desc}
-                    </p>
-                  </div>
-                </StaggerItem>
-              ))}
+                  </StaggerItem>
+                )
+              })}
           </StaggerChildren>
         </div>
       </section>
@@ -298,10 +260,10 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { end: 10000, suffix: "+", label: "Happy Customers" },
-              { end: 12, suffix: "", label: "Premium Botanicals" },
-              { end: 100, suffix: "%", label: "Natural Ingredients" },
-              { end: 15, suffix: "", label: "Sachets Per Box" },
+              { end: 10000, suffix: "+", label: t.stats.happyCustomers },
+              { end: 12, suffix: "", label: t.stats.premiumBotanicals },
+              { end: 100, suffix: "%", label: t.stats.naturalIngredients },
+              { end: 15, suffix: "", label: t.stats.sachetsPerBox },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-3xl lg:text-4xl font-display text-gold">
@@ -326,24 +288,22 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               {/* Text - Left */}
               <div>
                 <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold/70">
-                  Your Daily Ritual
+                  {t.lifestyle.label}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-white">
-                  One Sachet.
+                  {t.lifestyle.title1}
                   <br />
-                  <span className="italic font-light">Endless Benefits.</span>
+                  <span className="italic font-light">{t.lifestyle.title2}</span>
                 </h2>
                 <p className="text-white/50 font-light leading-relaxed mb-8 text-[15px]">
-                  Simply mix with water for a delicious pomegranate wellness drink.
-                  Best taken daily in the morning for optimal results. Within weeks,
-                  you&apos;ll feel the difference in your energy, mood, and cycle comfort.
+                  {t.lifestyle.description}
                 </p>
                 <Button
                   size="lg"
                   className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
                   render={<Link href="/shop/bloomie" />}
                 >
-                  Try Bloomie
+                  {t.lifestyle.cta}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -373,23 +333,22 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               {/* Ingredients List - Left */}
               <div className="order-2 lg:order-1">
                 <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
-                  12 Premium Botanicals
+                  {t.ingredients.label}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4">
-                  Nature&apos;s Finest Ingredients
+                  {t.ingredients.title}
                 </h2>
                 <p className="text-muted-foreground font-light leading-relaxed mb-8 text-[15px]">
-                  Sourced from France, USA, Spain, and Asia. Each ingredient is
-                  carefully selected for its proven benefits in women&apos;s health.
+                  {t.ingredients.description}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
-                  {ingredients.map((ing) => (
+                  {ingredientKeys.map((ing) => (
                     <div
                       key={ing}
                       className="flex items-center gap-2.5 py-2"
                     >
                       <Flower2 className="h-3.5 w-3.5 text-gold shrink-0" />
-                      <span className="text-sm font-light">{ing}</span>
+                      <span className="text-sm font-light">{t.ingredientNames[ing]}</span>
                     </div>
                   ))}
                 </div>
@@ -418,19 +377,19 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           <AnimatedSection>
             <div className="text-center mb-16">
               <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/30">
-                Simple & Delicious
+                {t.howTo.label}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
-                How to Enjoy Bloomie
+                {t.howTo.title}
               </h2>
               <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 lg:gap-16 max-w-4xl mx-auto">
               {[
-                { step: "01", title: "Open", desc: "Tear open one sachet of Bloomie" },
-                { step: "02", title: "Mix", desc: "Pour into 150ml of warm or cold water" },
-                { step: "03", title: "Enjoy", desc: "Stir well and enjoy your daily wellness drink" },
+                { step: "01", title: t.howTo.step1, desc: t.howTo.step1Desc },
+                { step: "02", title: t.howTo.step2, desc: t.howTo.step2Desc },
+                { step: "03", title: t.howTo.step3, desc: t.howTo.step3Desc },
               ].map((s) => (
                 <div key={s.step} className="text-center">
                   <span className="text-4xl font-display font-normal text-gold/60">
@@ -466,10 +425,10 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           <AnimatedSection>
             <div className="text-center mb-16">
               <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-muted-foreground">
-                Real Stories
+                {t.testimonials.label}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
-                Loved by Women
+                {t.testimonials.title}
               </h2>
               <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
             </div>
@@ -477,29 +436,26 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
           <AnimatedSection>
             <div className="grid md:grid-cols-3 gap-6 lg:gap-10">
-              {testimonials.map((t) => (
+              {[
+                { text: t.testimonials.t1, name: t.testimonials.t1Name, title: t.testimonials.t1Title },
+                { text: t.testimonials.t2, name: t.testimonials.t2Name, title: t.testimonials.t2Title },
+                { text: t.testimonials.t3, name: t.testimonials.t3Name, title: t.testimonials.t3Title },
+              ].map((review) => (
                 <div
-                  key={t.name}
+                  key={review.name}
                   className="border border-black/5 p-8 lg:p-10 group hover:border-gold/30 transition-all duration-500"
                 >
                   <div className="flex gap-0.5 mb-6">
-                    {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3.5 w-3.5 fill-gold text-gold"
-                      />
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
                     ))}
                   </div>
                   <p className="text-foreground/70 text-[15px] font-light leading-relaxed mb-8 italic">
-                    &ldquo;{t.text}&rdquo;
+                    &ldquo;{review.text}&rdquo;
                   </p>
                   <div className="border-t border-black/5 pt-6">
-                    <p className="font-medium text-sm tracking-wide">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      {t.title}
-                    </p>
+                    <p className="font-medium text-sm tracking-wide">{review.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{review.title}</p>
                   </div>
                 </div>
               ))}
@@ -524,8 +480,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <span className="italic font-light">{t.cta.title2}</span>
             </h2>
             <p className="text-muted-foreground font-light max-w-md mx-auto mb-10 leading-relaxed">
-              Join thousands of women who&apos;ve transformed their wellness with Bloomie.
-              Your body deserves the best.
+              {t.cta.description}
             </p>
             <Button
               size="lg"

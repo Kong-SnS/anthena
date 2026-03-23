@@ -60,8 +60,6 @@ export function verifyWebhookSignature(payload: Record<string, string>, xSignatu
     const source = keys.map(k => `${k}${payload[k]}`).join("|")
     const hash = crypto.createHmac("sha256", process.env.BILLPLZ_X_SIGNATURE_KEY).update(source).digest("hex")
 
-    console.log("Webhook signature debug:", { source: source.substring(0, 100), hash, xSignature })
-
     if (hash.length !== xSignature.length) return false
     return crypto.timingSafeEqual(Buffer.from(hash, "hex"), Buffer.from(xSignature, "hex"))
   } catch (err) {

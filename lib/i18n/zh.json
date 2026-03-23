@@ -21,7 +21,7 @@
   },
   "product": {
     "introducing": "平价优质养生",
-    "subtitle": "石榴植物饮料混合",
+    "subtitle": "石榴植物配方饮品",
     "description": "美味的石榴味养生饮品，融合来自法国、美国、西班牙和亚洲的12种优质植物成分。法国专利配方，经临床验证，科学支持的成分。",
     "promo": "买2送1 · 满RM150免运费",
     "box1": "1 盒",
@@ -60,7 +60,7 @@
     "uterineHealth": "子宫健康",
     "uterineHealthDesc": "支持抗衰老和修复",
     "skinClarity": "肌肤净透",
-    "skinClarityDesc": "减少荷尔蒙痘痘、焕发光彩"
+    "skinClarityDesc": "消除荷尔蒙痘痘，焕发光彩"
   },
   "stats": {
     "happyCustomers": "满意客户",
@@ -70,7 +70,7 @@
   },
   "lifestyle": {
     "label": "您的日常仪式",
-    "title1": "一袋冲剂。",
+    "title1": "一小袋。",
     "title2": "无尽益处。",
     "description": "只需加水冲泡，即可享用美味的石榴养生饮品。建议每天早晨服用效果最佳。几周内，您将感受到精力、情绪和经期舒适度的变化。",
     "cta": "试试 Bloomie"
@@ -92,7 +92,30 @@
   },
   "testimonials": {
     "label": "真实故事",
-    "title": "深受女性喜爱"
+    "title": "深受女性喜爱",
+    "t1": "喝了两个月的Bloomie，我的经期痉挛明显减轻了。以前每次来月经都很害怕，现在轻松多了！",
+    "t1Name": "Sarah L.",
+    "t1Title": "认证买家",
+    "t2": "石榴味太好喝了！我每天早上都喝。皮肤变好了，月经周期终于规律了，之前不规律好几年。",
+    "t2Name": "Aisyah M.",
+    "t2Title": "认证买家",
+    "t3": "我是为了调节情绪波动买的，效果真的很好。感觉更平静、更有精力，荷尔蒙痘痘也快消了。",
+    "t3Name": "Michelle T.",
+    "t3Title": "认证买家"
+  },
+  "ingredientNames": {
+    "ginfortGinger": "Ginfort 姜",
+    "frenchAstaxanthin": "法国虾青素",
+    "gojiBerry": "枸杞",
+    "usaAshwagandha": "美国南非醉茄",
+    "dongQuai": "当归",
+    "usaChamomile": "美国洋甘菊",
+    "chasteberry": "圣洁莓",
+    "magnesiumOxide": "氧化镁",
+    "cinnamon": "肉桂",
+    "vitaminBComplex": "维生素B族",
+    "spanishFerrousFumarate": "西班牙富马酸亚铁",
+    "pomegranate": "石榴"
   },
   "cta": {
     "label": "开始您的旅程",

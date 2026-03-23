@@ -12,7 +12,7 @@
     "label": "Kesihatan Botanikal Wanita",
     "title1": "Mekar Dari",
     "title2": "Dalam",
-    "subtitle": "12 botanikal berkuasa dalam setiap sachet. Diformulasi untuk kesihatan hormon wanita, keselesaan haid, dan kecantikan semulajadi.",
+    "subtitle": "12 botanikal berkhasiat dalam setiap sachet. Diformulasi untuk kesihatan hormon wanita, keselesaan haid, dan kecantikan semulajadi.",
     "shopBtn": "Beli Bloomie",
     "learnBtn": "Ketahui Lagi"
   },
@@ -54,13 +54,13 @@
     "hormonalBalance": "Keseimbangan Hormon",
     "hormonalBalanceDesc": "Memperbaiki PCOS & haid tidak teratur",
     "betterSleep": "Tidur Lebih Baik",
-    "betterSleepDesc": "Menstabilkan mood & mengurangkan tekanan",
+    "betterSleepDesc": "Menstabilkan emosi & mengurangkan tekanan",
     "energyBoost": "Tenaga Lebih",
     "energyBoostDesc": "Mengurangkan keletihan semasa haid",
     "uterineHealth": "Kesihatan Rahim",
     "uterineHealthDesc": "Menyokong anti-penuaan & pemulihan",
     "skinClarity": "Kulit Cerah",
-    "skinClarityDesc": "Mengurangkan jerawat hormon & berseri"
+    "skinClarityDesc": "Menghilangkan jerawat hormon untuk kulit berseri"
   },
   "stats": {
     "happyCustomers": "Pelanggan Berpuas Hati",
@@ -92,7 +92,30 @@
   },
   "testimonials": {
     "label": "Kisah Sebenar",
-    "title": "Digemari Wanita"
+    "title": "Digemari Wanita",
+    "t1": "Selepas 2 bulan minum Bloomie, kekejangan haid saya berkurangan banyak. Dulu saya takut bila datang haid, sekarang lebih senang!",
+    "t1Name": "Sarah L.",
+    "t1Title": "Pembeli Sah",
+    "t2": "Rasa delima yang sedap! Saya minum setiap pagi. Kulit saya semakin cerah dan kitaran haid akhirnya teratur selepas bertahun-tahun tidak teratur.",
+    "t2Name": "Aisyah M.",
+    "t2Title": "Pembeli Sah",
+    "t3": "Saya beli ini untuk mood swing dan ia benar-benar berkesan. Saya rasa lebih tenang, bertenaga, dan jerawat hormon hampir hilang.",
+    "t3Name": "Michelle T.",
+    "t3Title": "Pembeli Sah"
+  },
+  "ingredientNames": {
+    "ginfortGinger": "Ginfort Halia",
+    "frenchAstaxanthin": "Astaxanthin Perancis",
+    "gojiBerry": "Goji Beri",
+    "usaAshwagandha": "Ashwagandha USA",
+    "dongQuai": "Dong Quai",
+    "usaChamomile": "Chamomile USA",
+    "chasteberry": "Chasteberry",
+    "magnesiumOxide": "Magnesium Oksida",
+    "cinnamon": "Kayu Manis",
+    "vitaminBComplex": "Vitamin B Kompleks",
+    "spanishFerrousFumarate": "Ferrous Fumarate Sepanyol",
+    "pomegranate": "Delima"
   },
   "cta": {
     "label": "Mulakan Perjalanan Anda",
@@ -116,7 +139,7 @@
     "shippingFree": "PERCUMA",
     "shippingCalc": "Dikira semasa checkout",
     "total": "Jumlah",
-    "checkout": "Checkout",
+    "checkout": "Teruskan Bayaran",
     "securePay": "Pembayaran selamat melalui Billplz"
   },
   "checkout": {
