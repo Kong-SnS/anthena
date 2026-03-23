@@ -21,15 +21,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 })
     }
 
-    const totalWeight = 0.5 // Default weight, ideally sum from products
+    const totalWeight = order.order_items.reduce(
+      (sum: number, item: any) => sum + (Number(item.quantity) * 0.1),
+      0.3 // minimum weight
+    )
 
     const result = await createOrder({
-      pick_name: "Anthena Warehouse",
-      pick_contact: "0123456789",
-      pick_addr1: "Anthena HQ",
-      pick_city: "Kuala Lumpur",
-      pick_state: "Kuala Lumpur",
-      pick_code: "50000",
+      service_id,
+      pick_name: "Anthena Healthcare",
+      pick_contact: "0126431737",
+      pick_addr1: "Anthena Warehouse",
+      pick_city: "Batu 9 Cheras",
+      pick_state: "Selangor",
+      pick_code: "43200",
       send_name: order.customer.name,
       send_contact: order.customer.phone,
       send_addr1: order.customer.address_line1,
@@ -38,12 +42,12 @@ export async function POST(request: NextRequest) {
       send_code: order.customer.postcode,
       weight: totalWeight,
       content: `Anthena Order #${order.order_number}`,
-      value: order.total,
-      service_id,
+      value: Number(order.total),
     })
 
-    const easyparcelOrderId = result.result?.[0]?.order_number || null
-    const trackingNumber = result.result?.[0]?.tracking_number || null
+    const orderResult = result.result?.[0]
+    const easyparcelOrderId = orderResult?.order_number || null
+    const trackingNumber = orderResult?.tracking_number || null
 
     await supabase
       .from("orders")
