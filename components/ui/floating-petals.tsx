@@ -1,14 +1,25 @@
 "use client"
 
+import { useState, useEffect } from "react"
+
 export function FloatingPetals() {
-  const petals = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    left: `${10 + Math.random() * 80}%`,
-    size: 8 + Math.random() * 16,
-    duration: `${12 + Math.random() * 18}s`,
-    delay: `${Math.random() * 10}s`,
-    opacity: 0.15 + Math.random() * 0.25,
-  }))
+  const [petals, setPetals] = useState<{ id: number; left: string; size: number; duration: string; delay: string; opacity: number }[]>([])
+
+  useEffect(() => {
+    // Generate petals only on client to avoid hydration mismatch
+    setPetals(
+      Array.from({ length: 8 }, (_, i) => ({
+        id: i,
+        left: `${10 + Math.random() * 80}%`,
+        size: 8 + Math.random() * 16,
+        duration: `${12 + Math.random() * 18}s`,
+        delay: `${Math.random() * 10}s`,
+        opacity: 0.15 + Math.random() * 0.25,
+      }))
+    )
+  }, [])
+
+  if (petals.length === 0) return null
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">

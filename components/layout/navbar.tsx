@@ -15,8 +15,11 @@ export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const itemCount = useCart((s) => s.getItemCount())
+
+  useEffect(() => setMounted(true), [])
   const { t } = useTranslation()
   const isHome = pathname === "/"
   const useDarkText = !isHome || scrolled
@@ -96,7 +99,7 @@ export function Navbar() {
             }`}
           >
             <ShoppingCart className="h-[18px] w-[18px]" />
-            {itemCount > 0 && (
+            {mounted && itemCount > 0 && (
               <span
                 key={itemCount}
                 className="absolute top-1 right-1 h-4 w-4 rounded-full bg-gold text-[9px] text-white flex items-center justify-center font-medium animate-scale-in"
