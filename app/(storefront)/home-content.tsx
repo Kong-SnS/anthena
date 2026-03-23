@@ -11,6 +11,7 @@ import { CountdownTimer } from "@/components/ui/countdown-timer"
 import { TypingEffect } from "@/components/ui/typing-effect"
 import { HorizontalScrollGallery } from "@/components/ui/horizontal-scroll-gallery"
 import { PopIn } from "@/components/ui/pop-in"
+import { InstagramFeed } from "@/components/ui/instagram-feed"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
 import { TextReveal } from "@/components/ui/text-reveal"
@@ -478,6 +479,11 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           />
         </div>
       </section>
+
+      {/* ============================================ */}
+      {/* INSTAGRAM FEED                               */}
+      {/* ============================================ */}
+      <InstagramFeed />
 
       {/* ============================================ */}
       {/* CTA                                          */}
