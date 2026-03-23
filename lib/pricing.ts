@@ -1,20 +1,20 @@
 // Bloomie pricing tiers
-// 1 box = RM138
-// 2 boxes = RM209
-// Buy 2 Free 1: 3 boxes = RM209
-// 4+ boxes: every 3 = RM209, remainder at tier price
+// 1 box = RM138 (you get 1 box)
+// 2 boxes = RM209 + 1 FREE box (you get 3 boxes, pay for 2)
+// 4 boxes = RM209 x2 + 2 FREE boxes (you get 6, pay for 4)
 
 const PRICE_1 = 138
-const PRICE_2 = 209 // also covers 3 boxes (buy 2 free 1)
+const PRICE_2 = 209 // buy 2 get 1 free
 
 export function calculatePrice(quantity: number): {
   total: number
   unitPrice: number
   savings: number
   freeBoxes: number
+  totalBoxes: number
   breakdown: string
 } {
-  if (quantity <= 0) return { total: 0, unitPrice: 0, savings: 0, freeBoxes: 0, breakdown: "" }
+  if (quantity <= 0) return { total: 0, unitPrice: 0, savings: 0, freeBoxes: 0, totalBoxes: 0, breakdown: "" }
 
   if (quantity === 1) {
     return {
@@ -22,43 +22,33 @@ export function calculatePrice(quantity: number): {
       unitPrice: PRICE_1,
       savings: 0,
       freeBoxes: 0,
+      totalBoxes: 1,
       breakdown: "1 box × RM138",
     }
   }
 
-  if (quantity === 2) {
-    return {
-      total: PRICE_2,
-      unitPrice: PRICE_2 / 2,
-      savings: PRICE_1 * 2 - PRICE_2,
-      freeBoxes: 0,
-      breakdown: "2 boxes × RM209",
-    }
-  }
+  // Every 2 boxes = RM209 + 1 free box
+  const pairs = Math.floor(quantity / 2)
+  const remainder = quantity % 2
 
-  // For 3+: apply buy 2 free 1 bundles
-  const bundles = Math.floor(quantity / 3)
-  const remainder = quantity % 3
-
-  let total = bundles * PRICE_2
-
+  let total = pairs * PRICE_2
   if (remainder === 1) {
     total += PRICE_1
-  } else if (remainder === 2) {
-    total += PRICE_2
   }
 
+  const freeBoxes = pairs // 1 free box per pair
+  const totalBoxes = quantity + freeBoxes
   const fullPrice = quantity * PRICE_1
-  const freeBoxes = bundles
 
   return {
     total,
-    unitPrice: total / quantity,
+    unitPrice: total / totalBoxes,
     savings: fullPrice - total,
     freeBoxes,
+    totalBoxes,
     breakdown:
-      bundles > 0
-        ? `${bundles} bundle${bundles > 1 ? "s" : ""} (Buy 2 Free 1)${remainder > 0 ? ` + ${remainder} box${remainder > 1 ? "es" : ""}` : ""}`
-        : `${quantity} box${quantity > 1 ? "es" : ""}`,
+      freeBoxes > 0
+        ? `Pay for ${quantity}, get ${totalBoxes} boxes (${freeBoxes} FREE)`
+        : `${quantity} box × RM${PRICE_1}`,
   }
 }

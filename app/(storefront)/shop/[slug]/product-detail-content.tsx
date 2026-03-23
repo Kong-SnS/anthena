@@ -129,7 +129,7 @@ export function ProductDetailContent({
                       <div className="flex items-center gap-1.5 mt-1.5">
                         <Gift className="h-3.5 w-3.5 text-gold" />
                         <p className="text-xs font-medium text-gold">
-                          {pricing.freeBoxes} FREE box{pricing.freeBoxes > 1 ? "es" : ""} included!
+                          {pricing.freeBoxes} FREE box{pricing.freeBoxes > 1 ? "es" : ""} — You get {pricing.totalBoxes} boxes!
                         </p>
                       </div>
                     )}
@@ -137,30 +137,28 @@ export function ProductDetailContent({
                   </div>
 
                   {/* Quick tier buttons */}
-                  <div className="flex gap-2 mb-4">
-                    {[
-                      { qty: 1, label: "1 Box", sub: "RM138" },
-                      { qty: 2, label: "2 Boxes", sub: "RM209" },
-                      { qty: 3, label: "3 Boxes", sub: "RM209", badge: "Buy 2 Free 1" },
-                    ].map((tier) => (
-                      <button
-                        key={tier.qty}
-                        onClick={() => setQuantity(tier.qty)}
-                        className={`flex-1 border px-3 py-2.5 text-center transition-all ${
-                          quantity === tier.qty
-                            ? "border-gold bg-gold/5"
-                            : "border-black/10 hover:border-black/20"
-                        }`}
-                      >
-                        {tier.badge && (
-                          <span className="block text-[9px] font-medium text-gold tracking-wider uppercase mb-0.5">
-                            {tier.badge}
-                          </span>
-                        )}
-                        <span className="block text-xs font-medium">{tier.label}</span>
-                        <span className="block text-[10px] text-muted-foreground">{tier.sub}</span>
-                      </button>
-                    ))}
+                  <div className="flex gap-3 mb-4">
+                    <button
+                      onClick={() => setQuantity(1)}
+                      className={`flex-1 border px-4 py-3 text-center transition-all ${
+                        quantity === 1 ? "border-gold bg-gold/5" : "border-black/10 hover:border-black/20"
+                      }`}
+                    >
+                      <span className="block text-xs font-medium">1 Box</span>
+                      <span className="block text-lg font-light mt-0.5">RM 138</span>
+                      <span className="block text-[10px] text-muted-foreground">15 sachets</span>
+                    </button>
+                    <button
+                      onClick={() => setQuantity(2)}
+                      className={`flex-1 border-2 px-4 py-3 text-center transition-all relative ${
+                        quantity >= 2 ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
+                      }`}
+                    >
+                      <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-gold text-white text-[9px] font-medium tracking-wider px-2 py-0.5 uppercase">Buy 2 Free 1</span>
+                      <span className="block text-xs font-medium">2 Boxes</span>
+                      <span className="block text-lg font-light mt-0.5">RM 209</span>
+                      <span className="block text-[10px] text-gold font-medium">+ 1 Box FREE</span>
+                    </button>
                   </div>
                 </>
               )
