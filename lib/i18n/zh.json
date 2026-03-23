@@ -1,0 +1,167 @@
+{
+  "nav": {
+    "home": "首页",
+    "shop": "商店",
+    "about": "关于",
+    "reviews": "评价",
+    "account": "账户",
+    "menu": "菜单",
+    "whatsappUs": "WhatsApp 联系我们"
+  },
+  "hero": {
+    "label": "女性植物养生",
+    "title1": "由内",
+    "title2": "绽放",
+    "subtitle": "每袋含12种强效植物成分。专为女性荷尔蒙健康、经期舒适和自然光彩而配制。",
+    "shopBtn": "购买 Bloomie",
+    "learnBtn": "了解更多"
+  },
+  "marquee": {
+    "items": ["法国专利配方", "临床验证", "12种优质植物", "科学支持成分", "满RM150免运费", "买2送1", "女性荷尔蒙健康", "用心制造"]
+  },
+  "product": {
+    "introducing": "平价优质养生",
+    "subtitle": "石榴植物饮料混合",
+    "description": "美味的石榴味养生饮品，融合来自法国、美国、西班牙和亚洲的12种优质植物成分。法国专利配方，经临床验证，科学支持的成分。",
+    "promo": "买2送1 · 满RM150免运费",
+    "box1": "1 盒",
+    "box2": "2 盒",
+    "sachets": "15 小袋",
+    "freeBox": "+ 1 盒免费",
+    "bestValue": "最超值",
+    "orderNow": "立即订购",
+    "buy2free1": "买2送1",
+    "addToCart": "加入购物车",
+    "inStock": "有库存",
+    "lowStock": "仅剩 {count} 件",
+    "outOfStock": "缺货",
+    "description_label": "产品说明",
+    "freeShipping": "免费配送",
+    "freeShippingSub": "订单满RM150",
+    "qualityAssured": "品质保证",
+    "qualityAssuredSub": "GMP认证",
+    "easyReturns": "轻松退货",
+    "easyReturnsSub": "30天政策",
+    "youSave": "节省 RM {amount}",
+    "freeBoxIncluded": "包含 {count} 盒免费！",
+    "backToShop": "返回商店"
+  },
+  "benefits": {
+    "label": "为什么选择 Bloomie",
+    "title": "感受不同",
+    "menstrualRelief": "经期舒缓",
+    "menstrualReliefDesc": "缓解痉挛、调节周期",
+    "hormonalBalance": "荷尔蒙平衡",
+    "hormonalBalanceDesc": "改善PCOS和月经不规律",
+    "betterSleep": "更好的睡眠",
+    "betterSleepDesc": "稳定情绪、减轻压力",
+    "energyBoost": "提升精力",
+    "energyBoostDesc": "减少经期疲劳",
+    "uterineHealth": "子宫健康",
+    "uterineHealthDesc": "支持抗衰老和修复",
+    "skinClarity": "肌肤净透",
+    "skinClarityDesc": "减少荷尔蒙痘痘、焕发光彩"
+  },
+  "stats": {
+    "happyCustomers": "满意客户",
+    "premiumBotanicals": "优质植物成分",
+    "naturalIngredients": "天然成分",
+    "sachetsPerBox": "每盒小袋数"
+  },
+  "lifestyle": {
+    "label": "您的日常仪式",
+    "title1": "一袋冲剂。",
+    "title2": "无尽益处。",
+    "description": "只需加水冲泡，即可享用美味的石榴养生饮品。建议每天早晨服用效果最佳。几周内，您将感受到精力、情绪和经期舒适度的变化。",
+    "cta": "试试 Bloomie"
+  },
+  "ingredients": {
+    "label": "12种优质植物",
+    "title": "大自然最优质的成分",
+    "description": "源自法国、美国、西班牙和亚洲。每种成分都经过精心挑选，具有对女性健康的显著功效。"
+  },
+  "howTo": {
+    "label": "简单美味",
+    "title": "如何享用 Bloomie",
+    "step1": "打开",
+    "step1Desc": "撕开一袋 Bloomie",
+    "step2": "冲泡",
+    "step2Desc": "倒入150毫升温水或冷水",
+    "step3": "享用",
+    "step3Desc": "搅拌均匀，享受您的日常养生饮品"
+  },
+  "testimonials": {
+    "label": "真实故事",
+    "title": "深受女性喜爱"
+  },
+  "cta": {
+    "label": "开始您的旅程",
+    "title1": "准备好",
+    "title2": "绽放了吗？",
+    "description": "加入数千名已通过 Bloomie 改善健康的女性行列。您的身体值得最好的。",
+    "btn": "立即订购 Bloomie",
+    "price": "RM 138 起 · 15 小袋 · 满RM150免运费"
+  },
+  "cart": {
+    "title": "您的购物车",
+    "empty": "购物车为空",
+    "emptyDesc": "探索我们的优质保健品系列。",
+    "continueShopping": "继续购物",
+    "clearCart": "清空购物车",
+    "orderSummary": "订单摘要",
+    "subtotal": "小计",
+    "original": "原价",
+    "savings": "节省",
+    "shipping": "运费",
+    "shippingFree": "免费",
+    "shippingCalc": "结账时计算",
+    "total": "总计",
+    "checkout": "结账",
+    "securePay": "通过 Billplz 安全支付"
+  },
+  "checkout": {
+    "label": "安全",
+    "title": "结账",
+    "backToCart": "返回购物车",
+    "contactInfo": "联系信息",
+    "fullName": "全名",
+    "email": "邮箱",
+    "phone": "电话",
+    "shippingAddress": "收货地址",
+    "address1": "地址第1行",
+    "address2": "地址第2行",
+    "city": "城市",
+    "state": "州",
+    "postcode": "邮编",
+    "pay": "支付 RM {amount}",
+    "securePayment": "由 Billplz 提供安全支付"
+  },
+  "footer": {
+    "tagline": "平价优质养生。采用来自法国、美国、西班牙和亚洲最优质的植物成分。",
+    "navigation": "导航",
+    "contact": "联系方式",
+    "copyright": "Athena Healthcare (PG0565925W)。版权所有。",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "shop": {
+    "label": "我们的系列",
+    "title": "商店",
+    "search": "搜索产品...",
+    "noProducts": "未找到产品",
+    "noProductsDesc": "请调整您的搜索或筛选"
+  },
+  "auth": {
+    "welcomeBack": "欢迎回来",
+    "signIn": "登录您的账户",
+    "signInBtn": "登录",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "没有账户？",
+    "createOne": "注册",
+    "createAccount": "创建账户",
+    "joinCommunity": "加入 Anthena 社区",
+    "createBtn": "创建账户",
+    "haveAccount": "已有账户？",
+    "signInLink": "登录"
+  }
+}

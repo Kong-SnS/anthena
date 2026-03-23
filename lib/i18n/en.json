@@ -1,0 +1,167 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "about": "About",
+    "reviews": "Reviews",
+    "account": "Account",
+    "menu": "Menu",
+    "whatsappUs": "WhatsApp Us"
+  },
+  "hero": {
+    "label": "Women's Botanical Wellness",
+    "title1": "Bloom From",
+    "title2": "Within",
+    "subtitle": "12 powerful botanicals in every sachet. Formulated for women's hormonal health, cycle comfort, and natural radiance.",
+    "shopBtn": "Shop Bloomie",
+    "learnBtn": "Learn More"
+  },
+  "marquee": {
+    "items": ["French Patented Formula", "Clinically Proven", "12 Premium Botanicals", "Science-Backed Ingredients", "Free Shipping RM150+", "Buy 2 Free 1", "Women's Hormonal Health", "Made with Love"]
+  },
+  "product": {
+    "introducing": "Affordable Premium Wellness",
+    "subtitle": "Botanical Beverage Mix Pomegranate",
+    "description": "A delicious pomegranate-flavored wellness drink infused with 12 premium botanicals from France, USA, Spain, and Asia. French patented formula, clinically proven, with science-backed ingredients.",
+    "promo": "Buy 2 Free 1 · Free Shipping RM150+",
+    "box1": "1 Box",
+    "box2": "2 Boxes",
+    "sachets": "15 sachets",
+    "freeBox": "+ 1 Box FREE",
+    "bestValue": "Best Value",
+    "orderNow": "Order Now",
+    "buy2free1": "Buy 2 Free 1",
+    "addToCart": "Add to Cart",
+    "inStock": "In Stock",
+    "lowStock": "Only {count} left",
+    "outOfStock": "Out of Stock",
+    "description_label": "Description",
+    "freeShipping": "Free Shipping",
+    "freeShippingSub": "Orders over RM150",
+    "qualityAssured": "Quality Assured",
+    "qualityAssuredSub": "GMP Certified",
+    "easyReturns": "Easy Returns",
+    "easyReturnsSub": "30-day policy",
+    "youSave": "You save RM {amount}",
+    "freeBoxIncluded": "{count} FREE box included!",
+    "backToShop": "Back to Shop"
+  },
+  "benefits": {
+    "label": "Why Bloomie",
+    "title": "Feel the Difference",
+    "menstrualRelief": "Menstrual Relief",
+    "menstrualReliefDesc": "Relieves cramps & regulates cycle",
+    "hormonalBalance": "Hormonal Balance",
+    "hormonalBalanceDesc": "Improves PCOS & irregular periods",
+    "betterSleep": "Better Sleep",
+    "betterSleepDesc": "Stabilizes mood & reduces stress",
+    "energyBoost": "Energy Boost",
+    "energyBoostDesc": "Reduces fatigue during menstruation",
+    "uterineHealth": "Uterine Health",
+    "uterineHealthDesc": "Supports anti-aging & recovery",
+    "skinClarity": "Skin Clarity",
+    "skinClarityDesc": "Reduces hormonal acne & glow"
+  },
+  "stats": {
+    "happyCustomers": "Happy Customers",
+    "premiumBotanicals": "Premium Botanicals",
+    "naturalIngredients": "Natural Ingredients",
+    "sachetsPerBox": "Sachets Per Box"
+  },
+  "lifestyle": {
+    "label": "Your Daily Ritual",
+    "title1": "One Sachet.",
+    "title2": "Endless Benefits.",
+    "description": "Simply mix with water for a delicious pomegranate wellness drink. Best taken daily in the morning for optimal results. Within weeks, you'll feel the difference in your energy, mood, and cycle comfort.",
+    "cta": "Try Bloomie"
+  },
+  "ingredients": {
+    "label": "12 Premium Botanicals",
+    "title": "Nature's Finest Ingredients",
+    "description": "Sourced from France, USA, Spain, and Asia. Each ingredient is carefully selected for its proven benefits in women's health."
+  },
+  "howTo": {
+    "label": "Simple & Delicious",
+    "title": "How to Enjoy Bloomie",
+    "step1": "Open",
+    "step1Desc": "Tear open one sachet of Bloomie",
+    "step2": "Mix",
+    "step2Desc": "Pour into 150ml of warm or cold water",
+    "step3": "Enjoy",
+    "step3Desc": "Stir well and enjoy your daily wellness drink"
+  },
+  "testimonials": {
+    "label": "Real Stories",
+    "title": "Loved by Women"
+  },
+  "cta": {
+    "label": "Start Your Journey",
+    "title1": "Ready to",
+    "title2": "Bloom?",
+    "description": "Join thousands of women who've transformed their wellness with Bloomie. Your body deserves the best.",
+    "btn": "Order Bloomie Now",
+    "price": "From RM 138 · 15 sachets · Free shipping over RM150"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "emptyDesc": "Discover our curated collection of premium supplements.",
+    "continueShopping": "Continue Shopping",
+    "clearCart": "Clear Cart",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "original": "Original",
+    "savings": "Savings",
+    "shipping": "Shipping",
+    "shippingFree": "FREE",
+    "shippingCalc": "Calculated at checkout",
+    "total": "Total",
+    "checkout": "Checkout",
+    "securePay": "Secure payment via Billplz"
+  },
+  "checkout": {
+    "label": "Secure",
+    "title": "Checkout",
+    "backToCart": "Back to Cart",
+    "contactInfo": "Contact Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "shippingAddress": "Shipping Address",
+    "address1": "Address Line 1",
+    "address2": "Address Line 2",
+    "city": "City",
+    "state": "State",
+    "postcode": "Postcode",
+    "pay": "Pay RM {amount}",
+    "securePayment": "Secure payment powered by Billplz"
+  },
+  "footer": {
+    "tagline": "Affordable premium wellness. Crafted with the finest botanicals from France, USA, Spain, and Asia.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "copyright": "Athena Healthcare (PG0565925W). All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "shop": {
+    "label": "Our Collection",
+    "title": "Shop",
+    "search": "Search products...",
+    "noProducts": "No products found",
+    "noProductsDesc": "Try adjusting your search or filter"
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "signIn": "Sign in to your account",
+    "signInBtn": "Sign In",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "createOne": "Create one",
+    "createAccount": "Create Account",
+    "joinCommunity": "Join the Anthena community",
+    "createBtn": "Create Account",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
+  }
+}

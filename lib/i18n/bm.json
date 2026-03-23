@@ -1,0 +1,167 @@
+{
+  "nav": {
+    "home": "Utama",
+    "shop": "Kedai",
+    "about": "Tentang",
+    "reviews": "Ulasan",
+    "account": "Akaun",
+    "menu": "Menu",
+    "whatsappUs": "WhatsApp Kami"
+  },
+  "hero": {
+    "label": "Kesihatan Botanikal Wanita",
+    "title1": "Mekar Dari",
+    "title2": "Dalam",
+    "subtitle": "12 botanikal berkuasa dalam setiap sachet. Diformulasi untuk kesihatan hormon wanita, keselesaan haid, dan kecantikan semulajadi.",
+    "shopBtn": "Beli Bloomie",
+    "learnBtn": "Ketahui Lagi"
+  },
+  "marquee": {
+    "items": ["Formula Paten Perancis", "Terbukti Klinikal", "12 Botanikal Premium", "Ramuan Berasaskan Sains", "Penghantaran Percuma RM150+", "Beli 2 Percuma 1", "Kesihatan Hormon Wanita", "Dibuat Dengan Kasih Sayang"]
+  },
+  "product": {
+    "introducing": "Kesihatan Premium Mampu Milik",
+    "subtitle": "Minuman Botanikal Campuran Delima",
+    "description": "Minuman kesihatan berperisa delima yang lazat diinfusi dengan 12 botanikal premium dari Perancis, USA, Sepanyol, dan Asia. Formula paten Perancis, terbukti secara klinikal, dengan ramuan berasaskan sains.",
+    "promo": "Beli 2 Percuma 1 · Penghantaran Percuma RM150+",
+    "box1": "1 Kotak",
+    "box2": "2 Kotak",
+    "sachets": "15 sachet",
+    "freeBox": "+ 1 Kotak PERCUMA",
+    "bestValue": "Nilai Terbaik",
+    "orderNow": "Beli Sekarang",
+    "buy2free1": "Beli 2 Percuma 1",
+    "addToCart": "Tambah ke Troli",
+    "inStock": "Dalam Stok",
+    "lowStock": "Tinggal {count} sahaja",
+    "outOfStock": "Habis Stok",
+    "description_label": "Penerangan",
+    "freeShipping": "Penghantaran Percuma",
+    "freeShippingSub": "Pesanan melebihi RM150",
+    "qualityAssured": "Kualiti Terjamin",
+    "qualityAssuredSub": "Sijil GMP",
+    "easyReturns": "Pemulangan Mudah",
+    "easyReturnsSub": "Polisi 30 hari",
+    "youSave": "Anda jimat RM {amount}",
+    "freeBoxIncluded": "{count} kotak PERCUMA termasuk!",
+    "backToShop": "Kembali ke Kedai"
+  },
+  "benefits": {
+    "label": "Kenapa Bloomie",
+    "title": "Rasai Perbezaannya",
+    "menstrualRelief": "Legakan Haid",
+    "menstrualReliefDesc": "Melegakan kekejangan & mengawal kitaran",
+    "hormonalBalance": "Keseimbangan Hormon",
+    "hormonalBalanceDesc": "Memperbaiki PCOS & haid tidak teratur",
+    "betterSleep": "Tidur Lebih Baik",
+    "betterSleepDesc": "Menstabilkan mood & mengurangkan tekanan",
+    "energyBoost": "Tenaga Lebih",
+    "energyBoostDesc": "Mengurangkan keletihan semasa haid",
+    "uterineHealth": "Kesihatan Rahim",
+    "uterineHealthDesc": "Menyokong anti-penuaan & pemulihan",
+    "skinClarity": "Kulit Cerah",
+    "skinClarityDesc": "Mengurangkan jerawat hormon & berseri"
+  },
+  "stats": {
+    "happyCustomers": "Pelanggan Berpuas Hati",
+    "premiumBotanicals": "Botanikal Premium",
+    "naturalIngredients": "Ramuan Semulajadi",
+    "sachetsPerBox": "Sachet Setiap Kotak"
+  },
+  "lifestyle": {
+    "label": "Rutin Harian Anda",
+    "title1": "Satu Sachet.",
+    "title2": "Manfaat Tanpa Had.",
+    "description": "Cuma campurkan dengan air untuk minuman delima kesihatan yang lazat. Paling baik diambil setiap pagi untuk hasil optimum. Dalam beberapa minggu, anda akan merasai perbezaan pada tenaga, mood, dan keselesaan haid.",
+    "cta": "Cuba Bloomie"
+  },
+  "ingredients": {
+    "label": "12 Botanikal Premium",
+    "title": "Ramuan Terbaik Alam Semulajadi",
+    "description": "Dari Perancis, USA, Sepanyol, dan Asia. Setiap ramuan dipilih dengan teliti untuk manfaat kesihatan wanita."
+  },
+  "howTo": {
+    "label": "Mudah & Lazat",
+    "title": "Cara Menikmati Bloomie",
+    "step1": "Buka",
+    "step1Desc": "Koyakkan satu sachet Bloomie",
+    "step2": "Campurkan",
+    "step2Desc": "Tuangkan ke dalam 150ml air suam atau sejuk",
+    "step3": "Nikmati",
+    "step3Desc": "Kacau dan nikmati minuman kesihatan harian anda"
+  },
+  "testimonials": {
+    "label": "Kisah Sebenar",
+    "title": "Digemari Wanita"
+  },
+  "cta": {
+    "label": "Mulakan Perjalanan Anda",
+    "title1": "Bersedia untuk",
+    "title2": "Mekar?",
+    "description": "Sertai ribuan wanita yang telah mengubah kesihatan mereka dengan Bloomie. Tubuh anda layak mendapat yang terbaik.",
+    "btn": "Beli Bloomie Sekarang",
+    "price": "Dari RM 138 · 15 sachet · Penghantaran percuma melebihi RM150"
+  },
+  "cart": {
+    "title": "Troli Anda",
+    "empty": "Troli anda kosong",
+    "emptyDesc": "Terokai koleksi suplemen premium kami.",
+    "continueShopping": "Teruskan Membeli",
+    "clearCart": "Kosongkan Troli",
+    "orderSummary": "Ringkasan Pesanan",
+    "subtotal": "Jumlah Kecil",
+    "original": "Asal",
+    "savings": "Penjimatan",
+    "shipping": "Penghantaran",
+    "shippingFree": "PERCUMA",
+    "shippingCalc": "Dikira semasa checkout",
+    "total": "Jumlah",
+    "checkout": "Checkout",
+    "securePay": "Pembayaran selamat melalui Billplz"
+  },
+  "checkout": {
+    "label": "Selamat",
+    "title": "Checkout",
+    "backToCart": "Kembali ke Troli",
+    "contactInfo": "Maklumat Hubungan",
+    "fullName": "Nama Penuh",
+    "email": "E-mel",
+    "phone": "Telefon",
+    "shippingAddress": "Alamat Penghantaran",
+    "address1": "Alamat Baris 1",
+    "address2": "Alamat Baris 2",
+    "city": "Bandar",
+    "state": "Negeri",
+    "postcode": "Poskod",
+    "pay": "Bayar RM {amount}",
+    "securePayment": "Pembayaran selamat oleh Billplz"
+  },
+  "footer": {
+    "tagline": "Kesihatan premium mampu milik. Diformulasi dengan botanikal terbaik dari Perancis, USA, Sepanyol, dan Asia.",
+    "navigation": "Navigasi",
+    "contact": "Hubungi",
+    "copyright": "Athena Healthcare (PG0565925W). Hak cipta terpelihara.",
+    "privacy": "Polisi Privasi",
+    "terms": "Terma Perkhidmatan"
+  },
+  "shop": {
+    "label": "Koleksi Kami",
+    "title": "Kedai",
+    "search": "Cari produk...",
+    "noProducts": "Tiada produk ditemui",
+    "noProductsDesc": "Cuba laraskan carian atau penapis anda"
+  },
+  "auth": {
+    "welcomeBack": "Selamat Kembali",
+    "signIn": "Log masuk ke akaun anda",
+    "signInBtn": "Log Masuk",
+    "forgotPassword": "Lupa kata laluan?",
+    "noAccount": "Belum ada akaun?",
+    "createOne": "Daftar",
+    "createAccount": "Cipta Akaun",
+    "joinCommunity": "Sertai komuniti Anthena",
+    "createBtn": "Cipta Akaun",
+    "haveAccount": "Sudah ada akaun?",
+    "signInLink": "Log masuk"
+  }
+}

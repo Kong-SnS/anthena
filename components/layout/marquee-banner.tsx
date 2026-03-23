@@ -1,17 +1,11 @@
 "use client"
 
-const items = [
-  "French Patented Formula",
-  "Clinically Proven",
-  "12 Premium Botanicals",
-  "Science-Backed Ingredients",
-  "Free Shipping RM150+",
-  "Buy 2 Free 1",
-  "Women's Hormonal Health",
-  "Made with Love",
-]
+import { useTranslation } from "@/lib/i18n"
 
 export function MarqueeBanner() {
+  const { t } = useTranslation()
+  const items = t.marquee.items
+
   return (
     <div className="bg-gradient-to-r from-[#c4a07c] to-[#d4a89a] text-white py-2.5 overflow-hidden">
       <div className="animate-marquee flex whitespace-nowrap">

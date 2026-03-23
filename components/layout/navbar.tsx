@@ -5,16 +5,11 @@ import { usePathname } from "next/navigation"
 import { ShoppingCart, Menu, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { LanguageSwitcher } from "@/components/layout/language-switcher"
 import { useCart } from "@/hooks/use-cart"
+import { useTranslation } from "@/lib/i18n"
 import { createClient } from "@/lib/supabase/client"
 import { useState, useEffect } from "react"
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/#about", label: "About" },
-  { href: "/#testimonials", label: "Reviews" },
-]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -22,9 +17,17 @@ export function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const pathname = usePathname()
   const itemCount = useCart((s) => s.getItemCount())
+  const { t } = useTranslation()
   const isHome = pathname === "/"
   const useDarkText = !isHome || scrolled
   const accountHref = isLoggedIn ? "/account" : "/auth/login"
+
+  const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/shop", label: t.nav.shop },
+    { href: "/#about", label: t.nav.about },
+    { href: "/#testimonials", label: t.nav.reviews },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -73,6 +76,9 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <div className="hidden md:block">
+            <LanguageSwitcher dark={!useDarkText} />
+          </div>
           <Link
             href={accountHref}
             aria-label="Account"
@@ -113,7 +119,10 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-80 bg-gradient-to-b from-[#faf8f5] to-[#f5ece4] border-gold/10">
               <div className="flex flex-col gap-0 mt-12">
-                <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-gold mb-6 px-1">Menu</p>
+                <div className="flex items-center justify-between mb-6">
+                  <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-gold px-1">{t.nav.menu}</p>
+                  <LanguageSwitcher />
+                </div>
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -129,7 +138,7 @@ export function Navbar() {
                   className="text-foreground/80 text-lg font-display tracking-[0.05em] py-3.5 hover:text-gold transition-colors"
                   onClick={() => setOpen(false)}
                 >
-                  Account
+                  {t.nav.account}
                 </Link>
                 <a
                   href="https://wa.me/60126431737?text=PMBloomie"
@@ -137,7 +146,7 @@ export function Navbar() {
                   rel="noopener noreferrer"
                   className="mt-8 btn-rose-gold text-center py-3 text-[11px] font-medium tracking-[0.15em] uppercase"
                 >
-                  WhatsApp Us
+                  {t.nav.whatsappUs}
                 </a>
               </div>
             </SheetContent>

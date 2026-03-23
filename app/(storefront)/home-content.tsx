@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
 import { MarqueeBanner } from "@/components/layout/marquee-banner"
+import { useTranslation } from "@/lib/i18n"
 import {
   ArrowRight,
   ChevronDown,
@@ -110,6 +111,7 @@ function AnimatedSection({
 
 export function HomeContent({ featuredProducts }: { featuredProducts: Product[] }) {
   const product = featuredProducts[0]
+  const { t } = useTranslation()
 
   return (
     <div className="bg-background">
@@ -134,16 +136,15 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
           <span className="animate-fade-in-up text-[11px] font-medium tracking-[0.35em] uppercase text-white/75 mb-6">
-            Women&apos;s Botanical Wellness
+            {t.hero.label}
           </span>
           <h1 className="animate-fade-in-up animation-delay-200 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal tracking-tight text-white leading-[1.1] max-w-4xl">
-            Bloom From
+            {t.hero.title1}
             <br />
-            <span className="font-display italic shimmer-gold">Within</span>
+            <span className="font-display italic shimmer-gold">{t.hero.title2}</span>
           </h1>
           <p className="animate-fade-in-up animation-delay-400 mt-6 text-base md:text-lg text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
-            12 powerful botanicals in every sachet. Formulated for women&apos;s
-            hormonal health, cycle comfort, and natural radiance.
+            {t.hero.subtitle}
           </p>
           <div className="animate-fade-in-up animation-delay-600 flex gap-4 mt-10">
             <Button
@@ -151,7 +152,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
               render={<Link href="/shop/bloomie" />}
             >
-              Shop Bloomie
+              {t.hero.shopBtn}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
@@ -160,7 +161,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase bg-transparent"
               render={<Link href="#benefits" />}
             >
-              Learn More
+              {t.hero.learnBtn}
             </Button>
           </div>
         </div>
@@ -196,24 +197,22 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               {/* Product Info */}
               <div>
                 <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
-                  Affordable Premium Wellness
+                  {t.product.introducing}
                 </span>
                 <h2 className="text-3xl md:text-5xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug">
                   <span className="text-rose-gold-gradient">Bloomie</span>
                 </h2>
                 <p className="text-lg text-muted-foreground font-light mb-2">
-                  Botanical Beverage Mix Pomegranate
+                  {t.product.subtitle}
                 </p>
                 <p className="text-muted-foreground font-light leading-relaxed mb-6 text-[15px]">
-                  A delicious pomegranate-flavored wellness drink infused with 12 premium
-                  botanicals from France, USA, Spain, and Asia. French patented formula,
-                  clinically proven, with science-backed ingredients.
+                  {t.product.description}
                 </p>
 
                 {/* Promo Banner */}
                 <div className="btn-rose-gold px-5 py-3 mb-6 inline-block">
                   <span className="text-[11px] font-medium tracking-[0.2em] uppercase">
-                    Buy 2 Free 1 &middot; Free Shipping RM150+
+                    {t.product.promo}
                   </span>
                 </div>
 
@@ -237,7 +236,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                   className="btn-rose-gold rounded-none px-10 h-12 text-[12px] font-medium tracking-[0.15em] uppercase"
                   render={<Link href="/shop/bloomie" />}
                 >
-                  Order Now
+                  {t.product.orderNow}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -254,10 +253,10 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           <AnimatedSection>
             <div className="text-center mb-16">
               <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
-                Why Bloomie
+                {t.benefits.label}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
-                Feel the Difference
+                {t.benefits.title}
               </h2>
               <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
             </div>
@@ -511,12 +510,12 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
             <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
-              Start Your Journey
+              {t.cta.label}
             </span>
             <h2 className="text-3xl md:text-5xl font-display font-normal tracking-tight mt-4 mb-6 leading-snug">
-              Ready to
+              {t.cta.title1}
               <br />
-              <span className="italic font-light">Bloom?</span>
+              <span className="italic font-light">{t.cta.title2}</span>
             </h2>
             <p className="text-muted-foreground font-light max-w-md mx-auto mb-10 leading-relaxed">
               Join thousands of women who&apos;ve transformed their wellness with Bloomie.
@@ -527,11 +526,11 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               className="btn-rose-gold rounded-none px-10 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
               render={<Link href="/shop/bloomie" />}
             >
-              Order Bloomie Now
+              {t.cta.btn}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <p className="text-xs text-muted-foreground mt-4 font-light">
-              From RM 138 &middot; 15 sachets &middot; Free shipping over RM150
+              {t.cta.price}
             </p>
           </AnimatedSection>
         </div>
