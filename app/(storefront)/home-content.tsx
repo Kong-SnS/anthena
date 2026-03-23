@@ -8,6 +8,9 @@ import { ImageReveal } from "@/components/ui/image-reveal"
 import { TestimonialCarousel } from "@/components/ui/testimonial-carousel"
 import { OrnamentDivider } from "@/components/ui/ornament-divider"
 import { CountdownTimer } from "@/components/ui/countdown-timer"
+import { TypingEffect } from "@/components/ui/typing-effect"
+import { HorizontalScrollGallery } from "@/components/ui/horizontal-scroll-gallery"
+import { PopIn } from "@/components/ui/pop-in"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
 import { TextReveal } from "@/components/ui/text-reveal"
@@ -123,7 +126,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             <span className="font-display italic shimmer-gold">{t.hero.title2}</span>
           </h1>
           <p className="animate-fade-in-up animation-delay-400 mt-6 text-base md:text-lg text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
-            {t.hero.subtitle}
+            <TypingEffect text={t.hero.subtitle} delay={1500} speed={25} />
           </p>
           <div className="animate-fade-in-up animation-delay-600 flex gap-4 mt-10">
             <MagneticButton>
@@ -360,14 +363,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                   {t.ingredients.description}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
-                  {ingredientKeys.map((ing) => (
-                    <div
-                      key={ing}
-                      className="flex items-center gap-2.5 py-2"
-                    >
-                      <Flower2 className="h-3.5 w-3.5 text-gold shrink-0" />
-                      <span className="text-sm font-light">{t.ingredientNames[ing]}</span>
-                    </div>
+                  {ingredientKeys.map((ing, i) => (
+                    <PopIn key={ing} delay={i * 0.06}>
+                      <div className="flex items-center gap-2.5 py-2">
+                        <Flower2 className="h-3.5 w-3.5 text-gold shrink-0" />
+                        <span className="text-sm font-light">{t.ingredientNames[ing]}</span>
+                      </div>
+                    </PopIn>
                   ))}
                 </div>
               </div>
@@ -433,6 +435,21 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             </div>
           </AnimatedSection>
         </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* HORIZONTAL SCROLL GALLERY                    */}
+      {/* ============================================ */}
+      <section className="bg-[#faf8f5]">
+        <HorizontalScrollGallery
+          images={[
+            { src: "/images/products/bloomie-main.png", alt: "Bloomie product" },
+            { src: "/images/products/bloomie-lifestyle-drink.webp", alt: "Bloomie drink" },
+            { src: "/images/products/bloomie-flatlay.webp", alt: "Bloomie ingredients" },
+            { src: "/images/products/bloomie-drink-pour.webp", alt: "Bloomie pour" },
+            { src: "/images/products/bloomie-lifestyle-box.webp", alt: "Bloomie box" },
+          ]}
+        />
       </section>
 
       {/* ============================================ */}

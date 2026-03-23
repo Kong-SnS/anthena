@@ -9,8 +9,7 @@
       <change beforePath="$PROJECT_DIR$/app/(storefront)/home-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(storefront)/home-content.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(storefront)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(storefront)/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/loading-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/loading-screen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/page-transition.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/page-transition.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1774265493053</updated>
-      <workItem from="1774265494172" duration="4863000" />
+      <workItem from="1774265494172" duration="7542000" />
     </task>
     <servers />
   </component>
