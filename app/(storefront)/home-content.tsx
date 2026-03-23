@@ -3,8 +3,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
+import { TextReveal } from "@/components/ui/text-reveal"
+import { MagneticButton } from "@/components/ui/magnetic-button"
+import { StaggerChildren, StaggerItem } from "@/components/ui/stagger-children"
+import { PageTransition } from "@/components/ui/page-transition"
 import { MarqueeBanner } from "@/components/layout/marquee-banner"
 import { useTranslation } from "@/lib/i18n"
 import {
@@ -147,22 +152,26 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             {t.hero.subtitle}
           </p>
           <div className="animate-fade-in-up animation-delay-600 flex gap-4 mt-10">
-            <Button
-              size="lg"
-              className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
-              render={<Link href="/shop/bloomie" />}
-            >
-              {t.hero.shopBtn}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase bg-transparent"
-              render={<Link href="#benefits" />}
-            >
-              {t.hero.learnBtn}
-            </Button>
+            <MagneticButton>
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
+                render={<Link href="/shop/bloomie" />}
+              >
+                {t.hero.shopBtn}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </MagneticButton>
+            <MagneticButton>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase bg-transparent"
+                render={<Link href="#benefits" />}
+              >
+                {t.hero.learnBtn}
+              </Button>
+            </MagneticButton>
           </div>
         </div>
 
@@ -262,26 +271,23 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             </div>
           </AnimatedSection>
 
-          <AnimatedSection>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+          <StaggerChildren className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10" staggerDelay={0.12}>
               {benefits.map((b) => (
-                <div
-                  key={b.title}
-                  className="bg-white p-6 lg:p-8 text-center group hover:shadow-lg hover:-translate-y-1 hover:border-gold/30 border border-transparent transition-all duration-500"
-                >
-                  <div className="mx-auto w-12 h-12 rounded-full bg-blush-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
-                    <b.icon className="h-5 w-5 text-gold" />
+                <StaggerItem key={b.title}>
+                  <div className="bg-white p-6 lg:p-8 text-center group hover:shadow-lg hover:-translate-y-1 hover:border-gold/30 border border-transparent transition-all duration-500 h-full">
+                    <div className="mx-auto w-12 h-12 rounded-full bg-blush-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
+                      <b.icon className="h-5 w-5 text-gold" />
+                    </div>
+                    <h3 className="font-medium text-sm tracking-wide mb-1.5">
+                      {b.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground font-light">
+                      {b.desc}
+                    </p>
                   </div>
-                  <h3 className="font-medium text-sm tracking-wide mb-1.5">
-                    {b.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground font-light">
-                    {b.desc}
-                  </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-          </AnimatedSection>
+          </StaggerChildren>
         </div>
       </section>
 
