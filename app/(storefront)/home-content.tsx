@@ -3,7 +3,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { ImageReveal } from "@/components/ui/image-reveal"
+import { TestimonialCarousel } from "@/components/ui/testimonial-carousel"
+import { OrnamentDivider } from "@/components/ui/ornament-divider"
+import { CountdownTimer } from "@/components/ui/countdown-timer"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
 import { TextReveal } from "@/components/ui/text-reveal"
@@ -73,6 +77,14 @@ function AnimatedSection({
   )
 }
 
+function useParallax(offset: number = -50) {
+  const { scrollY } = useScroll()
+  return useTransform(scrollY, [0, 1000], [0, offset])
+}
+
+// Countdown: 30 days from now (adjust as needed)
+const promoEndDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+
 export function HomeContent({ featuredProducts }: { featuredProducts: Product[] }) {
   const product = featuredProducts[0]
   const { t } = useTranslation()
@@ -83,18 +95,21 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* HERO - Fullscreen Video Background           */}
       {/* ============================================ */}
       <section className="relative h-screen w-full overflow-hidden">
-        <div className="absolute inset-0">
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: useParallax(-50) }}
+        >
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="h-full w-full object-cover"
+            className="h-[120%] w-full object-cover"
             poster="/images/hero-poster.jpg"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
-        </div>
+        </motion.div>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 z-[1]" />
 
@@ -150,8 +165,8 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           <AnimatedSection>
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Product Image */}
-              <div className="relative group">
-                <div className="aspect-square bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] rounded-sm overflow-hidden relative glow-gold transition-all duration-700">
+              <ImageReveal direction="left">
+                <div className="aspect-square bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] rounded-sm overflow-hidden relative glow-gold group">
                   <Image
                     src="/images/products/bloomie-main.png"
                     alt="Bloomie Botanical Beverage"
@@ -160,7 +175,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
-              </div>
+              </ImageReveal>
 
               {/* Product Info */}
               <div>
@@ -178,10 +193,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 </p>
 
                 {/* Promo Banner */}
-                <div className="btn-rose-gold px-5 py-3 mb-6 inline-block">
+                <div className="btn-rose-gold px-5 py-3 mb-4 inline-block">
                   <span className="text-[11px] font-medium tracking-[0.2em] uppercase">
                     {t.product.promo}
                   </span>
+                </div>
+                <div className="mb-6">
+                  <CountdownTimer endDate={promoEndDate} />
                 </div>
 
                 {/* Pricing Tiers */}
@@ -226,7 +244,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
                 {t.benefits.title}
               </h2>
-              <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
+              <OrnamentDivider className="mt-6" />
             </div>
           </AnimatedSection>
 
@@ -382,7 +400,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
                 {t.howTo.title}
               </h2>
-              <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
+              <OrnamentDivider className="mt-6" />
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 lg:gap-16 max-w-4xl mx-auto">
@@ -430,37 +448,17 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
                 {t.testimonials.title}
               </h2>
-              <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
+              <OrnamentDivider className="mt-6" />
             </div>
           </AnimatedSection>
 
-          <AnimatedSection>
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-10">
-              {[
-                { text: t.testimonials.t1, name: t.testimonials.t1Name, title: t.testimonials.t1Title },
-                { text: t.testimonials.t2, name: t.testimonials.t2Name, title: t.testimonials.t2Title },
-                { text: t.testimonials.t3, name: t.testimonials.t3Name, title: t.testimonials.t3Title },
-              ].map((review) => (
-                <div
-                  key={review.name}
-                  className="border border-black/5 p-8 lg:p-10 group hover:border-gold/30 transition-all duration-500"
-                >
-                  <div className="flex gap-0.5 mb-6">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <p className="text-foreground/70 text-[15px] font-light leading-relaxed mb-8 italic">
-                    &ldquo;{review.text}&rdquo;
-                  </p>
-                  <div className="border-t border-black/5 pt-6">
-                    <p className="font-medium text-sm tracking-wide">{review.name}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{review.title}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
+          <TestimonialCarousel
+            testimonials={[
+              { text: t.testimonials.t1, name: t.testimonials.t1Name, title: t.testimonials.t1Title, avatar: "S" },
+              { text: t.testimonials.t2, name: t.testimonials.t2Name, title: t.testimonials.t2Title, avatar: "A" },
+              { text: t.testimonials.t3, name: t.testimonials.t3Name, title: t.testimonials.t3Title, avatar: "M" },
+            ]}
+          />
         </div>
       </section>
 

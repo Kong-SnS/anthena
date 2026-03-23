@@ -76,7 +76,7 @@ export function ProductDetailContent({
                     className={`relative w-20 h-20 bg-[#f5f3f0] overflow-hidden transition-all ${
                       activeImage === idx
                         ? "ring-2 ring-foreground"
-                        : "opacity-60 hover:opacity-100"
+                        : "opacity-60 hover:opacity-100 hover:scale-110 transition-transform duration-300"
                     }`}
                   >
                     <Image
