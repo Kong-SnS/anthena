@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import { AnnouncementBar } from "@/components/layout/announcement-bar"
 import { WhatsAppButton } from "@/components/layout/whatsapp-button"
 import { FloatingPetals } from "@/components/ui/floating-petals"
 import { LoadingScreen } from "@/components/ui/loading-screen"
@@ -8,6 +9,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { BackToTop } from "@/components/ui/back-to-top"
 import { SocialProof } from "@/components/ui/social-proof"
 import { StickyProductBar } from "@/components/ui/sticky-product-bar"
+import { EmailPopup } from "@/components/ui/email-popup"
 import { I18nProvider } from "@/lib/i18n"
 
 export default function StorefrontLayout({
@@ -21,6 +23,7 @@ export default function StorefrontLayout({
       <SmoothScroll />
       <ScrollProgress />
       <FloatingPetals />
+      <AnnouncementBar />
       <Navbar />
       <StickyProductBar />
       <main className="flex-1">{children}</main>
@@ -28,6 +31,7 @@ export default function StorefrontLayout({
       <WhatsAppButton />
       <BackToTop />
       <SocialProof />
+      <EmailPopup />
     </I18nProvider>
   )
 }

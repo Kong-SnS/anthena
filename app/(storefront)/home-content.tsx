@@ -12,6 +12,7 @@ import { TypingEffect } from "@/components/ui/typing-effect"
 import { HorizontalScrollGallery } from "@/components/ui/horizontal-scroll-gallery"
 import { PopIn } from "@/components/ui/pop-in"
 import { InstagramFeed } from "@/components/ui/instagram-feed"
+import { BundleCards } from "@/components/ui/bundle-cards"
 import { Button } from "@/components/ui/button"
 import { Counter } from "@/components/ui/counter"
 import { TextReveal } from "@/components/ui/text-reveal"
@@ -231,6 +232,17 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 </Button>
               </div>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* BUNDLE CARDS                                 */}
+      {/* ============================================ */}
+      <section className="py-16 lg:py-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <AnimatedSection>
+            <BundleCards />
           </AnimatedSection>
         </div>
       </section>
