@@ -12,10 +12,10 @@ export async function POST(request: NextRequest) {
 
     // Default pickup from warehouse (update with actual warehouse address)
     const rates = await checkRates({
-      pick_postcode: "43200",
-      pick_state: "Selangor",
-      send_postcode,
-      send_state,
+      sender_postcode: "43200",
+      sender_state: "Selangor",
+      receiver_postcode: send_postcode,
+      receiver_state: send_state,
       weight,
     })
 

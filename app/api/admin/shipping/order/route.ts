@@ -27,22 +27,26 @@ export async function POST(request: NextRequest) {
     )
 
     const result = await createOrder({
+      reference: order.order_number,
       service_id,
-      pick_name: "Anthena Healthcare",
-      pick_contact: "0126431737",
-      pick_addr1: "Anthena Warehouse",
-      pick_city: "Batu 9 Cheras",
-      pick_state: "Selangor",
-      pick_code: "43200",
-      send_name: order.customer.name,
-      send_contact: order.customer.phone,
-      send_addr1: order.customer.address_line1,
-      send_city: order.customer.city,
-      send_state: order.customer.state,
-      send_code: order.customer.postcode,
       weight: totalWeight,
-      content: `Anthena Order #${order.order_number}`,
-      value: Number(order.total),
+      sender: {
+        name: "Anthena Healthcare",
+        contact: "0126431737",
+        address1: "Anthena Warehouse",
+        city: "Batu 9 Cheras",
+        state: "Selangor",
+        postcode: "43200",
+      },
+      receiver: {
+        name: order.customer.name,
+        contact: order.customer.phone,
+        address1: order.customer.address_line1,
+        city: order.customer.city,
+        state: order.customer.state,
+        postcode: order.customer.postcode,
+      },
+      items: [{ content: `Anthena Order #${order.order_number}`, weight: totalWeight, value: Number(order.total) }],
     })
 
     const orderResult = result.result?.[0]
