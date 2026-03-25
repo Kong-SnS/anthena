@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
 import { ChevronDown, Instagram } from "lucide-react"
 
@@ -30,9 +31,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="md:col-span-4">
-            <h3 className="text-2xl font-display tracking-[0.2em] uppercase mb-4">
-              Athena
-            </h3>
+            <Image
+              src="/images/athena-logo.png"
+              alt="Athena"
+              width={160}
+              height={40}
+              className="h-10 w-auto brightness-0 invert mb-4"
+            />
             <p className="text-white/80 text-sm leading-relaxed max-w-sm font-light">
               {t.footer.tagline}
             </p>

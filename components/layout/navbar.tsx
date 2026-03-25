@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { ShoppingCart, Menu, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -55,13 +56,16 @@ export function Navbar() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
         <Link href="/" className="relative z-10">
-          <span
-            className={`text-2xl font-display tracking-[0.2em] uppercase transition-colors duration-500 ${
-              useDarkText ? "text-foreground" : "text-white"
+          <Image
+            src="/images/athena-logo.png"
+            alt="Athena"
+            width={140}
+            height={36}
+            className={`h-8 w-auto transition-all duration-500 ${
+              useDarkText ? "brightness-75" : "brightness-0 invert"
             }`}
-          >
-            Athena
-          </span>
+            priority
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-10">
