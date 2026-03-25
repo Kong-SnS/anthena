@@ -22,7 +22,7 @@ export async function generateMetadata({
   const image = product.images?.[0] || null
 
   return {
-    title: `${product.name} | Anthena`,
+    title: `${product.name} | Athena`,
     description: product.short_description,
     openGraph: {
       title: product.name,

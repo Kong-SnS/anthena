@@ -1,4 +1,4 @@
-# Anthena Hero Video - Canva Production Guide
+# Athena Hero Video - Canva Production Guide
 
 ## Video Specs
 

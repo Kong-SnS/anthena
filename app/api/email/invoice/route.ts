@@ -42,13 +42,13 @@ export async function POST(request: NextRequest) {
         <p style="text-align:right"><strong>Subtotal:</strong> RM ${Number(order.subtotal).toFixed(2)}</p>
         <p style="text-align:right"><strong>Shipping:</strong> RM ${Number(order.shipping_cost).toFixed(2)}</p>
         <p style="text-align:right;font-size:18px"><strong>Total: RM ${Number(order.total).toFixed(2)}</strong></p>
-        <p style="color:#6b7280;font-size:14px;margin-top:24px">Thank you for your purchase! - Anthena</p>
+        <p style="color:#6b7280;font-size:14px;margin-top:24px">Thank you for your purchase! - Athena</p>
       </div>
     `
 
     const result = await sendEmail({
       to: order.customer.email,
-      subject: `Invoice ${invoice.invoice_number} - Anthena`,
+      subject: `Invoice ${invoice.invoice_number} - Athena`,
       html,
     })
 
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       order_id: order.id,
       customer_id: order.customer_id,
       to_email: order.customer.email,
-      subject: `Invoice ${invoice.invoice_number} - Anthena`,
+      subject: `Invoice ${invoice.invoice_number} - Athena`,
       template: "invoice",
       mailgun_message_id: result.id || null,
       status: "sent",

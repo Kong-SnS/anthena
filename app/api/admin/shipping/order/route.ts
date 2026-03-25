@@ -31,9 +31,9 @@ export async function POST(request: NextRequest) {
       service_id,
       weight: totalWeight,
       sender: {
-        name: "Anthena Healthcare",
+        name: "Athena Healthcare",
         contact: "0126431737",
-        address1: "Anthena Warehouse",
+        address1: "Athena Warehouse",
         city: "Batu 9 Cheras",
         state: "Selangor",
         postcode: "43200",
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
         state: order.customer.state,
         postcode: order.customer.postcode,
       },
-      items: [{ content: `Anthena Order #${order.order_number}`, weight: totalWeight, value: Number(order.total) }],
+      items: [{ content: `Athena Order #${order.order_number}`, weight: totalWeight, value: Number(order.total) }],
     })
 
     const orderResult = result.result?.[0]

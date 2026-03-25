@@ -12,7 +12,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
             <h3 className="text-2xl font-display tracking-[0.2em] uppercase mb-6">
-              Anthena
+              Athena
             </h3>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm font-light">
               {t.footer.tagline}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const letters = "ANTHENA".split("")
+const letters = "ATHENA".split("")
 
 export function LoadingScreen() {
   const [show, setShow] = useState(true)

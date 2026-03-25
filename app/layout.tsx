@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Anthena | Premium Health Supplements",
+  title: "Athena | Premium Health Supplements",
   description:
     "Premium health supplements for a better you. Quality ingredients, backed by science, delivered to your door.",
 }

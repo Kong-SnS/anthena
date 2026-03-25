@@ -177,7 +177,7 @@ export async function POST(request: NextRequest) {
       email: customer.email,
       name: customer.name,
       amount: Math.round(total * 100),
-      description: `Anthena Order #${orderNumber}`,
+      description: `Athena Order #${orderNumber}`,
       callback_url: `${webhookUrl}/api/checkout/webhook`,
       redirect_url: `${redirectUrl}/api/checkout/callback`,
     })

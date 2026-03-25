@@ -9,7 +9,7 @@ interface SendEmailParams {
 
 export async function sendEmail(params: SendEmailParams) {
   const domain = process.env.MAILGUN_DOMAIN!
-  const fromName = process.env.MAILGUN_FROM_NAME || "Anthena"
+  const fromName = process.env.MAILGUN_FROM_NAME || "Athena"
   const fromEmail = process.env.MAILGUN_FROM_EMAIL || `noreply@${domain}`
   const form = new URLSearchParams()
   form.append("from", `${fromName} <${fromEmail}>`)
@@ -58,7 +58,7 @@ export async function getEmailEvents(messageId?: string) {
 const emailWrapper = (content: string) => `
   <div style="font-family:'Georgia',serif;max-width:600px;margin:0 auto;background:#faf8f5">
     <div style="background:linear-gradient(135deg,#c4a07c,#d4a89a);padding:24px;text-align:center">
-      <h1 style="color:white;font-size:28px;font-weight:400;letter-spacing:0.15em;margin:0">ANTHENA</h1>
+      <h1 style="color:white;font-size:28px;font-weight:400;letter-spacing:0.15em;margin:0">ATHENA</h1>
     </div>
     <div style="padding:32px 24px">
       ${content}

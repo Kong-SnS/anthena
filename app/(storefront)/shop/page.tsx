@@ -4,10 +4,10 @@ import type { Product } from "@/types"
 import { ShopContent } from "./shop-content"
 
 export const metadata: Metadata = {
-  title: "Shop | Anthena",
+  title: "Shop | Athena",
   description: "Browse our collection of premium botanical health supplements. Natural ingredients, science-backed formulations.",
   openGraph: {
-    title: "Shop Anthena Supplements",
+    title: "Shop Athena Supplements",
     description: "Premium botanical health supplements for women's wellness.",
   },
 }

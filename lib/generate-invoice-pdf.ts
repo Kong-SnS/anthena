@@ -18,7 +18,7 @@ export function generateInvoicePDF(data: InvoiceData): string {
   // Header
   doc.setFontSize(24)
   doc.setFont("helvetica", "normal")
-  doc.text("ANTHENA", 20, 30)
+  doc.text("ATHENA", 20, 30)
 
   doc.setFontSize(10)
   doc.setTextColor(100)
@@ -95,7 +95,7 @@ export function generateInvoicePDF(data: InvoiceData): string {
   doc.setFont("helvetica", "normal")
   doc.setFontSize(8)
   doc.setTextColor(150)
-  doc.text("Thank you for your purchase! — Anthena", 20, 275)
+  doc.text("Thank you for your purchase! — Athena", 20, 275)
 
   return doc.output("datauristring")
 }

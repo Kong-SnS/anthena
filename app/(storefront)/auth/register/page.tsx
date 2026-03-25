@@ -47,7 +47,7 @@ export default function RegisterPage() {
               Create Account
             </h1>
             <p className="text-sm text-muted-foreground font-light mt-2">
-              Join the Anthena community
+              Join the Athena community
             </p>
           </div>
 

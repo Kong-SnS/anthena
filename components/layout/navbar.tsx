@@ -60,7 +60,7 @@ export function Navbar() {
               useDarkText ? "text-foreground" : "text-white"
             }`}
           >
-            Anthena
+            Athena
           </span>
         </Link>
 

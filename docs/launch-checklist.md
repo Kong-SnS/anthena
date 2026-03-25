@@ -1,4 +1,4 @@
-# Anthena Launch Checklist
+# Athena Launch Checklist
 
 ## Critical (Must fix before launch)
 

@@ -61,7 +61,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between h-16 px-4 border-b">
             <Link href="/admin" className="text-lg font-bold">
-              ANTHENA <span className="text-xs font-normal text-muted-foreground">Admin</span>
+              ATHENA <span className="text-xs font-normal text-muted-foreground">Admin</span>
             </Link>
             <Button
               variant="ghost"
