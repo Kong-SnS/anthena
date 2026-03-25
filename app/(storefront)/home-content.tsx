@@ -122,8 +122,8 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
           <span className="animate-fade-in-up text-[11px] font-medium tracking-[0.35em] uppercase text-white/75 mb-6">
             {t.hero.label}
           </span>
-          <h1 className="animate-fade-in-up animation-delay-200 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal tracking-tight text-white leading-[1.1] max-w-4xl">
-            {t.hero.title1}
+          <h1 className="animate-fade-in-up animation-delay-200 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal tracking-tight leading-[1.1] max-w-4xl">
+            <span className="shimmer-gold">{t.hero.title1}</span>
             <br />
             <span className="font-display italic shimmer-gold">{t.hero.title2}</span>
           </h1>

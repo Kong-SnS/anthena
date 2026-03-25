@@ -83,12 +83,12 @@
   "howTo": {
     "label": "简单美味",
     "title": "如何享用 Bloomie",
-    "step1": "打开",
+    "step1": "撕开",
     "step1Desc": "撕开一袋 Bloomie",
-    "step2": "冲泡",
-    "step2Desc": "倒入150毫升温水或冷水",
+    "step2": "倒入",
+    "step2Desc": "慢慢倒入口中食用",
     "step3": "享用",
-    "step3Desc": "搅拌均匀，享受您的日常养生饮品"
+    "step3Desc": "随时随地享受日常养生"
   },
   "testimonials": {
     "label": "真实故事",
