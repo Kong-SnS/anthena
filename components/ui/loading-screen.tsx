@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+
+const letters = "ATHENA".split("")
 
 export function LoadingScreen() {
   const [show, setShow] = useState(true)
@@ -21,23 +22,24 @@ export function LoadingScreen() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div className="text-center">
-            {/* Logo image with fade in */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <Image
-                src="/images/athena-logo.png"
-                alt="Athena"
-                width={280}
-                height={70}
-                className="h-16 md:h-20 w-auto mx-auto"
-                priority
-              />
-            </motion.div>
+            <h1 className="text-6xl md:text-8xl font-display tracking-[0.3em] uppercase">
+              {letters.map((letter, i) => (
+                <motion.span
+                  key={i}
+                  className="inline-block text-rose-gold-gradient"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.2 + i * 0.1,
+                    ease: [0.33, 1, 0.68, 1],
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </h1>
 
-            {/* Expanding line */}
             <motion.div
               className="h-[1px] mx-auto mt-6 line-rose-gold"
               initial={{ width: 0 }}
@@ -45,7 +47,6 @@ export function LoadingScreen() {
               transition={{ duration: 1, delay: 1.2, ease: "easeInOut" }}
             />
 
-            {/* Tagline fade in */}
             <motion.p
               className="text-sm md:text-base tracking-[0.25em] uppercase text-gold/50 mt-5 font-light"
               initial={{ opacity: 0, y: 10 }}

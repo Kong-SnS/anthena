@@ -215,7 +215,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     <p className="text-[10px] text-muted-foreground">15 sachets</p>
                   </div>
                   <div className="border-2 border-gold px-5 py-3 text-center relative">
-                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-gold text-white text-[9px] font-medium tracking-wider px-2 py-0.5 uppercase">Best Value</span>
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-gold text-white text-[9px] font-medium tracking-wider px-2 py-0.5 uppercase">Best Seller</span>
                     <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
                     <p className="text-xl font-light mt-1">RM 209</p>
                     <p className="text-[10px] text-muted-foreground">+ 1 Box FREE</p>
@@ -232,17 +232,6 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 </Button>
               </div>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================ */}
-      {/* BUNDLE CARDS                                 */}
-      {/* ============================================ */}
-      <section className="py-16 lg:py-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <BundleCards />
           </AnimatedSection>
         </div>
       </section>
