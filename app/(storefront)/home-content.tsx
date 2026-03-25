@@ -215,7 +215,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     <p className="text-[10px] text-muted-foreground">15 sachets</p>
                   </div>
                   <div className="border-2 border-gold px-5 py-3 text-center relative">
-                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-gold text-white text-[9px] font-medium tracking-wider px-2 py-0.5 uppercase">Best Seller</span>
+                    <Image src="/images/best-seller-badge.webp" alt="Best Seller" width={60} height={60} className="absolute -bottom-3 -right-3 w-14 h-14 drop-shadow-md" />
                     <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
                     <p className="text-xl font-light mt-1">RM 209</p>
                     <p className="text-[10px] text-muted-foreground">+ 1 Box FREE</p>
