@@ -12,6 +12,26 @@ import { calculatePrice } from "@/lib/pricing"
 import { toast } from "sonner"
 import type { Product } from "@/types"
 
+function AccordionItem({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="border-b border-gold/10">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between py-4 text-left"
+      >
+        <span className="text-[12px] font-medium tracking-[0.1em] uppercase">{title}</span>
+        <span className={`text-gold transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-4" : "max-h-0"}`}
+      >
+        <p className="text-sm text-muted-foreground font-light leading-relaxed">{children}</p>
+      </div>
+    </div>
+  )
+}
+
 export function ProductDetailContent({
   product,
   relatedProducts,
@@ -234,14 +254,30 @@ export function ProductDetailContent({
 
             <Separator className="my-6 bg-black/5" />
 
-            {/* Description */}
-            <div>
-              <h2 className="text-[11px] font-medium tracking-[0.15em] uppercase mb-3">
-                Description
-              </h2>
-              <p className="text-sm text-muted-foreground font-light leading-relaxed">
-                {product.description}
-              </p>
+            {/* Collapsible Accordion Sections */}
+            <div className="space-y-0">
+              {[
+                {
+                  title: "WHAT'S INSIDE THAT COUNTS",
+                  content: "12 premium botanicals: Ginfort Ginger, French Astaxanthin, Goji Berry, USA Ashwagandha, Dong Quai, USA Chamomile, Chasteberry, Magnesium Oxide, Cinnamon, Vitamin B Complex, Spanish Ferrous Fumarate, and Pomegranate extract.",
+                },
+                {
+                  title: "DESCRIPTION",
+                  content: product.description,
+                },
+                {
+                  title: "INGREDIENTS",
+                  content: "Pomegranate Juice Powder, Turmeric Extract Powder, Astaxanthin Powder, Ginfort Ginger Extract, Goji Berry Extract, Angelica Sinensis (Dong Quai), Ashwagandha Extract, Chamomile Extract, Chasteberry Extract, Magnesium Oxide, Cinnamon Extract, Ferrous Fumarate, Vitamin B Complex.",
+                },
+                {
+                  title: "HOW TO USE",
+                  content: "Tear open one sachet. Slowly pour into mouth to consume directly. Take 1 sachet daily, best in the morning. No water needed — enjoy anytime, anywhere.",
+                },
+              ].map((section) => (
+                <AccordionItem key={section.title} title={section.title}>
+                  {section.content}
+                </AccordionItem>
+              ))}
             </div>
           </div>
         </div>
