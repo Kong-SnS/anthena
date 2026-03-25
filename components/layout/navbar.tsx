@@ -124,16 +124,16 @@ export function Navbar() {
               <Menu className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-80 bg-gradient-to-b from-[#faf8f5] to-[#f5ece4] border-gold/10">
-              <div className="flex flex-col gap-0 mt-12">
-                <div className="flex items-center justify-between mb-6">
-                  <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-gold px-1">{t.nav.menu}</p>
+              <div className="flex flex-col gap-0 mt-10">
+                <div className="flex items-center justify-between mb-8">
+                  <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold px-1">{t.nav.menu}</p>
                   <LanguageSwitcher />
                 </div>
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-foreground/80 text-lg font-display tracking-[0.05em] py-3.5 border-b border-gold/10 hover:text-gold transition-colors"
+                    className="text-foreground text-2xl font-display tracking-[0.05em] py-4 border-b border-gold/10 hover:text-gold transition-colors"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
@@ -141,16 +141,16 @@ export function Navbar() {
                 ))}
                 <Link
                   href={accountHref}
-                  className="text-foreground/80 text-lg font-display tracking-[0.05em] py-3.5 hover:text-gold transition-colors"
+                  className="text-foreground text-2xl font-display tracking-[0.05em] py-4 hover:text-gold transition-colors"
                   onClick={() => setOpen(false)}
                 >
-                  {t.nav.account}
+                  {isLoggedIn ? t.nav.account : "Login"}
                 </Link>
                 <a
                   href="https://wa.me/60126431737?text=PMBloomie"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 btn-rose-gold text-center py-3 text-[11px] font-medium tracking-[0.15em] uppercase"
+                  className="mt-10 btn-rose-gold text-center py-3.5 text-[12px] font-medium tracking-[0.15em] uppercase"
                 >
                   {t.nav.whatsappUs}
                 </a>
