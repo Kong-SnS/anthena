@@ -38,9 +38,9 @@ export function CountdownTimer({ endDate, label = "Offer ends in" }: CountdownTi
           { val: time.mins, unit: "M" },
           { val: time.secs, unit: "S" },
         ].map((t) => (
-          <div key={t.unit} className="bg-warm-dark text-white text-center rounded px-2 py-1 min-w-[36px]">
+          <div key={t.unit} className="btn-rose-gold text-center rounded px-2 py-1 min-w-[36px]">
             <span className="text-sm font-medium tabular-nums">{String(t.val).padStart(2, "0")}</span>
-            <span className="text-[8px] text-white/40 ml-0.5">{t.unit}</span>
+            <span className="text-[8px] text-white/60 ml-0.5">{t.unit}</span>
           </div>
         ))}
       </div>

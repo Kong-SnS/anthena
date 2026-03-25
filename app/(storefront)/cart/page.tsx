@@ -45,7 +45,7 @@ export default function CartPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <div className="bg-warm-dark text-white py-20 lg:py-24">
+      <div className="bg-gradient-to-b from-[#f5ece4] to-[#efe3d8] py-20 lg:py-24">
         <div className="container mx-auto px-6 lg:px-8 text-center">
           <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/40">
             Shopping

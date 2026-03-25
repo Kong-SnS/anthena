@@ -27,10 +27,10 @@ export function ShopContent({
 
   return (
     <div className="pt-20">
-      <div className="bg-gradient-to-b from-[#1a1215] via-[#1a1215] to-[#2a1f1f] text-white py-20 lg:py-28 relative overflow-hidden">
+      <div className="bg-gradient-to-b from-[#f5ece4] to-[#efe3d8] py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(196,160,124,0.08)_0%,transparent_70%)]" />
         <div className="container mx-auto px-6 lg:px-8 text-center relative">
-          <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-gold/50">
+          <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-gold">
             Our Collection
           </span>
           <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight mt-3">

@@ -35,7 +35,7 @@ export function BundleCards() {
 
       {/* 2 Boxes Bundle */}
       <Link href="/shop/bloomie" className="group">
-        <div className="relative bg-gradient-to-br from-[#1a1215] to-[#2a1f1f] text-white p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:shadow-lg">
+        <div className="relative bg-gradient-to-br from-[#c4a07c] to-[#d4a89a] text-white p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:shadow-lg">
           {/* Best Seller badge - bottom right */}
           <div className="absolute bottom-3 right-3 bg-gradient-to-br from-[#c4a07c] to-[#d4a89a] text-white text-[8px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

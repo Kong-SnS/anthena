@@ -7,7 +7,7 @@ export function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer className="bg-warm-dark text-white">
+    <footer className="bg-gradient-to-br from-[#c4a07c] to-[#b8956f] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">

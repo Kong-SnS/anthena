@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             {discount && (
-              <span className="bg-[#0a0a0a] text-white text-[10px] font-medium tracking-wider px-2.5 py-1">
+              <span className="btn-rose-gold text-[10px] font-medium tracking-wider px-2.5 py-1">
                 -{discount}%
               </span>
             )}

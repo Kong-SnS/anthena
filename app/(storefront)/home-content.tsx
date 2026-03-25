@@ -315,7 +315,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* ============================================ */}
       {/* LIFESTYLE IMAGE - Full Width                 */}
       {/* ============================================ */}
-      <section className="py-24 lg:py-32 bg-warm-dark">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#f5ece4] to-[#efe3d8]">
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -324,17 +324,17 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold/70">
                   {t.lifestyle.label}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-white">
+                <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-foreground">
                   {t.lifestyle.title1}
                   <br />
-                  <span className="italic font-light">{t.lifestyle.title2}</span>
+                  <span className="italic font-light text-gold">{t.lifestyle.title2}</span>
                 </h2>
-                <p className="text-white/50 font-light leading-relaxed mb-8 text-[15px]">
+                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-[15px]">
                   {t.lifestyle.description}
                 </p>
                 <Button
                   size="lg"
-                  className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
+                  className="btn-rose-gold rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
                   render={<Link href="/shop/bloomie" />}
                 >
                   {t.lifestyle.cta}
@@ -405,11 +405,11 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* ============================================ */}
       {/* HOW IT WORKS                                 */}
       {/* ============================================ */}
-      <section className="py-24 lg:py-32 bg-warm-dark text-white">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#f5ece4] to-[#efe3d8]">
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/30">
+              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
                 {t.howTo.label}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
@@ -425,13 +425,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 { step: "03", title: t.howTo.step3, desc: t.howTo.step3Desc },
               ].map((s) => (
                 <div key={s.step} className="text-center">
-                  <span className="text-4xl font-display font-normal text-gold/60">
+                  <span className="text-4xl font-display font-normal text-gold">
                     {s.step}
                   </span>
                   <h3 className="font-medium text-lg tracking-wide mt-3 mb-2">
                     {s.title}
                   </h3>
-                  <p className="text-white/40 font-light text-sm">{s.desc}</p>
+                  <p className="text-muted-foreground font-light text-sm">{s.desc}</p>
                 </div>
               ))}
             </div>
