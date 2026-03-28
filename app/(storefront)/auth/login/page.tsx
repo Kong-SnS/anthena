@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2 } from "lucide-react"
-import { createClient } from "@/lib/supabase/client"
 import { toast } from "sonner"
 
 export default function LoginPage() {
@@ -21,31 +20,23 @@ export default function LoginPage() {
     setLoading(true)
 
     try {
-      const supabase = createClient()
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       })
-      if (error) throw error
 
-      const { data: { user } } = await supabase.auth.getUser()
+      const data = await res.json()
 
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("role")
-          .eq("id", user.id)
-          .single()
-
-        if (profile?.role === "admin") {
-          router.push("/admin")
-        } else {
-          router.push("/account")
-        }
+      if (!res.ok) {
+        toast.error(data.error || "Login failed")
+        return
       }
+
       router.refresh()
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Login failed")
+      router.push(data.role === "admin" ? "/admin" : "/account")
+    } catch {
+      toast.error("Login failed")
     } finally {
       setLoading(false)
     }

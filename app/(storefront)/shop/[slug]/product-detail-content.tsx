@@ -174,7 +174,7 @@ export function ProductDetailContent({
                         quantity >= 2 ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
                       }`}
                     >
-                      <Image src="/images/best-seller-badge.webp" alt="Best Seller" width={56} height={56} className="absolute -bottom-3 -right-3 w-12 h-12 drop-shadow-md" />
+                      <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={56} height={56} className="absolute -bottom-3 -right-3 w-12 h-12 drop-shadow-md" />
                       <span className="block text-xs font-medium">2 Boxes</span>
                       <span className="block text-lg font-light mt-0.5">RM 209</span>
                       <span className="block text-[10px] text-gold font-medium">+ 1 Box FREE</span>

@@ -214,11 +214,14 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     <p className="text-xl font-light mt-1">RM 138</p>
                     <p className="text-[10px] text-muted-foreground">15 sachets</p>
                   </div>
-                  <div className="border-2 border-gold px-5 py-3 text-center relative">
-                    <Image src="/images/best-seller-badge.webp" alt="Best Seller" width={60} height={60} className="absolute -bottom-3 -right-3 w-14 h-14 drop-shadow-md" />
+                  <div className="border-2 border-gold px-5 pb-8 pt-3 text-center relative">
                     <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
                     <p className="text-xl font-light mt-1">RM 209</p>
                     <p className="text-[10px] text-muted-foreground">+ 1 Box FREE</p>
+                    <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-24 h-24 drop-shadow-lg">
+                      <div className="absolute top-[8%] left-[18%] right-[18%] bottom-[28%] rounded-full bg-white" />
+                      <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={96} height={96} className="relative w-full h-full" />
+                    </div>
                   </div>
                 </div>
 

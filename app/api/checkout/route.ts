@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { createBill } from "@/lib/billplz"
 import { calculatePrice } from "@/lib/pricing"
+import { rateLimit, getIP } from "@/lib/rate-limit"
 
 function parseCookies(cookieHeader: string) {
   return cookieHeader.split(";").map((c) => {
@@ -10,7 +11,21 @@ function parseCookies(cookieHeader: string) {
   }).filter((c) => c.name)
 }
 
+// 10 checkout attempts per 10 minutes per IP
+const CHECKOUT_LIMIT = 10
+const CHECKOUT_WINDOW_MS = 10 * 60 * 1000
+
 export async function POST(request: NextRequest) {
+  const ip = getIP(request)
+  const { allowed, retryAfterMs } = rateLimit(`checkout:${ip}`, CHECKOUT_LIMIT, CHECKOUT_WINDOW_MS)
+
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(retryAfterMs / 1000)) } }
+    )
+  }
+
   try {
     const body = await request.json()
     const { customer, items, shipping_cost } = body

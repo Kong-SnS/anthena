@@ -10,6 +10,7 @@ import { LanguageSwitcher } from "@/components/layout/language-switcher"
 import { useCart } from "@/hooks/use-cart"
 import { useTranslation } from "@/lib/i18n"
 import { createClient } from "@/lib/supabase/client"
+import { useAnnouncementVisible } from "@/components/layout/announcement-bar"
 import { useState, useEffect } from "react"
 
 export function Navbar() {
@@ -20,6 +21,7 @@ export function Navbar() {
   const pathname = usePathname()
   const itemCount = useCart((s) => s.getItemCount())
 
+  const announcementVisible = useAnnouncementVisible()
   useEffect(() => setMounted(true), [])
   const { t } = useTranslation()
   const isHome = pathname === "/"
@@ -48,7 +50,9 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+        announcementVisible ? "top-9" : "top-0"
+      } ${
         useDarkText
           ? "glass-nav shadow-sm"
           : "bg-transparent"
