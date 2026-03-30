@@ -31,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-6xl font-extralight text-black/5 transition-transform duration-700 group-hover:scale-110">
+              <span className="text-6xl font-extralight text-gold/10 transition-transform duration-700 group-hover:scale-110">
                 {product.name.charAt(0)}
               </span>
             </div>

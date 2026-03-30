@@ -214,7 +214,7 @@ export default function CheckoutPage() {
                     <Input
                       value={form.name}
                       onChange={(e) => updateField("name", e.target.value)}
-                      className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                      className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                     />
                   </div>
                   <div>
@@ -225,7 +225,7 @@ export default function CheckoutPage() {
                       type="email"
                       value={form.email}
                       onChange={(e) => updateField("email", e.target.value)}
-                      className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                      className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                     />
                   </div>
                 </div>
@@ -237,13 +237,13 @@ export default function CheckoutPage() {
                     value={form.phone}
                     onChange={(e) => updateField("phone", e.target.value)}
                     placeholder="012-3456789"
-                    className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                    className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                   />
                 </div>
               </div>
             </div>
 
-            <Separator className="bg-black/5" />
+            <Separator className="bg-gold/5" />
 
             {/* Shipping */}
             <div>
@@ -258,7 +258,7 @@ export default function CheckoutPage() {
                   <Input
                     value={form.address_line1}
                     onChange={(e) => updateField("address_line1", e.target.value)}
-                    className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                    className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                   />
                 </div>
                 <div>
@@ -268,7 +268,7 @@ export default function CheckoutPage() {
                   <Input
                     value={form.address_line2}
                     onChange={(e) => updateField("address_line2", e.target.value)}
-                    className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                    className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                   />
                 </div>
                 <div className="grid sm:grid-cols-3 gap-4">
@@ -279,7 +279,7 @@ export default function CheckoutPage() {
                     <Input
                       value={form.city}
                       onChange={(e) => updateField("city", e.target.value)}
-                      className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                      className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                     />
                   </div>
                   <div>
@@ -290,7 +290,7 @@ export default function CheckoutPage() {
                       value={form.state}
                       onValueChange={(v) => updateField("state", v ?? "")}
                     >
-                      <SelectTrigger className="rounded-none border-black/10 bg-transparent mt-1.5 h-11">
+                      <SelectTrigger className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -309,7 +309,7 @@ export default function CheckoutPage() {
                     <Input
                       value={form.postcode}
                       onChange={(e) => updateField("postcode", e.target.value)}
-                      className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                      className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                     />
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              <Separator className="bg-black/5 my-6" />
+              <Separator className="bg-gold/5 my-6" />
 
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
@@ -357,7 +357,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <Separator className="bg-black/5 my-6" />
+              <Separator className="bg-gold/5 my-6" />
 
               <div className="flex justify-between mb-8">
                 <span className="text-sm font-medium tracking-wide">Total</span>

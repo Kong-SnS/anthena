@@ -25,7 +25,7 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
         className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-medium tracking-wider uppercase transition-colors ${
           dark
             ? "text-white/70 hover:text-white hover:bg-white/10"
-            : "text-foreground/70 hover:text-foreground hover:bg-black/5"
+            : "text-foreground/70 hover:text-foreground hover:bg-gold/5"
         }`}
       >
         <Globe className="h-3.5 w-3.5" />

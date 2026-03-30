@@ -61,7 +61,7 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setForm((p) => ({ ...p, name: e.target.value }))
                 }
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
               />
             </div>
@@ -75,7 +75,7 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setForm((p) => ({ ...p, email: e.target.value }))
                 }
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
               />
             </div>
@@ -89,7 +89,7 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setForm((p) => ({ ...p, password: e.target.value }))
                 }
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
                 minLength={6}
               />

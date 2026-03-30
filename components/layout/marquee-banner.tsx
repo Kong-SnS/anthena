@@ -7,7 +7,7 @@ export function MarqueeBanner() {
   const items = t.marquee.items
 
   return (
-    <div className="bg-gradient-to-r from-[#c4a07c] to-[#d4a89a] text-white py-2.5 overflow-hidden">
+    <div className="bg-gradient-to-r from-[#B76E78] to-[#c9a96e] text-white py-2.5 overflow-hidden">
       <div className="animate-marquee flex whitespace-nowrap">
         {[...items, ...items].map((item, i) => (
           <span key={i} className="mx-8 text-[11px] font-medium tracking-[0.15em] uppercase flex items-center gap-2">

@@ -209,7 +209,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
                 {/* Pricing Tiers */}
                 <div className="flex gap-4 mb-8">
-                  <div className="border border-black/10 px-5 py-3 text-center">
+                  <div className="border border-gold/15 px-5 py-3 text-center">
                     <p className="text-xs text-muted-foreground font-light">1 Box</p>
                     <p className="text-xl font-light mt-1">RM 138</p>
                     <p className="text-[10px] text-muted-foreground">15 sachets</p>
@@ -262,7 +262,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 return (
                   <StaggerItem key={key}>
                     <div className="bg-white p-6 lg:p-8 text-center group hover:shadow-lg hover:-translate-y-1 hover:border-gold/30 border border-transparent transition-all duration-500 h-full">
-                      <div className="mx-auto w-12 h-12 rounded-full bg-blush-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
+                      <div className="mx-auto w-12 h-12 rounded-full bg-rose-gold-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
                         <Icon className="h-5 w-5 text-gold" />
                       </div>
                       <h3 className="font-medium text-sm tracking-wide mb-1.5">
@@ -493,7 +493,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* CTA                                          */}
       {/* ============================================ */}
       <section className="relative py-28 lg:py-36 bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#d4a89a]/15 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#c9a96e]/15 rounded-full blur-3xl" />
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
             <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">

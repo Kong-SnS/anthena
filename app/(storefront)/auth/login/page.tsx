@@ -64,7 +64,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
               />
             </div>
@@ -76,7 +76,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
               />
             </div>

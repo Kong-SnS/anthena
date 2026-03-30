@@ -57,7 +57,7 @@ export function EmailPopup() {
           >
             <div className="bg-[#faf8f5] rounded-sm overflow-hidden shadow-2xl">
               {/* Header */}
-              <div className="bg-gradient-to-br from-[#c4a07c] to-[#d4a89a] px-8 py-10 text-center text-white relative">
+              <div className="bg-gradient-to-br from-[#B76E78] to-[#c9a96e] px-8 py-10 text-center text-white relative">
                 <button
                   onClick={handleClose}
                   className="absolute top-3 right-3 text-white/60 hover:text-white transition-colors"
@@ -95,7 +95,7 @@ export function EmailPopup() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         required
-                        className="w-full h-11 px-4 border border-black/10 bg-transparent rounded-none text-sm focus:outline-none focus:border-gold transition-colors"
+                        className="w-full h-11 px-4 border border-gold/15 bg-transparent rounded-none text-sm focus:outline-none focus:border-gold transition-colors"
                       />
                       <button
                         type="submit"

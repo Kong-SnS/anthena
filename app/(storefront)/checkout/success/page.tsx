@@ -60,7 +60,7 @@ export default async function CheckoutSuccessPage({
                 ))}
               </div>
 
-              <Separator className="bg-black/5 my-3" />
+              <Separator className="bg-gold/5 my-3" />
 
               <div className="space-y-1 text-sm">
                 <div className="flex justify-between">
@@ -73,7 +73,7 @@ export default async function CheckoutSuccessPage({
                 </div>
               </div>
 
-              <Separator className="bg-black/5 my-3" />
+              <Separator className="bg-gold/5 my-3" />
 
               <div className="flex justify-between font-medium">
                 <span>Total</span>
@@ -95,7 +95,7 @@ export default async function CheckoutSuccessPage({
           <div className="flex gap-4 justify-center">
             <Button
               variant="outline"
-              className="rounded-none px-8 h-11 text-[12px] font-medium tracking-[0.1em] uppercase border-black/15"
+              className="rounded-none px-8 h-11 text-[12px] font-medium tracking-[0.1em] uppercase border-gold/20"
               render={<Link href="/" />}
             >
               Home

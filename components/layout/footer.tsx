@@ -26,15 +26,15 @@ export function Footer() {
   const [email, setEmail] = useState("")
 
   return (
-    <footer className="bg-gradient-to-br from-[#c4a07c] to-[#b8956f] text-white">
+    <footer className="bg-gradient-to-br from-[#B76E78] to-[#b8956f] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 text-center md:text-left">
             <h3 className="text-2xl font-display tracking-[0.2em] uppercase mb-4">
               Athena
             </h3>
-            <p className="text-white/80 text-sm leading-relaxed max-w-sm font-light">
+            <p className="text-white/80 text-sm leading-relaxed max-w-sm font-light mx-auto md:mx-0">
               {t.footer.tagline}
             </p>
           </div>
@@ -109,7 +109,7 @@ export function Footer() {
           </div>
 
           {/* Newsletter Subscribe */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 text-center md:text-left">
             <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/70 mb-4">Subscribe to Our Newsletter</h4>
             <form
               onSubmit={(e) => {
@@ -131,7 +131,7 @@ export function Footer() {
             </form>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-6 justify-center md:justify-start">
               <a href="https://www.instagram.com/bloomie_int/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
                 <Instagram className="h-4 w-4" />
               </a>
@@ -140,7 +140,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col items-center sm:flex-row sm:justify-between gap-3 text-center sm:text-left">
           <p className="text-white/60 text-xs font-light tracking-wider">
             &copy; {new Date().getFullYear()} {t.footer.copyright}
           </p>

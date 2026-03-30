@@ -75,7 +75,7 @@ export function ProductDetailContent({
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[200px] font-display font-normal text-black/5">
+                  <span className="text-[200px] font-display font-normal text-gold/10">
                     {product.name.charAt(0)}
                   </span>
                 </div>
@@ -161,7 +161,7 @@ export function ProductDetailContent({
                     <button
                       onClick={() => setQuantity(1)}
                       className={`flex-1 border px-4 py-3 text-center transition-all ${
-                        quantity === 1 ? "border-gold bg-gold/5" : "border-black/10 hover:border-black/20"
+                        quantity === 1 ? "border-gold bg-gold/5" : "border-gold/15 hover:border-gold/25"
                       }`}
                     >
                       <span className="block text-xs font-medium">1 Box</span>
@@ -203,9 +203,9 @@ export function ProductDetailContent({
 
             {/* Quantity + Add to Cart */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="flex items-center border border-black/10">
+              <div className="flex items-center border border-gold/15">
                 <button
-                  className="h-12 w-12 flex items-center justify-center hover:bg-black/5 transition-colors"
+                  className="h-12 w-12 flex items-center justify-center hover:bg-gold/5 transition-colors"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 >
                   <Minus className="h-3.5 w-3.5" />
@@ -214,7 +214,7 @@ export function ProductDetailContent({
                   {quantity}
                 </span>
                 <button
-                  className="h-12 w-12 flex items-center justify-center hover:bg-black/5 transition-colors"
+                  className="h-12 w-12 flex items-center justify-center hover:bg-gold/5 transition-colors"
                   onClick={() =>
                     setQuantity(Math.min(product.stock_count, quantity + 1))
                   }
@@ -235,7 +235,7 @@ export function ProductDetailContent({
               </button>
             </div>
 
-            <Separator className="my-6 bg-black/5" />
+            <Separator className="my-6 bg-gold/5" />
 
             {/* Features */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
@@ -252,7 +252,7 @@ export function ProductDetailContent({
               ))}
             </div>
 
-            <Separator className="my-6 bg-black/5" />
+            <Separator className="my-6 bg-gold/5" />
 
             {/* Collapsible Accordion Sections */}
             <div className="space-y-0">

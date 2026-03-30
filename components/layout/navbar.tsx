@@ -61,8 +61,8 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
         <Link href="/" className="relative z-10">
           <span
-            className={`text-2xl font-display tracking-[0.2em] uppercase transition-colors duration-500 ${
-              useDarkText ? "text-foreground" : "text-white"
+            className={`text-2xl font-display tracking-[0.2em] uppercase transition-all duration-500 ${
+              useDarkText ? "logo-gold-3d" : "text-white drop-shadow-lg"
             }`}
           >
             Athena
@@ -91,7 +91,7 @@ export function Navbar() {
             href={accountHref}
             aria-label="Account"
             className={`hidden md:flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
-              useDarkText ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"
+              useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
             }`}
           >
             <User className="h-[18px] w-[18px]" />
@@ -100,7 +100,7 @@ export function Navbar() {
             href="/cart"
             aria-label="Cart"
             className={`relative flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
-              useDarkText ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"
+              useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
             }`}
           >
             <ShoppingCart className="h-[18px] w-[18px]" />
@@ -121,7 +121,7 @@ export function Navbar() {
               render={
                 <button
                   className={`flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
-                    useDarkText ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"
+                    useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
                   }`}
                 />
               }

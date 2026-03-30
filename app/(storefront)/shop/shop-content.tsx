@@ -63,7 +63,7 @@ export function ShopContent({
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 rounded-none border-black/10 bg-transparent text-sm h-10"
+              className="pl-9 rounded-none border-gold/15 bg-transparent text-sm h-10"
             />
           </div>
         </div>

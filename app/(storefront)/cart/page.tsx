@@ -77,7 +77,7 @@ export default function CartPage() {
                           />
                         ) : (
                           <div className="flex items-center justify-center h-full">
-                            <span className="text-3xl font-display font-normal text-black/5">
+                            <span className="text-3xl font-display font-normal text-gold/10">
                               {item.product.name.charAt(0)}
                             </span>
                           </div>
@@ -108,9 +108,9 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex items-end justify-between mt-4">
-                        <div className="flex items-center border border-black/10">
+                        <div className="flex items-center border border-gold/15">
                           <button
-                            className="h-9 w-9 flex items-center justify-center hover:bg-black/5 transition-colors"
+                            className="h-9 w-9 flex items-center justify-center hover:bg-gold/5 transition-colors"
                             onClick={() =>
                               updateQuantity(item.product_id, item.quantity - 1)
                             }
@@ -121,7 +121,7 @@ export default function CartPage() {
                             {item.quantity}
                           </span>
                           <button
-                            className="h-9 w-9 flex items-center justify-center hover:bg-black/5 transition-colors"
+                            className="h-9 w-9 flex items-center justify-center hover:bg-gold/5 transition-colors"
                             onClick={() =>
                               updateQuantity(item.product_id, item.quantity + 1)
                             }
@@ -147,12 +147,12 @@ export default function CartPage() {
                       </div>
                     </div>
                   </div>
-                  {idx < items.length - 1 && <Separator className="bg-black/5" />}
+                  {idx < items.length - 1 && <Separator className="bg-gold/5" />}
                 </div>
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-6 pt-6 border-t border-black/5">
+            <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/10">
               <Link
                 href="/shop"
                 className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors"
@@ -200,7 +200,7 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Separator className="bg-black/5 my-6" />
+              <Separator className="bg-gold/5 my-6" />
 
               <div className="flex justify-between mb-8">
                 <span className="text-sm font-medium tracking-wide">Total</span>

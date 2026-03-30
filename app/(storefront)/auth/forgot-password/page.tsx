@@ -61,7 +61,7 @@ export default function ForgotPasswordPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                    className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                     required
                   />
                 </div>

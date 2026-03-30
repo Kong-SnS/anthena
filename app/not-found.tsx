@@ -13,7 +13,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="inline-block bg-[#0a0a0a] text-white rounded-none px-8 h-11 text-[12px] font-medium tracking-[0.15em] uppercase leading-[44px]"
+          className="inline-block btn-rose-gold rounded-none px-8 h-11 text-[12px] font-medium tracking-[0.15em] uppercase leading-[44px]"
         >
           Back to Home
         </Link>

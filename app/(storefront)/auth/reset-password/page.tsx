@@ -58,7 +58,7 @@ export default function ResetPasswordPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
                 minLength={6}
               />
@@ -69,7 +69,7 @@ export default function ResetPasswordPage() {
                 type="password"
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
-                className="rounded-none border-black/10 bg-transparent mt-1.5 h-11"
+                className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                 required
                 minLength={6}
               />
