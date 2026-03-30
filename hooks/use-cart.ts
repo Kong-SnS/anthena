@@ -4,6 +4,21 @@ import { create } from "zustand"
 import { persist } from "zustand/middleware"
 import type { CartItem, Product } from "@/types"
 
+// Cart drawer open/close state (not persisted)
+interface CartDrawerStore {
+  open: boolean
+  toggle: () => void
+  show: () => void
+  close: () => void
+}
+
+export const useCartDrawer = create<CartDrawerStore>((set) => ({
+  open: false,
+  toggle: () => set((s) => ({ open: !s.open })),
+  show: () => set({ open: true }),
+  close: () => set({ open: false }),
+}))
+
 interface CartStore {
   items: CartItem[]
   addItem: (product: Product, quantity?: number) => void

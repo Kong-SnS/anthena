@@ -6,10 +6,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Minus, Plus, ArrowLeft, Truck, Shield, RotateCcw, Gift } from "lucide-react"
-import { useCart } from "@/hooks/use-cart"
+import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { ProductCard } from "@/components/shop/product-card"
 import { calculatePrice } from "@/lib/pricing"
-import { toast } from "sonner"
 import type { Product } from "@/types"
 
 function AccordionItem({ title, children }: { title: string; children: React.ReactNode }) {
@@ -42,6 +41,7 @@ export function ProductDetailContent({
   const [quantity, setQuantity] = useState(1)
   const [activeImage, setActiveImage] = useState(0)
   const addItem = useCart((s) => s.addItem)
+  const openCartDrawer = useCartDrawer((s) => s.show)
 
   const hasImages = product.images && product.images.length > 0 && product.images[0]
   const discount = product.compare_price
@@ -51,7 +51,7 @@ export function ProductDetailContent({
     : null
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 pb-24 lg:pb-0">
       <div className="container mx-auto px-6 lg:px-8 py-10 lg:py-16">
         <Link
           href="/shop"
@@ -63,7 +63,7 @@ export function ProductDetailContent({
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Product Images */}
           <div>
-            <div className="aspect-[3/4] bg-[#f5f3f0] relative overflow-hidden">
+            <div className="aspect-square lg:aspect-[3/4] bg-[#f5f3f0] relative overflow-hidden">
               {hasImages ? (
                 <Image
                   src={product.images[activeImage]}
@@ -227,7 +227,7 @@ export function ProductDetailContent({
                 disabled={product.stock_count === 0}
                 onClick={() => {
                   addItem(product, quantity)
-                  toast.success(`${quantity}x ${product.name} added to cart`)
+                  openCartDrawer()
                   setQuantity(1)
                 }}
               >
@@ -314,7 +314,7 @@ export function ProductDetailContent({
           disabled={product.stock_count === 0}
           onClick={() => {
             addItem(product, quantity)
-            toast.success(`${quantity}x ${product.name} added to cart`)
+            openCartDrawer()
           }}
         >
           Add to Cart

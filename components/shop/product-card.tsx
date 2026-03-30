@@ -2,12 +2,12 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useCart } from "@/hooks/use-cart"
+import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import type { Product } from "@/types"
-import { toast } from "sonner"
 
 export function ProductCard({ product }: { product: Product }) {
   const addItem = useCart((s) => s.addItem)
+  const openCartDrawer = useCartDrawer((s) => s.show)
   const price = Number(product.price)
   const comparePrice = product.compare_price ? Number(product.compare_price) : null
   const discount = comparePrice
@@ -64,7 +64,7 @@ export function ProductCard({ product }: { product: Product }) {
               onClick={(e) => {
                 e.preventDefault()
                 addItem(product)
-                toast.success(`${product.name} added to cart`)
+                openCartDrawer()
               }}
             >
               Add to Cart

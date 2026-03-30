@@ -7,7 +7,7 @@ import { ShoppingCart, Menu, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { LanguageSwitcher } from "@/components/layout/language-switcher"
-import { useCart } from "@/hooks/use-cart"
+import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { useTranslation } from "@/lib/i18n"
 import { createClient } from "@/lib/supabase/client"
 import { useAnnouncementVisible } from "@/components/layout/announcement-bar"
@@ -20,6 +20,7 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const itemCount = useCart((s) => s.getItemCount())
+  const openCartDrawer = useCartDrawer((s) => s.show)
 
   const announcementVisible = useAnnouncementVisible()
   useEffect(() => setMounted(true), [])
@@ -96,8 +97,8 @@ export function Navbar() {
           >
             <User className="h-[18px] w-[18px]" />
           </Link>
-          <Link
-            href="/cart"
+          <button
+            onClick={openCartDrawer}
             aria-label="Cart"
             className={`relative flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
               useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
@@ -112,7 +113,7 @@ export function Navbar() {
                 {itemCount}
               </span>
             )}
-          </Link>
+          </button>
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
