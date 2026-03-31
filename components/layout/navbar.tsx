@@ -62,7 +62,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
         <Link href="/" className="relative z-10">
           <span
-            className={`text-2xl font-display tracking-[0.2em] uppercase transition-all duration-500 ${
+            className={`text-[25px] font-display tracking-[0.2em] uppercase transition-all duration-500 ${
               useDarkText ? "logo-gold-3d" : "text-white drop-shadow-lg"
             }`}
           >
@@ -75,7 +75,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-[13px] font-medium tracking-[0.15em] uppercase transition-colors duration-500 hover:opacity-70 py-2 ${
+              className={`text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-500 hover:opacity-70 py-2 ${
                 useDarkText ? "text-foreground" : "text-white/90"
               }`}
             >
@@ -108,7 +108,7 @@ export function Navbar() {
             {mounted && itemCount > 0 && (
               <span
                 key={itemCount}
-                className="absolute top-1 right-1 h-4 w-4 rounded-full bg-gold text-[9px] text-white flex items-center justify-center font-medium animate-scale-in"
+                className="absolute top-1 right-1 h-4 w-4 rounded-full bg-gold text-xs text-white flex items-center justify-center font-medium animate-scale-in"
               >
                 {itemCount}
               </span>
@@ -129,10 +129,10 @@ export function Navbar() {
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] max-w-sm bg-gradient-to-b from-[#faf8f5] to-[#f5ece4] border-gold/10 px-8">
+            <SheetContent side="right" className="w-[85vw] max-w-sm bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] border-gold/10 px-8">
               <div className="flex flex-col mt-16">
                 <div className="flex items-center justify-between mb-10">
-                  <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">{t.nav.menu}</p>
+                  <p className="text-xs font-medium tracking-[0.3em] uppercase text-gold">{t.nav.menu}</p>
                   <LanguageSwitcher />
                 </div>
                 <nav className="flex flex-col">
@@ -140,7 +140,7 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="text-foreground text-[22px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
+                      className="text-foreground text-[25px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
                       onClick={() => setOpen(false)}
                     >
                       {link.label}
@@ -148,7 +148,7 @@ export function Navbar() {
                   ))}
                   <Link
                     href={accountHref}
-                    className="text-foreground text-[22px] font-display tracking-wide py-4 hover:text-gold transition-colors"
+                    className="text-foreground text-[25px] font-display tracking-wide py-4 hover:text-gold transition-colors"
                     onClick={() => setOpen(false)}
                   >
                     {isLoggedIn ? t.nav.account : "Login"}
@@ -158,7 +158,7 @@ export function Navbar() {
                   href="https://wa.me/60126431737?text=PMBloomie"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-12 btn-rose-gold text-center py-3.5 text-[12px] font-medium tracking-[0.15em] uppercase rounded-sm"
+                  className="mt-12 btn-rose-gold text-center py-3.5 text-xs font-medium tracking-[0.15em] uppercase rounded-sm"
                 >
                   {t.nav.whatsappUs}
                 </a>

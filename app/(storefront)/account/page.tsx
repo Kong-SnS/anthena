@@ -91,8 +91,8 @@ export default function AccountPage() {
       <div className="container mx-auto px-6 lg:px-8 py-10 max-w-3xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-display font-normal tracking-tight">My Account</h1>
-          <p className="text-muted-foreground font-light text-sm mt-1">{user?.email}</p>
+          <h1 className="text-[25px] font-display font-normal tracking-tight">My Account</h1>
+          <p className="text-muted-foreground font-light text-xs mt-1">{user?.email}</p>
         </div>
         <Button variant="outline" onClick={handleLogout}>
           <LogOut className="h-4 w-4 mr-2" /> Logout
@@ -118,7 +118,7 @@ export default function AccountPage() {
                       {order.status}
                     </Badge>
                   </div>
-                  <div className="text-sm text-muted-foreground mb-2">
+                  <div className="text-xs text-muted-foreground mb-2">
                     {new Date(order.created_at).toLocaleDateString("en-MY", {
                       year: "numeric",
                       month: "long",
@@ -126,7 +126,7 @@ export default function AccountPage() {
                     })}
                   </div>
                   {order.order_items && (
-                    <div className="text-sm space-y-1">
+                    <div className="text-xs space-y-1">
                       {order.order_items.map((item) => (
                         <div key={item.id} className="flex justify-between">
                           <span>{item.product_name} x{item.quantity}</span>
@@ -136,7 +136,7 @@ export default function AccountPage() {
                     </div>
                   )}
                   <Separator className="my-2" />
-                  <div className="flex justify-between font-semibold text-sm">
+                  <div className="flex justify-between font-semibold text-xs">
                     <span>Total</span>
                     <span>RM {order.total.toFixed(2)}</span>
                   </div>

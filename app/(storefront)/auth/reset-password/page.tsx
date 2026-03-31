@@ -47,8 +47,8 @@ export default function ResetPasswordPage() {
       <div className="container mx-auto px-6 lg:px-8 py-24 flex items-center justify-center">
         <div className="max-w-sm w-full">
           <div className="text-center mb-10">
-            <h1 className="text-2xl font-display font-normal tracking-tight">Set New Password</h1>
-            <p className="text-sm text-muted-foreground font-light mt-2">Enter your new password below</p>
+            <h1 className="text-[25px] font-display font-normal tracking-tight">Set New Password</h1>
+            <p className="text-xs text-muted-foreground font-light mt-2">Enter your new password below</p>
           </div>
 
           <form onSubmit={handleReset} className="space-y-5">
@@ -76,7 +76,7 @@ export default function ResetPasswordPage() {
             </div>
             <button
               type="submit"
-              className="w-full h-11 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
+              className="w-full h-11 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
               disabled={loading}
             >
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Update Password"}

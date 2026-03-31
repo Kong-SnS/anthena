@@ -158,14 +158,14 @@ export default function CheckoutPage() {
     return (
       <div className="pt-20">
         <div className="container mx-auto px-6 lg:px-8 py-32 text-center">
-          <h1 className="text-2xl font-display font-normal tracking-tight mb-2">
+          <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">
             Nothing to checkout
           </h1>
-          <p className="text-muted-foreground font-light text-sm mb-8">
+          <p className="text-muted-foreground font-light text-xs mb-8">
             Add some products to your cart first.
           </p>
           <Button
-            className="btn-rose-gold rounded-none px-10 h-12 text-[12px] font-medium tracking-[0.15em] uppercase"
+            className="btn-rose-gold rounded-none px-10 h-12 text-xs font-medium tracking-[0.15em] uppercase"
             render={<Link href="/shop" />}
           >
             Browse Products
@@ -178,12 +178,12 @@ export default function CheckoutPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <div className="bg-gradient-to-b from-[#f5ece4] to-[#efe3d8] py-20 lg:py-24">
+      <div className="bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] py-20 lg:py-24">
         <div className="container mx-auto px-6 lg:px-8 text-center">
-          <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/40">
+          <span className="text-xs font-medium tracking-[0.35em] uppercase text-white/40">
             Secure
           </span>
-          <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight mt-3">
+          <h1 className="text-[40px] font-display font-normal tracking-tight mt-3">
             Checkout
           </h1>
         </div>
@@ -192,7 +192,7 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <Link
           href="/cart"
-          className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Back to Cart
         </Link>
@@ -202,7 +202,7 @@ export default function CheckoutPage() {
           <div className="lg:col-span-2 space-y-10">
             {/* Contact */}
             <div>
-              <h2 className="text-[11px] font-medium tracking-[0.2em] uppercase mb-6">
+              <h2 className="text-xs font-medium tracking-[0.2em] uppercase mb-6">
                 Contact Information
               </h2>
               <div className="space-y-4">
@@ -247,7 +247,7 @@ export default function CheckoutPage() {
 
             {/* Shipping */}
             <div>
-              <h2 className="text-[11px] font-medium tracking-[0.2em] uppercase mb-6">
+              <h2 className="text-xs font-medium tracking-[0.2em] uppercase mb-6">
                 Shipping Address
               </h2>
               <div className="space-y-4">
@@ -319,14 +319,14 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-[#faf9f7] p-8 lg:p-10 sticky top-28">
-              <h2 className="text-[11px] font-medium tracking-[0.2em] uppercase mb-8">
+            <div className="bg-[#faf8f5] p-8 lg:p-10 sticky top-28">
+              <h2 className="text-xs font-medium tracking-[0.2em] uppercase mb-8">
                 Order Summary
               </h2>
 
               <div className="space-y-4 mb-6">
                 {items.map((item) => (
-                  <div key={item.product_id} className="text-sm">
+                  <div key={item.product_id} className="text-xs">
                     <div className="flex justify-between gap-4">
                       <span className="text-muted-foreground font-light truncate flex-1">
                         {item.product.name}
@@ -343,13 +343,13 @@ export default function CheckoutPage() {
               <Separator className="bg-gold/5 my-6" />
 
               <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">
                     Subtotal
                   </span>
                   <span>RM {subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">
                     Shipping
                   </span>
@@ -360,14 +360,14 @@ export default function CheckoutPage() {
               <Separator className="bg-gold/5 my-6" />
 
               <div className="flex justify-between mb-8">
-                <span className="text-sm font-medium tracking-wide">Total</span>
-                <span className="text-xl font-light">
+                <span className="text-xs font-medium tracking-wide">Total</span>
+                <span className="text-[25px] font-light">
                   RM {total.toFixed(2)}
                 </span>
               </div>
 
               <button
-                className="w-full h-12 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full h-12 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase flex items-center justify-center gap-2 disabled:opacity-50"
                 onClick={handleCheckout}
                 disabled={loading}
               >
@@ -381,7 +381,7 @@ export default function CheckoutPage() {
                 )}
               </button>
 
-              <p className="text-[10px] text-center text-muted-foreground mt-4 font-light">
+              <p className="text-xs text-center text-muted-foreground mt-4 font-light">
                 Secure payment powered by Billplz
               </p>
             </div>

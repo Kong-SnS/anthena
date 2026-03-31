@@ -32,17 +32,17 @@ export function InstagramFeed() {
     <section className="py-24 lg:py-32 bg-[#faf8f5]">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+          <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
             @bloomie_int
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
+          <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
             Follow Us on Instagram
           </h2>
           <a
             href="https://www.instagram.com/bloomie_int/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 btn-rose-gold px-6 py-2 text-[11px] font-medium tracking-[0.15em] uppercase"
+            className="inline-block mt-4 btn-rose-gold px-6 py-2 text-xs font-medium tracking-[0.15em] uppercase"
           >
             Follow @bloomie_int
           </a>

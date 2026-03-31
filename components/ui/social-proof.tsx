@@ -47,7 +47,7 @@ export function SocialProof() {
             <ShoppingBag className="h-4 w-4 text-white" />
           </div>
           <div>
-            <p className="text-sm font-medium">
+            <p className="text-xs font-medium">
               {current.name} from {current.city}
             </p>
             <p className="text-xs text-muted-foreground">

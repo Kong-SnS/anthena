@@ -27,13 +27,13 @@ export function ShopContent({
 
   return (
     <div className="pt-20">
-      <div className="bg-gradient-to-b from-[#f5ece4] to-[#efe3d8] py-20 lg:py-28 relative overflow-hidden">
+      <div className="bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(196,160,124,0.08)_0%,transparent_70%)]" />
         <div className="container mx-auto px-6 lg:px-8 text-center relative">
-          <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-gold">
+          <span className="text-xs font-medium tracking-[0.35em] uppercase text-gold">
             Our Collection
           </span>
-          <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight mt-3">
+          <h1 className="text-[40px] font-display font-normal tracking-tight mt-3">
             Shop
           </h1>
           <div className="w-16 h-px line-rose-gold mx-auto mt-6" />
@@ -47,7 +47,7 @@ export function ShopContent({
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-[12px] font-medium tracking-[0.1em] uppercase pb-1 transition-all duration-300 ${
+                className={`text-xs font-medium tracking-[0.1em] uppercase pb-1 transition-all duration-300 ${
                   activeCategory === cat
                     ? "text-foreground border-b border-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -63,7 +63,7 @@ export function ShopContent({
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 rounded-none border-gold/15 bg-transparent text-sm h-10"
+              className="pl-9 rounded-none border-gold/15 bg-transparent text-xs h-10"
             />
           </div>
         </div>
@@ -76,10 +76,10 @@ export function ShopContent({
           </div>
         ) : (
           <div className="text-center py-24">
-            <p className="text-muted-foreground font-light text-lg">
+            <p className="text-muted-foreground font-light text-[25px]">
               No products found
             </p>
-            <p className="text-sm text-muted-foreground mt-2 font-light">
+            <p className="text-xs text-muted-foreground mt-2 font-light">
               Try adjusting your search or filter
             </p>
           </div>

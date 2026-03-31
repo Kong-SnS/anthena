@@ -66,10 +66,10 @@ export function EmailPopup() {
                   <X className="h-5 w-5" />
                 </button>
                 <Gift className="h-8 w-8 mx-auto mb-3 opacity-80" />
-                <h2 className="text-2xl font-display tracking-wide">
+                <h2 className="text-[25px] font-display tracking-wide">
                   Welcome Gift
                 </h2>
-                <p className="text-white/80 text-sm font-light mt-2">
+                <p className="text-white/80 text-xs font-light mt-2">
                   Get RM10 off your first Bloomie order
                 </p>
               </div>
@@ -78,14 +78,14 @@ export function EmailPopup() {
               <div className="px-8 py-8">
                 {submitted ? (
                   <div className="text-center py-4">
-                    <p className="text-lg font-display text-gold">Thank You!</p>
-                    <p className="text-sm text-muted-foreground font-light mt-2">
+                    <p className="text-[25px] font-display text-gold">Thank You!</p>
+                    <p className="text-xs text-muted-foreground font-light mt-2">
                       Check your email for your RM10 discount code.
                     </p>
                   </div>
                 ) : (
                   <>
-                    <p className="text-sm text-muted-foreground font-light text-center mb-6">
+                    <p className="text-xs text-muted-foreground font-light text-center mb-6">
                       Join our community and receive exclusive offers, wellness tips, and your first order discount.
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-3">
@@ -95,16 +95,16 @@ export function EmailPopup() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         required
-                        className="w-full h-11 px-4 border border-gold/15 bg-transparent rounded-none text-sm focus:outline-none focus:border-gold transition-colors"
+                        className="w-full h-11 px-4 border border-gold/15 bg-transparent rounded-none text-xs focus:outline-none focus:border-gold transition-colors"
                       />
                       <button
                         type="submit"
-                        className="w-full h-11 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase"
+                        className="w-full h-11 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase"
                       >
                         Get RM10 Off
                       </button>
                     </form>
-                    <p className="text-[10px] text-muted-foreground text-center mt-4 font-light">
+                    <p className="text-xs text-muted-foreground text-center mt-4 font-light">
                       No spam, unsubscribe anytime.
                     </p>
                   </>

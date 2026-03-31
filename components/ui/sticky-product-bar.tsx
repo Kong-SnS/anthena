@@ -35,14 +35,14 @@ export function StickyProductBar() {
           <div className="bg-white/90 backdrop-blur-md border-b border-gold/10 shadow-sm">
             <div className="container mx-auto px-6 lg:px-8 flex items-center justify-between h-12">
               <div className="flex items-center gap-4">
-                <span className="font-display text-sm tracking-wide">Bloomie</span>
+                <span className="font-display text-xs tracking-wide">Bloomie</span>
                 <span className="text-xs text-muted-foreground">Botanical Beverage Mix</span>
-                <span className="text-sm font-medium">RM 138</span>
-                <span className="text-[10px] btn-rose-gold px-2 py-0.5 tracking-wider uppercase">Buy 2 Free 1</span>
+                <span className="text-xs font-medium">RM 138</span>
+                <span className="text-xs btn-rose-gold px-2 py-0.5 tracking-wider uppercase">Buy 2 Free 1</span>
               </div>
               <Link
                 href="/shop/bloomie"
-                className="btn-rose-gold px-5 py-1.5 text-[11px] font-medium tracking-[0.1em] uppercase flex items-center gap-1.5"
+                className="btn-rose-gold px-5 py-1.5 text-xs font-medium tracking-[0.1em] uppercase flex items-center gap-1.5"
               >
                 Order Now <ArrowRight className="h-3 w-3" />
               </Link>

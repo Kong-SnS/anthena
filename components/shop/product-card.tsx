@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
     <div className="group">
       <Link href={`/shop/${product.slug}`}>
         {/* Image */}
-        <div className="relative aspect-[3/4] bg-[#f5f3f0] overflow-hidden mb-4">
+        <div className="relative aspect-[3/4] bg-[#faf8f5] overflow-hidden mb-4">
           {hasImage ? (
             <Image
               src={product.images[0]}
@@ -31,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-6xl font-extralight text-gold/10 transition-transform duration-700 group-hover:scale-110">
+              <span className="text-[40px] font-extralight text-gold/10 transition-transform duration-700 group-hover:scale-110">
                 {product.name.charAt(0)}
               </span>
             </div>
@@ -40,17 +40,17 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             {discount && (
-              <span className="btn-rose-gold text-[10px] font-medium tracking-wider px-2.5 py-1">
+              <span className="btn-rose-gold text-xs font-medium tracking-wider px-2.5 py-1">
                 -{discount}%
               </span>
             )}
             {product.stock_count <= 5 && product.stock_count > 0 && (
-              <span className="bg-amber-600 text-white text-[10px] font-medium tracking-wider px-2.5 py-1">
+              <span className="bg-amber-600 text-white text-xs font-medium tracking-wider px-2.5 py-1">
                 LOW STOCK
               </span>
             )}
             {product.stock_count === 0 && (
-              <span className="bg-red-600 text-white text-[10px] font-medium tracking-wider px-2.5 py-1">
+              <span className="bg-red-600 text-white text-xs font-medium tracking-wider px-2.5 py-1">
                 SOLD OUT
               </span>
             )}
@@ -59,7 +59,7 @@ export function ProductCard({ product }: { product: Product }) {
           {/* Quick add button */}
           <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
             <button
-              className="w-full btn-rose-gold text-[11px] font-medium tracking-[0.15em] uppercase py-3 disabled:opacity-40"
+              className="w-full btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase py-3 disabled:opacity-40"
               disabled={product.stock_count === 0}
               onClick={(e) => {
                 e.preventDefault()
@@ -75,14 +75,14 @@ export function ProductCard({ product }: { product: Product }) {
 
       {/* Info */}
       <Link href={`/shop/${product.slug}`}>
-        <p className="text-[10px] font-medium tracking-[0.15em] uppercase text-muted-foreground mb-1.5">
+        <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground mb-1.5">
           {product.category}
         </p>
-        <h3 className="font-medium text-sm tracking-wide leading-snug mb-2 group-hover:text-gold transition-colors duration-300">
+        <h3 className="font-medium text-xs tracking-wide leading-snug mb-2 group-hover:text-gold transition-colors duration-300">
           {product.name}
         </h3>
         <div className="flex items-center gap-2.5">
-          <span className="text-sm font-medium">
+          <span className="text-xs font-medium">
             RM {price.toFixed(2)}
           </span>
           {comparePrice && (

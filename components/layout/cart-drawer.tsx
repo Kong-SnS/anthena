@@ -32,7 +32,7 @@ export function CartDrawer() {
     <Sheet open={open} onOpenChange={(val) => !val && close()}>
       <SheetContent side="right" className="w-[90vw] max-w-md flex flex-col">
         <SheetHeader className="border-b border-gold/10 pb-4">
-          <SheetTitle className="text-[13px] font-medium tracking-[0.15em] uppercase">
+          <SheetTitle className="text-xs font-medium tracking-[0.15em] uppercase">
             Your Cart ({itemCount})
           </SheetTitle>
         </SheetHeader>
@@ -40,12 +40,12 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center px-6">
             <ShoppingBag className="h-12 w-12 text-gold/30" />
-            <p className="text-sm text-muted-foreground font-light">
+            <p className="text-xs text-muted-foreground font-light">
               Your cart is empty
             </p>
             <button
               onClick={close}
-              className="btn-rose-gold px-6 py-2.5 text-[11px] font-medium tracking-[0.15em] uppercase"
+              className="btn-rose-gold px-6 py-2.5 text-xs font-medium tracking-[0.15em] uppercase"
             >
               Continue Shopping
             </button>
@@ -60,7 +60,7 @@ export function CartDrawer() {
                 return (
                   <div key={item.product_id} className="flex gap-4">
                     {/* Thumbnail */}
-                    <div className="relative w-20 h-20 flex-shrink-0 bg-[#f5f3f0] overflow-hidden">
+                    <div className="relative w-20 h-20 flex-shrink-0 bg-[#faf8f5] overflow-hidden">
                       {hasImage ? (
                         <Image
                           src={item.product.images[0]}
@@ -71,7 +71,7 @@ export function CartDrawer() {
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-2xl font-display text-gold/20">
+                          <span className="text-[25px] font-display text-gold/20">
                             {item.product.name.charAt(0)}
                           </span>
                         </div>
@@ -80,14 +80,14 @@ export function CartDrawer() {
 
                     {/* Details */}
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate">
+                      <p className="text-xs font-medium truncate">
                         {item.product.name}
                       </p>
                       <p className="text-xs text-muted-foreground mt-0.5">
                         RM {pricing.total.toFixed(2)}
                       </p>
                       {pricing.freeBoxes > 0 && (
-                        <p className="text-[10px] text-gold font-medium mt-0.5">
+                        <p className="text-xs text-gold font-medium mt-0.5">
                           +{pricing.freeBoxes} FREE box
                         </p>
                       )}
@@ -136,12 +136,12 @@ export function CartDrawer() {
 
             <SheetFooter className="border-t border-gold/10 pt-4 gap-3">
               {!freeShipping && (
-                <p className="text-[10px] text-center text-muted-foreground">
+                <p className="text-xs text-center text-muted-foreground">
                   Add RM {(150 - subtotal).toFixed(2)} more for free shipping
                 </p>
               )}
               {freeShipping && (
-                <p className="text-[10px] text-center text-gold font-medium">
+                <p className="text-xs text-center text-gold font-medium">
                   You qualify for free shipping!
                 </p>
               )}
@@ -149,8 +149,8 @@ export function CartDrawer() {
               <Separator className="bg-gold/5" />
 
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Subtotal</span>
-                <span className="text-sm font-medium">
+                <span className="text-xs font-medium">Subtotal</span>
+                <span className="text-xs font-medium">
                   RM {subtotal.toFixed(2)}
                 </span>
               </div>
@@ -158,7 +158,7 @@ export function CartDrawer() {
               <Link
                 href="/checkout"
                 onClick={close}
-                className="btn-rose-gold w-full h-11 flex items-center justify-center gap-2 text-[12px] font-medium tracking-[0.15em] uppercase"
+                className="btn-rose-gold w-full h-11 flex items-center justify-center gap-2 text-xs font-medium tracking-[0.15em] uppercase"
               >
                 Checkout
                 <ArrowRight className="h-3.5 w-3.5" />

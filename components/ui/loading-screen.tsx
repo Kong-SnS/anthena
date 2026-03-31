@@ -22,7 +22,7 @@ export function LoadingScreen() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div className="text-center">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-display tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase">
+            <h1 className="text-[40px] font-display tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase">
               {letters.map((letter, i) => (
                 <motion.span
                   key={i}
@@ -48,7 +48,7 @@ export function LoadingScreen() {
             />
 
             <motion.p
-              className="text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.25em] uppercase text-gold/50 mt-5 font-light px-4"
+              className="text-xs tracking-[0.15em] sm:tracking-[0.25em] uppercase text-gold/50 mt-5 font-light px-4"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.8 }}

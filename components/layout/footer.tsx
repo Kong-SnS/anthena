@@ -4,14 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
-import { ChevronDown, Instagram } from "lucide-react"
+import { ChevronDown, Instagram, MessageCircle, Mail, User } from "lucide-react"
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="md:hidden border-b border-white/10">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-4">
-        <span className="text-[11px] font-medium tracking-[0.2em] uppercase">{title}</span>
+        <span className="text-xs font-medium tracking-[0.2em] uppercase">{title}</span>
         <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-60 pb-4" : "max-h-0"}`}>
@@ -31,10 +31,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="md:col-span-4 text-center md:text-left">
-            <h3 className="text-2xl font-display tracking-[0.2em] uppercase mb-4">
+            <h3 className="text-[25px] font-display tracking-[0.2em] uppercase mb-4">
               Athena
             </h3>
-            <p className="text-white/80 text-sm leading-relaxed max-w-sm font-light mx-auto md:mx-0">
+            <p className="text-white/80 text-xs leading-relaxed max-w-sm font-light mx-auto md:mx-0">
               {t.footer.tagline}
             </p>
           </div>
@@ -50,7 +50,7 @@ export function Footer() {
                   { href: "/#testimonials", label: t.nav.reviews },
                 ].map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-white/80 text-sm font-light hover:text-white transition-colors">
+                    <Link href={link.href} className="text-white/80 text-xs font-light hover:text-white transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -59,7 +59,7 @@ export function Footer() {
             </FooterAccordion>
             {/* Desktop - always visible */}
             <div className="hidden md:block">
-              <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.navigation}</h4>
+              <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.navigation}</h4>
               <ul className="space-y-2.5">
                 {[
                   { href: "/shop", label: t.nav.shop },
@@ -68,7 +68,7 @@ export function Footer() {
                   { href: "/#testimonials", label: t.nav.reviews },
                 ].map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-white/80 text-sm font-light hover:text-white transition-colors">
+                    <Link href={link.href} className="text-white/80 text-xs font-light hover:text-white transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -80,37 +80,37 @@ export function Footer() {
           {/* Contact - Collapsible on mobile */}
           <div className="md:col-span-3">
             <FooterAccordion title={t.footer.contact}>
-              <ul className="space-y-2.5">
-                <li>
-                  <a href="https://wa.me/60126431737?text=PMBloomie" className="text-white/80 text-sm font-light hover:text-white transition-colors">
-                    WhatsApp: 012-643 1737
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:woosisterstrading@gmail.com" className="text-white/80 text-sm font-light hover:text-white transition-colors">
-                    woosisterstrading@gmail.com
-                  </a>
-                </li>
-                <li>
-                  <Link href="/auth/login" className="text-white/80 text-sm font-light hover:text-white transition-colors">
-                    {t.nav.account}
-                  </Link>
-                </li>
-              </ul>
+              <div className="flex gap-3 justify-center">
+                <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
+                  <MessageCircle className="h-4 w-4" />
+                </a>
+                <a href="mailto:woosisterstrading@gmail.com" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Email">
+                  <Mail className="h-4 w-4" />
+                </a>
+                <Link href="/auth/login" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Account">
+                  <User className="h-4 w-4" />
+                </Link>
+              </div>
             </FooterAccordion>
             <div className="hidden md:block">
-              <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.contact}</h4>
-              <ul className="space-y-2.5">
-                <li><a href="https://wa.me/60126431737?text=PMBloomie" className="text-white/80 text-sm font-light hover:text-white transition-colors">WhatsApp: 012-643 1737</a></li>
-                <li><a href="mailto:woosisterstrading@gmail.com" className="text-white/80 text-sm font-light hover:text-white transition-colors">woosisterstrading@gmail.com</a></li>
-                <li><Link href="/auth/login" className="text-white/80 text-sm font-light hover:text-white transition-colors">{t.nav.account}</Link></li>
-              </ul>
+              <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.contact}</h4>
+              <div className="flex gap-3">
+                <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
+                  <MessageCircle className="h-4 w-4" />
+                </a>
+                <a href="mailto:woosisterstrading@gmail.com" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Email">
+                  <Mail className="h-4 w-4" />
+                </a>
+                <Link href="/auth/login" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Account">
+                  <User className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
 
           {/* Newsletter Subscribe */}
           <div className="md:col-span-3 text-center md:text-left">
-            <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/70 mb-4">Subscribe to Our Newsletter</h4>
+            <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">Subscribe to Our Newsletter</h4>
             <form
               onSubmit={(e) => {
                 e.preventDefault()
@@ -123,10 +123,10 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="E-mail"
-                className="flex-1 h-10 px-3 bg-white/10 border border-white/20 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-white/50 rounded-none"
+                className="flex-1 h-10 px-3 bg-white/10 border border-white/20 text-white text-xs placeholder:text-white/40 focus:outline-none focus:border-white/50 rounded-none"
               />
               <button type="submit" className="h-10 px-3 bg-white/20 border border-white/20 border-l-0 hover:bg-white/30 transition-colors">
-                <span className="text-white text-sm">→</span>
+                <span className="text-white text-xs">→</span>
               </button>
             </form>
 

@@ -47,10 +47,10 @@ export default function LoginPage() {
       <div className="container mx-auto px-6 lg:px-8 py-24 flex items-center justify-center">
         <div className="max-w-sm w-full">
           <div className="text-center mb-10">
-            <h1 className="text-2xl font-display font-normal tracking-tight">
+            <h1 className="text-[25px] font-display font-normal tracking-tight">
               Welcome Back
             </h1>
-            <p className="text-sm text-muted-foreground font-light mt-2">
+            <p className="text-xs text-muted-foreground font-light mt-2">
               Sign in to your account
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function LoginPage() {
             </div>
             <button
               type="submit"
-              className="w-full h-11 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
+              className="w-full h-11 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
               disabled={loading}
             >
               {loading ? (
@@ -98,7 +98,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p className="text-sm text-center text-muted-foreground mt-8 font-light">
+          <p className="text-xs text-center text-muted-foreground mt-8 font-light">
             Don&apos;t have an account?{" "}
             <Link
               href="/auth/register"

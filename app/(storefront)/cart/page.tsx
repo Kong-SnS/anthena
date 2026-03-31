@@ -16,14 +16,14 @@ export default function CartPage() {
       <div className="pt-20">
         <div className="container mx-auto px-6 lg:px-8 py-32 text-center">
           <ShoppingBag className="h-12 w-12 mx-auto text-muted-foreground/30 mb-6" />
-          <h1 className="text-2xl font-display font-normal tracking-tight mb-2">
+          <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">
             Your cart is empty
           </h1>
-          <p className="text-muted-foreground font-light text-sm mb-8">
+          <p className="text-muted-foreground font-light text-xs mb-8">
             Discover our curated collection of premium supplements.
           </p>
           <Button
-            className="btn-rose-gold rounded-none px-10 h-12 text-[12px] font-medium tracking-[0.15em] uppercase"
+            className="btn-rose-gold rounded-none px-10 h-12 text-xs font-medium tracking-[0.15em] uppercase"
             render={<Link href="/shop" />}
           >
             Continue Shopping
@@ -45,12 +45,12 @@ export default function CartPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <div className="bg-gradient-to-b from-[#f5ece4] to-[#efe3d8] py-20 lg:py-24">
+      <div className="bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] py-20 lg:py-24">
         <div className="container mx-auto px-6 lg:px-8 text-center">
-          <span className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/40">
+          <span className="text-xs font-medium tracking-[0.35em] uppercase text-white/40">
             Shopping
           </span>
-          <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight mt-3">
+          <h1 className="text-[40px] font-display font-normal tracking-tight mt-3">
             Your Cart
           </h1>
         </div>
@@ -66,7 +66,7 @@ export default function CartPage() {
                   <div className="flex gap-5 py-8">
                     {/* Image */}
                     <Link href={`/shop/${item.product.slug}`} className="shrink-0">
-                      <div className="w-24 h-28 bg-[#f5f3f0] relative overflow-hidden">
+                      <div className="w-24 h-28 bg-[#faf8f5] relative overflow-hidden">
                         {item.product.images?.[0] ? (
                           <Image
                             src={item.product.images[0]}
@@ -77,7 +77,7 @@ export default function CartPage() {
                           />
                         ) : (
                           <div className="flex items-center justify-center h-full">
-                            <span className="text-3xl font-display font-normal text-gold/10">
+                            <span className="text-[40px] font-display font-normal text-gold/10">
                               {item.product.name.charAt(0)}
                             </span>
                           </div>
@@ -89,12 +89,12 @@ export default function CartPage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="text-[10px] font-medium tracking-[0.15em] uppercase text-muted-foreground">
+                          <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground">
                             {item.product.category}
                           </p>
                           <Link
                             href={`/shop/${item.product.slug}`}
-                            className="font-medium text-sm tracking-wide hover:text-emerald transition-colors"
+                            className="font-medium text-xs tracking-wide hover:text-emerald transition-colors"
                           >
                             {item.product.name}
                           </Link>
@@ -130,16 +130,16 @@ export default function CartPage() {
                           </button>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-sm">
+                          <p className="font-medium text-xs">
                             RM {calculatePrice(item.quantity).total.toFixed(2)}
                           </p>
                           {calculatePrice(item.quantity).savings > 0 && (
-                            <p className="text-[10px] text-green-600 font-medium">
+                            <p className="text-xs text-green-600 font-medium">
                               Save RM {calculatePrice(item.quantity).savings.toFixed(2)}
                             </p>
                           )}
                           {calculatePrice(item.quantity).freeBoxes > 0 && (
-                            <p className="text-[10px] text-gold font-medium flex items-center gap-1 justify-end">
+                            <p className="text-xs text-gold font-medium flex items-center gap-1 justify-end">
                               <Gift className="h-3 w-3" /> {calculatePrice(item.quantity).freeBoxes} FREE
                             </p>
                           )}
@@ -155,13 +155,13 @@ export default function CartPage() {
             <div className="flex items-center justify-between mt-6 pt-6 border-t border-gold/10">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors"
               >
                 <ArrowLeft className="h-3.5 w-3.5" /> Continue Shopping
               </Link>
               <button
                 onClick={clearCart}
-                className="text-[12px] font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
+                className="text-xs font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-red-500 transition-colors"
               >
                 Clear Cart
               </button>
@@ -170,29 +170,29 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-[#faf9f7] p-8 lg:p-10 sticky top-28">
-              <h2 className="text-[11px] font-medium tracking-[0.2em] uppercase mb-8">
+            <div className="bg-[#faf8f5] p-8 lg:p-10 sticky top-28">
+              <h2 className="text-xs font-medium tracking-[0.2em] uppercase mb-8">
                 Order Summary
               </h2>
 
               <div className="space-y-3 mb-6">
                 {totalSavings > 0 && (
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-xs">
                     <span className="text-muted-foreground font-light line-through">Original</span>
                     <span className="text-muted-foreground font-light line-through">RM {fullPrice.toFixed(2)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">Subtotal</span>
                   <span className="font-medium">RM {subtotal.toFixed(2)}</span>
                 </div>
                 {totalSavings > 0 && (
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-xs">
                     <span className="text-green-600 font-medium">Savings</span>
                     <span className="text-green-600 font-medium">-RM {totalSavings.toFixed(2)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">Shipping</span>
                   <span className="text-muted-foreground text-xs font-light">
                     {subtotal >= 150 ? "FREE" : "Calculated at checkout"}
@@ -203,21 +203,21 @@ export default function CartPage() {
               <Separator className="bg-gold/5 my-6" />
 
               <div className="flex justify-between mb-8">
-                <span className="text-sm font-medium tracking-wide">Total</span>
-                <span className="text-lg font-light">
+                <span className="text-xs font-medium tracking-wide">Total</span>
+                <span className="text-[25px] font-light">
                   RM {subtotal.toFixed(2)}
                 </span>
               </div>
 
               <Button
-                className="w-full btn-rose-gold rounded-none h-12 text-[12px] font-medium tracking-[0.15em] uppercase"
+                className="w-full btn-rose-gold rounded-none h-12 text-xs font-medium tracking-[0.15em] uppercase"
                 render={<Link href="/checkout" />}
               >
                 Checkout
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <p className="text-[10px] text-center text-muted-foreground mt-4 font-light">
+              <p className="text-xs text-center text-muted-foreground mt-4 font-light">
                 Secure payment via Billplz
               </p>
             </div>

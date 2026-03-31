@@ -19,13 +19,13 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-4 text-left"
       >
-        <span className="text-[12px] font-medium tracking-[0.1em] uppercase">{title}</span>
+        <span className="text-xs font-medium tracking-[0.1em] uppercase">{title}</span>
         <span className={`text-gold transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-4" : "max-h-0"}`}
       >
-        <p className="text-sm text-muted-foreground font-light leading-relaxed">{children}</p>
+        <p className="text-xs text-muted-foreground font-light leading-relaxed">{children}</p>
       </div>
     </div>
   )
@@ -55,7 +55,7 @@ export function ProductDetailContent({
       <div className="container mx-auto px-6 lg:px-8 py-10 lg:py-16">
         <Link
           href="/shop"
-          className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Back to Shop
         </Link>
@@ -63,7 +63,7 @@ export function ProductDetailContent({
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Product Images */}
           <div>
-            <div className="aspect-square lg:aspect-[3/4] bg-[#f5f3f0] relative overflow-hidden">
+            <div className="aspect-square lg:aspect-[3/4] bg-[#faf8f5] relative overflow-hidden">
               {hasImages ? (
                 <Image
                   src={product.images[activeImage]}
@@ -75,13 +75,13 @@ export function ProductDetailContent({
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[200px] font-display font-normal text-gold/10">
+                  <span className="text-[40px] font-display font-normal text-gold/10">
                     {product.name.charAt(0)}
                   </span>
                 </div>
               )}
               {discount && (
-                <span className="absolute top-4 left-4 btn-rose-gold text-[10px] font-medium tracking-wider px-3 py-1.5 z-10">
+                <span className="absolute top-4 left-4 btn-rose-gold text-xs font-medium tracking-wider px-3 py-1.5 z-10">
                   -{discount}%
                 </span>
               )}
@@ -93,7 +93,7 @@ export function ProductDetailContent({
                   <button
                     key={idx}
                     onClick={() => setActiveImage(idx)}
-                    className={`relative w-20 h-20 bg-[#f5f3f0] overflow-hidden transition-all ${
+                    className={`relative w-20 h-20 bg-[#faf8f5] overflow-hidden transition-all ${
                       activeImage === idx
                         ? "ring-2 ring-foreground"
                         : "opacity-60 hover:opacity-100 hover:scale-110 transition-transform duration-300"
@@ -114,13 +114,13 @@ export function ProductDetailContent({
 
           {/* Product Info */}
           <div className="flex flex-col justify-center">
-            <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted-foreground mb-3">
+            <p className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground mb-3">
               {product.category}
             </p>
-            <h1 className="text-3xl md:text-4xl font-display font-normal tracking-tight mb-3">
+            <h1 className="text-[40px] font-display font-normal tracking-tight mb-3">
               {product.name}
             </h1>
-            <p className="text-muted-foreground font-light text-[15px] mb-6">
+            <p className="text-muted-foreground font-light text-xs mb-6">
               {product.short_description}
             </p>
 
@@ -131,11 +131,11 @@ export function ProductDetailContent({
                 <>
                   <div className="mb-4">
                     <div className="flex items-baseline gap-3">
-                      <span className="text-2xl font-light">
+                      <span className="text-[25px] font-light">
                         RM {pricing.total.toFixed(2)}
                       </span>
                       {pricing.savings > 0 && (
-                        <span className="text-base text-muted-foreground line-through">
+                        <span className="text-xs text-muted-foreground line-through">
                           RM {(quantity * Number(product.price)).toFixed(2)}
                         </span>
                       )}
@@ -153,7 +153,7 @@ export function ProductDetailContent({
                         </p>
                       </div>
                     )}
-                    <p className="text-[10px] text-muted-foreground mt-1">{pricing.breakdown}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{pricing.breakdown}</p>
                   </div>
 
                   {/* Quick tier buttons */}
@@ -165,8 +165,8 @@ export function ProductDetailContent({
                       }`}
                     >
                       <span className="block text-xs font-medium">1 Box</span>
-                      <span className="block text-lg font-light mt-0.5">RM 138</span>
-                      <span className="block text-[10px] text-muted-foreground">15 sachets</span>
+                      <span className="block text-[25px] font-light mt-0.5">RM 138</span>
+                      <span className="block text-xs text-muted-foreground">15 sachets</span>
                     </button>
                     <button
                       onClick={() => setQuantity(2)}
@@ -176,8 +176,8 @@ export function ProductDetailContent({
                     >
                       <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={56} height={56} className="absolute -bottom-3 -right-3 w-12 h-12 drop-shadow-md" />
                       <span className="block text-xs font-medium">2 Boxes</span>
-                      <span className="block text-lg font-light mt-0.5">RM 209</span>
-                      <span className="block text-[10px] text-gold font-medium">+ 1 Box FREE</span>
+                      <span className="block text-[25px] font-light mt-0.5">RM 209</span>
+                      <span className="block text-xs text-gold font-medium">+ 1 Box FREE</span>
                     </button>
                   </div>
                 </>
@@ -210,7 +210,7 @@ export function ProductDetailContent({
                 >
                   <Minus className="h-3.5 w-3.5" />
                 </button>
-                <span className="w-14 text-center text-sm font-medium">
+                <span className="w-14 text-center text-xs font-medium">
                   {quantity}
                 </span>
                 <button
@@ -223,7 +223,7 @@ export function ProductDetailContent({
                 </button>
               </div>
               <button
-                className="flex-1 h-12 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase disabled:opacity-40"
+                className="flex-1 h-12 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase disabled:opacity-40"
                 disabled={product.stock_count === 0}
                 onClick={() => {
                   addItem(product, quantity)
@@ -246,8 +246,8 @@ export function ProductDetailContent({
               ].map((f) => (
                 <div key={f.label} className="text-center">
                   <f.icon className="h-4 w-4 mx-auto mb-2 text-muted-foreground" />
-                  <p className="text-[11px] font-medium tracking-wide">{f.label}</p>
-                  <p className="text-[10px] text-muted-foreground mt-0.5">{f.sub}</p>
+                  <p className="text-xs font-medium tracking-wide">{f.label}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{f.sub}</p>
                 </div>
               ))}
             </div>
@@ -286,10 +286,10 @@ export function ProductDetailContent({
         {relatedProducts.length > 0 && (
           <div className="mt-24 lg:mt-32">
             <div className="text-center mb-12">
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-muted-foreground">
+              <span className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground">
                 You May Also Like
               </span>
-              <h2 className="text-2xl font-display font-normal tracking-tight mt-2">
+              <h2 className="text-[25px] font-display font-normal tracking-tight mt-2">
                 Related Products
               </h2>
               <div className="w-12 h-px line-rose-gold mx-auto mt-5" />
@@ -306,11 +306,11 @@ export function ProductDetailContent({
       {/* Sticky Add to Cart bar - mobile only */}
       <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-gold/10 px-4 py-3 flex items-center gap-3">
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-display truncate">{product.name}</p>
-          <p className="text-sm font-medium">RM {calculatePrice(quantity).total.toFixed(2)}</p>
+          <p className="text-xs font-display truncate">{product.name}</p>
+          <p className="text-xs font-medium">RM {calculatePrice(quantity).total.toFixed(2)}</p>
         </div>
         <button
-          className="btn-rose-gold px-6 py-2.5 text-[11px] font-medium tracking-[0.15em] uppercase whitespace-nowrap disabled:opacity-40"
+          className="btn-rose-gold px-6 py-2.5 text-xs font-medium tracking-[0.15em] uppercase whitespace-nowrap disabled:opacity-40"
           disabled={product.stock_count === 0}
           onClick={() => {
             addItem(product, quantity)

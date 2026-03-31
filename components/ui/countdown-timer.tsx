@@ -30,7 +30,7 @@ export function CountdownTimer({ endDate, label = "Offer ends in" }: CountdownTi
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[10px] tracking-[0.15em] uppercase text-gold/70 font-medium">{label}</span>
+      <span className="text-xs tracking-[0.15em] uppercase text-gold/70 font-medium">{label}</span>
       <div className="flex gap-1.5">
         {[
           { val: time.days, unit: "D" },
@@ -39,8 +39,8 @@ export function CountdownTimer({ endDate, label = "Offer ends in" }: CountdownTi
           { val: time.secs, unit: "S" },
         ].map((t) => (
           <div key={t.unit} className="btn-rose-gold text-center rounded px-2 py-1 min-w-[36px]">
-            <span className="text-sm font-medium tabular-nums">{String(t.val).padStart(2, "0")}</span>
-            <span className="text-[8px] text-white/60 ml-0.5">{t.unit}</span>
+            <span className="text-xs font-medium tabular-nums">{String(t.val).padStart(2, "0")}</span>
+            <span className="text-xs text-white/60 ml-0.5">{t.unit}</span>
           </div>
         ))}
       </div>

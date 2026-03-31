@@ -37,19 +37,19 @@ export default function ForgotPasswordPage() {
         <div className="max-w-sm w-full">
           {sent ? (
             <div className="text-center">
-              <h1 className="text-2xl font-display font-normal tracking-tight mb-2">Check Your Email</h1>
-              <p className="text-sm text-muted-foreground font-light mb-8">
+              <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">Check Your Email</h1>
+              <p className="text-xs text-muted-foreground font-light mb-8">
                 We sent a password reset link to <strong>{email}</strong>. Click the link to set a new password.
               </p>
-              <Link href="/auth/login" className="text-sm font-medium hover:underline">
+              <Link href="/auth/login" className="text-xs font-medium hover:underline">
                 Back to Sign In
               </Link>
             </div>
           ) : (
             <>
               <div className="text-center mb-10">
-                <h1 className="text-2xl font-display font-normal tracking-tight">Forgot Password</h1>
-                <p className="text-sm text-muted-foreground font-light mt-2">
+                <h1 className="text-[25px] font-display font-normal tracking-tight">Forgot Password</h1>
+                <p className="text-xs text-muted-foreground font-light mt-2">
                   Enter your email and we&apos;ll send you a reset link
                 </p>
               </div>
@@ -67,14 +67,14 @@ export default function ForgotPasswordPage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full h-11 btn-rose-gold text-[12px] font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
+                  className="w-full h-11 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase flex items-center justify-center disabled:opacity-50"
                   disabled={loading}
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Send Reset Link"}
                 </button>
               </form>
 
-              <p className="text-sm text-center text-muted-foreground mt-8 font-light">
+              <p className="text-xs text-center text-muted-foreground mt-8 font-light">
                 <Link href="/auth/login" className="inline-flex items-center gap-1 text-foreground font-medium hover:underline">
                   <ArrowLeft className="h-3.5 w-3.5" /> Back to Sign In
                 </Link>

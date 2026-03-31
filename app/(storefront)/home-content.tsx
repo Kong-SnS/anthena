@@ -119,22 +119,22 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 z-[1]" />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-          <span className="animate-fade-in-up text-[11px] font-medium tracking-[0.35em] uppercase text-white/75 mb-6">
+          <span className="animate-fade-in-up text-xs font-medium tracking-[0.35em] uppercase text-white/75 mb-6">
             {t.hero.label}
           </span>
-          <h1 className="animate-fade-in-up animation-delay-200 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-normal tracking-tight leading-[1.1] max-w-4xl">
+          <h1 className="animate-fade-in-up animation-delay-200 text-[40px] font-display font-normal tracking-tight leading-[1.1] max-w-4xl">
             <span className="shimmer-gold">{t.hero.title1}</span>
             <br />
             <span className="font-display italic shimmer-gold">{t.hero.title2}</span>
           </h1>
-          <p className="animate-fade-in-up animation-delay-400 mt-6 text-base md:text-lg text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
+          <p className="animate-fade-in-up animation-delay-400 mt-6 text-xs md:text-[25px] text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
             <TypingEffect text={t.hero.subtitle} delay={1500} speed={25} />
           </p>
           <div className="animate-fade-in-up animation-delay-600 flex gap-4 mt-10">
             <MagneticButton>
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-white/90 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
+                className="bg-white text-foreground hover:bg-white/90 rounded-none px-8 h-12 text-xs font-medium tracking-[0.1em] uppercase"
                 render={<Link href="/shop/bloomie" />}
               >
                 {t.hero.shopBtn}
@@ -145,7 +145,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase bg-transparent"
+                className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 h-12 text-xs font-medium tracking-[0.1em] uppercase bg-transparent"
                 render={<Link href="#benefits" />}
               >
                 {t.hero.learnBtn}
@@ -171,7 +171,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Product Image */}
               <ImageReveal direction="left">
-                <div className="aspect-square bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] rounded-sm overflow-hidden relative glow-gold group">
+                <div className="aspect-square bg-gradient-to-br from-[#faf8f5] to-[#faf8f5] rounded-sm overflow-hidden relative glow-gold group">
                   <Image
                     src="/images/products/bloomie-main.png"
                     alt="Bloomie Botanical Beverage"
@@ -184,22 +184,22 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
               {/* Product Info */}
               <div>
-                <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+                <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
                   {t.product.introducing}
                 </span>
-                <h2 className="text-3xl md:text-5xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug">
+                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4 leading-snug">
                   <span className="text-rose-gold-gradient">Bloomie</span>
                 </h2>
-                <p className="text-lg text-muted-foreground font-light mb-2">
+                <p className="text-[25px] text-muted-foreground font-light mb-2">
                   {t.product.subtitle}
                 </p>
-                <p className="text-muted-foreground font-light leading-relaxed mb-6 text-[15px]">
+                <p className="text-muted-foreground font-light leading-relaxed mb-6 text-xs">
                   {t.product.description}
                 </p>
 
                 {/* Promo Banner */}
                 <div className="btn-rose-gold px-5 py-3 mb-4 inline-block">
-                  <span className="text-[11px] font-medium tracking-[0.2em] uppercase">
+                  <span className="text-xs font-medium tracking-[0.2em] uppercase">
                     {t.product.promo}
                   </span>
                 </div>
@@ -211,13 +211,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 <div className="flex gap-4 mb-8">
                   <div className="border border-gold/15 px-5 py-3 text-center">
                     <p className="text-xs text-muted-foreground font-light">1 Box</p>
-                    <p className="text-xl font-light mt-1">RM 138</p>
-                    <p className="text-[10px] text-muted-foreground">15 sachets</p>
+                    <p className="text-[25px] font-light mt-1">RM 138</p>
+                    <p className="text-xs text-muted-foreground">15 sachets</p>
                   </div>
                   <div className="border-2 border-gold px-5 pb-8 pt-3 text-center relative">
                     <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
-                    <p className="text-xl font-light mt-1">RM 209</p>
-                    <p className="text-[10px] text-muted-foreground">+ 1 Box FREE</p>
+                    <p className="text-[25px] font-light mt-1">RM 209</p>
+                    <p className="text-xs text-muted-foreground">+ 1 Box FREE</p>
                     <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-24 h-24 drop-shadow-lg">
                       <div className="absolute top-[8%] left-[18%] right-[18%] bottom-[28%] rounded-full bg-white" />
                       <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={96} height={96} className="relative w-full h-full" />
@@ -227,7 +227,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
                 <Button
                   size="lg"
-                  className="btn-rose-gold rounded-none px-10 h-12 text-[12px] font-medium tracking-[0.15em] uppercase"
+                  className="btn-rose-gold rounded-none px-10 h-12 text-xs font-medium tracking-[0.15em] uppercase"
                   render={<Link href="/shop/bloomie" />}
                 >
                   {t.product.orderNow}
@@ -246,10 +246,10 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+              <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
                 {t.benefits.label}
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
+              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
                 {t.benefits.title}
               </h2>
               <OrnamentDivider className="mt-6" />
@@ -265,7 +265,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                       <div className="mx-auto w-12 h-12 rounded-full bg-rose-gold-light flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-gold-light group-hover:scale-110">
                         <Icon className="h-5 w-5 text-gold" />
                       </div>
-                      <h3 className="font-medium text-sm tracking-wide mb-1.5">
+                      <h3 className="font-medium text-xs tracking-wide mb-1.5">
                         {t.benefits[key]}
                       </h3>
                       <p className="text-xs text-muted-foreground font-light">
@@ -292,7 +292,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               { end: 15, suffix: "", label: t.stats.sachetsPerBox },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-3xl lg:text-4xl font-display text-gold">
+                <p className="text-[40px] font-display text-gold">
                   <Counter end={stat.end} suffix={stat.suffix} />
                 </p>
                 <p className="text-xs text-muted-foreground tracking-[0.1em] uppercase mt-2 font-light">
@@ -307,26 +307,26 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* ============================================ */}
       {/* LIFESTYLE IMAGE - Full Width                 */}
       {/* ============================================ */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#f5ece4] to-[#efe3d8]">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#faf8f5] to-[#faf8f5]">
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Text - Left */}
               <div>
-                <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold/70">
+                <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold/70">
                   {t.lifestyle.label}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-foreground">
+                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-foreground">
                   {t.lifestyle.title1}
                   <br />
                   <span className="italic font-light text-gold">{t.lifestyle.title2}</span>
                 </h2>
-                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-[15px]">
+                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-xs">
                   {t.lifestyle.description}
                 </p>
                 <Button
                   size="lg"
-                  className="btn-rose-gold rounded-none px-8 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
+                  className="btn-rose-gold rounded-none px-8 h-12 text-xs font-medium tracking-[0.1em] uppercase"
                   render={<Link href="/shop/bloomie" />}
                 >
                   {t.lifestyle.cta}
@@ -358,13 +358,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Ingredients List - Left */}
               <div className="order-2 lg:order-1">
-                <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+                <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
                   {t.ingredients.label}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3 mb-4">
+                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4">
                   {t.ingredients.title}
                 </h2>
-                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-[15px]">
+                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-xs">
                   {t.ingredients.description}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
@@ -372,7 +372,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     <PopIn key={ing} delay={i * 0.06}>
                       <div className="flex items-center gap-2.5 py-2">
                         <Flower2 className="h-3.5 w-3.5 text-gold shrink-0" />
-                        <span className="text-sm font-light">{t.ingredientNames[ing]}</span>
+                        <span className="text-xs font-light">{t.ingredientNames[ing]}</span>
                       </div>
                     </PopIn>
                   ))}
@@ -397,14 +397,14 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* ============================================ */}
       {/* HOW IT WORKS                                 */}
       {/* ============================================ */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#f5ece4] to-[#efe3d8]">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#faf8f5] to-[#faf8f5]">
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+              <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
                 {t.howTo.label}
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
+              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
                 {t.howTo.title}
               </h2>
               <OrnamentDivider className="mt-6" />
@@ -417,13 +417,13 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 { step: "03", title: t.howTo.step3, desc: t.howTo.step3Desc },
               ].map((s) => (
                 <div key={s.step} className="text-center">
-                  <span className="text-4xl font-display font-normal text-gold">
+                  <span className="text-[40px] font-display font-normal text-gold">
                     {s.step}
                   </span>
-                  <h3 className="font-medium text-lg tracking-wide mt-3 mb-2">
+                  <h3 className="font-medium text-[25px] tracking-wide mt-3 mb-2">
                     {s.title}
                   </h3>
-                  <p className="text-muted-foreground font-light text-sm">{s.desc}</p>
+                  <p className="text-muted-foreground font-light text-xs">{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -464,10 +464,10 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         <div className="container mx-auto px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-muted-foreground">
+              <span className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground">
                 {t.testimonials.label}
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight mt-3">
+              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
                 {t.testimonials.title}
               </h2>
               <OrnamentDivider className="mt-6" />
@@ -492,14 +492,14 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* ============================================ */}
       {/* CTA                                          */}
       {/* ============================================ */}
-      <section className="relative py-28 lg:py-36 bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] overflow-hidden">
+      <section className="relative py-28 lg:py-36 bg-gradient-to-br from-[#faf8f5] to-[#faf8f5] overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#ee9ca7]/15 rounded-full blur-3xl" />
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">
+            <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
               {t.cta.label}
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-normal tracking-tight mt-4 mb-6 leading-snug">
+            <h2 className="text-[40px] font-display font-normal tracking-tight mt-4 mb-6 leading-snug">
               {t.cta.title1}
               <br />
               <span className="italic font-light">{t.cta.title2}</span>
@@ -509,7 +509,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             </p>
             <Button
               size="lg"
-              className="btn-rose-gold rounded-none px-10 h-12 text-[13px] font-medium tracking-[0.1em] uppercase"
+              className="btn-rose-gold rounded-none px-10 h-12 text-xs font-medium tracking-[0.1em] uppercase"
               render={<Link href="/shop/bloomie" />}
             >
               {t.cta.btn}

@@ -29,17 +29,17 @@ export function TestimonialCarousel({ testimonials }: { testimonials: Testimonia
                   <Star key={j} className="h-3.5 w-3.5 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-foreground/70 text-[15px] font-light leading-relaxed mb-8 italic">
+              <p className="text-foreground/70 text-xs font-light leading-relaxed mb-8 italic">
                 &ldquo;{review.text}&rdquo;
               </p>
               <div className="border-t border-gold/10 pt-6 flex items-center gap-3">
                 {review.avatar && (
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffdde1] to-[#ee9ca7] flex items-center justify-center text-white text-sm font-medium">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffdde1] to-[#ee9ca7] flex items-center justify-center text-white text-xs font-medium">
                     {review.name.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <p className="font-medium text-sm tracking-wide">{review.name}</p>
+                  <p className="font-medium text-xs tracking-wide">{review.name}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">{review.title}</p>
                 </div>
               </div>
