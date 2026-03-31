@@ -43,7 +43,7 @@ export function SocialProof() {
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
           className="fixed bottom-6 left-6 z-50 bg-white/95 backdrop-blur-sm border border-gold/10 shadow-lg rounded-lg p-4 flex items-center gap-3 max-w-xs"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B76E78] to-[#c9a96e] flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffdde1] to-[#ee9ca7] flex items-center justify-center shrink-0">
             <ShoppingBag className="h-4 w-4 text-white" />
           </div>
           <div>

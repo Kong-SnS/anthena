@@ -11,7 +11,6 @@ import { SocialProof } from "@/components/ui/social-proof"
 import { StickyProductBar } from "@/components/ui/sticky-product-bar"
 import { EmailPopup } from "@/components/ui/email-popup"
 import { CartDrawer } from "@/components/layout/cart-drawer"
-import { ColorDemo } from "@/components/ui/color-demo"
 import { I18nProvider } from "@/lib/i18n"
 
 export default function StorefrontLayout({
@@ -35,7 +34,6 @@ export default function StorefrontLayout({
       <SocialProof />
       <EmailPopup />
       <CartDrawer />
-      <ColorDemo />
     </I18nProvider>
   )
 }

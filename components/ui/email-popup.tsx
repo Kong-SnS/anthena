@@ -57,7 +57,7 @@ export function EmailPopup() {
           >
             <div className="bg-[#faf8f5] rounded-sm overflow-hidden shadow-2xl">
               {/* Header */}
-              <div className="bg-gradient-to-br from-[#B76E78] to-[#c9a96e] px-8 py-10 text-center text-white relative">
+              <div className="bg-gradient-to-br from-[#ffdde1] to-[#ee9ca7] px-8 py-10 text-center text-white relative">
                 <button
                   onClick={handleClose}
                   className="absolute top-3 right-3 text-white/60 hover:text-white transition-colors"

@@ -493,7 +493,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       {/* CTA                                          */}
       {/* ============================================ */}
       <section className="relative py-28 lg:py-36 bg-gradient-to-br from-[#f5ece4] to-[#f0e4da] overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#c9a96e]/15 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#ee9ca7]/15 rounded-full blur-3xl" />
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
             <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold">

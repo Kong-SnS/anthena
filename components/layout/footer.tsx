@@ -26,7 +26,7 @@ export function Footer() {
   const [email, setEmail] = useState("")
 
   return (
-    <footer className="bg-gradient-to-br from-[#B76E78] to-[#b8956f] text-white">
+    <footer className="bg-gradient-to-br from-[#ffdde1] to-[#e48d98] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand */}

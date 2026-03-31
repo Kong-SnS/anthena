@@ -39,7 +39,7 @@ export function AnnouncementBar() {
   if (!show) return null
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#B76E78] to-[#c9a96e] text-white text-center py-2 px-8">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ffdde1] to-[#ee9ca7] text-white text-center py-2 px-8">
       <Link
         href="/shop/bloomie"
         className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.1em] uppercase hover:opacity-80 transition-opacity"

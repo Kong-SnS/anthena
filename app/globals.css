@@ -208,29 +208,29 @@
   opacity: 0;
 }
 
-/* Rose gold gradient button */
+/* Frost Pink gradient button */
 .btn-rose-gold {
-  background: linear-gradient(135deg, #B76E78, #c9a96e) !important;
+  background: linear-gradient(90deg, #ffdde1, #ee9ca7) !important;
   color: white !important;
   transition: all 0.3s ease;
 }
 .btn-rose-gold:hover {
-  background: linear-gradient(135deg, #a5606a, #b8956f) !important;
+  background: linear-gradient(90deg, #f5cdd1, #e48d98) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(183, 110, 120, 0.3);
+  box-shadow: 0 4px 12px rgba(238, 156, 167, 0.3);
 }
 
-/* Rose gold gradient text */
+/* Frost Pink gradient text */
 .text-rose-gold-gradient {
-  background: linear-gradient(135deg, #B76E78, #c9a96e);
+  background: linear-gradient(90deg, #ffdde1, #ee9ca7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Rose gold gradient line */
+/* Frost Pink gradient line */
 .line-rose-gold {
-  background: linear-gradient(90deg, #B76E78, #c9a96e, #B76E78);
+  background: linear-gradient(90deg, #ee9ca7, #ffdde1, #ee9ca7);
 }
 
 /* Warm dark (deep rose gold tone instead of pure black) */
@@ -289,7 +289,7 @@
   100% { background-position: 200% center; }
 }
 .shimmer-gold {
-  background: linear-gradient(90deg, #B76E78 0%, #e8d5b8 25%, #B76E78 50%, #c9a96e 75%, #B76E78 100%);
+  background: linear-gradient(90deg, #ee9ca7 0%, #ffdde1 25%, #ee9ca7 50%, #ffdde1 75%, #ee9ca7 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

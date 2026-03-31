@@ -34,7 +34,7 @@ export function TestimonialCarousel({ testimonials }: { testimonials: Testimonia
               </p>
               <div className="border-t border-gold/10 pt-6 flex items-center gap-3">
                 {review.avatar && (
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B76E78] to-[#c9a96e] flex items-center justify-center text-white text-sm font-medium">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ffdde1] to-[#ee9ca7] flex items-center justify-center text-white text-sm font-medium">
                     {review.name.charAt(0)}
                   </div>
                 )}
