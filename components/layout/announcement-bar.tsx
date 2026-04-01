@@ -1,59 +1,95 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { X, ArrowRight } from "lucide-react"
+import { useState, useEffect, useRef, useCallback } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export function useAnnouncementVisible() {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     const hide = () => setVisible(false)
+    const show = () => setVisible(true)
     window.addEventListener("announcement-close", hide)
-    return () => window.removeEventListener("announcement-close", hide)
+    window.addEventListener("announcement-show", show)
+    return () => {
+      window.removeEventListener("announcement-close", hide)
+      window.removeEventListener("announcement-show", show)
+    }
   }, [])
 
   return visible
 }
 
-export function AnnouncementBar() {
-  const [show, setShow] = useState(true)
-
-  const hide = () => {
-    setShow(false)
-    window.dispatchEvent(new Event("announcement-close"))
-  }
+export function useNavbarVisible() {
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 50) {
-        setShow(false)
-        window.dispatchEvent(new Event("announcement-close"))
-        window.removeEventListener("scroll", onScroll)
+      const currentY = window.scrollY
+      if (currentY > lastScrollY.current && currentY > 80) {
+        // Scrolling down — hide navbar
+        setVisible(false)
+      } else {
+        // Scrolling up — show navbar
+        setVisible(true)
       }
+      lastScrollY.current = currentY
     }
-    window.addEventListener("scroll", onScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  if (!show) return null
+  return visible
+}
+
+const messages = [
+  "Min 2 Boxes Free Shipping",
+  "Results Seen in 1 Week",
+]
+
+export function AnnouncementBar() {
+  const [atTop, setAtTop] = useState(true)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const isTop = window.scrollY <= 10
+      setAtTop(isTop)
+      if (!isTop) {
+        window.dispatchEvent(new Event("announcement-close"))
+      } else {
+        window.dispatchEvent(new Event("announcement-show"))
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  const prev = useCallback(() => setActiveIndex((i) => (i - 1 + messages.length) % messages.length), [])
+  const next = useCallback(() => setActiveIndex((i) => (i + 1) % messages.length), [])
+
+  // Auto-rotate
+  useEffect(() => {
+    const interval = setInterval(next, 3500)
+    return () => clearInterval(interval)
+  }, [next])
+
+  if (!atTop) return null
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ffdde1] to-[#ee9ca7] text-white text-center py-2 px-8">
-      <Link
-        href="/shop/bloomie"
-        className="inline-flex items-center gap-2 text-xs font-medium tracking-[0.1em] uppercase hover:opacity-80 transition-opacity"
-      >
-        Buy 2 Free 1 — Limited Time Offer
-        <ArrowRight className="h-3.5 w-3.5" />
-      </Link>
-      <button
-        onClick={hide}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"
-        aria-label="Close announcement"
-      >
-        <X className="h-3.5 w-3.5" />
-      </button>
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ffdde1] to-[#ee9ca7] text-white text-center py-2 px-4">
+      <div className="flex items-center justify-center gap-3">
+        <button onClick={prev} className="text-white/70 hover:text-white transition-colors" aria-label="Previous">
+          <ChevronLeft className="h-3.5 w-3.5" />
+        </button>
+        <p className="text-xs font-medium tracking-[0.1em] uppercase min-w-[200px]">
+          {messages[activeIndex]}
+        </p>
+        <button onClick={next} className="text-white/70 hover:text-white transition-colors" aria-label="Next">
+          <ChevronRight className="h-3.5 w-3.5" />
+        </button>
+      </div>
     </div>
   )
 }

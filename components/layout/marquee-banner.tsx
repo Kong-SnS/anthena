@@ -1,11 +1,12 @@
 "use client"
 
-import { useTranslation } from "@/lib/i18n"
+const items = [
+  "Free Shipping Min. Purchase 2 Boxes",
+  "Results Seen in 1 Week",
+  "Premium French\u00A0\ud83c\uddeb\ud83c\uddf7 Patented Formula",
+]
 
 export function MarqueeBanner() {
-  const { t } = useTranslation()
-  const items = t.marquee.items
-
   return (
     <div className="bg-gradient-to-r from-[#ffdde1] to-[#ee9ca7] text-white py-2.5 overflow-hidden">
       <div className="animate-marquee flex whitespace-nowrap">

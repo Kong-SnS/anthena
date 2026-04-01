@@ -214,14 +214,11 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                     <p className="text-[25px] font-light mt-1">RM 138</p>
                     <p className="text-xs text-muted-foreground">15 sachets</p>
                   </div>
-                  <div className="border-2 border-gold px-5 pb-8 pt-3 text-center relative">
-                    <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
+                  <div className="border-2 border-gold px-5 py-3 text-center relative">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">Best Value Trio</span>
+                    <p className="text-xs text-muted-foreground font-light mt-1">2 Boxes</p>
                     <p className="text-[25px] font-light mt-1">RM 209</p>
                     <p className="text-xs text-muted-foreground">+ 1 Box FREE</p>
-                    <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-24 h-24 drop-shadow-lg">
-                      <div className="absolute top-[8%] left-[18%] right-[18%] bottom-[28%] rounded-full bg-white" />
-                      <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={96} height={96} className="relative w-full h-full" />
-                    </div>
                   </div>
                 </div>
 
@@ -349,98 +346,6 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* INGREDIENTS                                  */}
-      {/* ============================================ */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              {/* Ingredients List - Left */}
-              <div className="order-2 lg:order-1">
-                <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
-                  {t.ingredients.label}
-                </span>
-                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4">
-                  {t.ingredients.title}
-                </h2>
-                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-xs">
-                  {t.ingredients.description}
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {ingredientKeys.map((ing, i) => (
-                    <PopIn key={ing} delay={i * 0.06}>
-                      <div className="flex items-center gap-2.5 py-2">
-                        <Flower2 className="h-3.5 w-3.5 text-gold shrink-0" />
-                        <span className="text-xs font-light">{t.ingredientNames[ing]}</span>
-                      </div>
-                    </PopIn>
-                  ))}
-                </div>
-              </div>
-
-              {/* Ingredients Image - Right */}
-              <div className="aspect-[4/3] bg-[#faf8f5] relative overflow-hidden rounded-sm order-1 lg:order-2">
-                <Image
-                  src="/images/products/bloomie-flatlay.webp"
-                  alt="Bloomie natural ingredients"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ============================================ */}
-      {/* HOW IT WORKS                                 */}
-      {/* ============================================ */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-[#faf8f5] to-[#faf8f5]">
-        <div className="container mx-auto px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
-                {t.howTo.label}
-              </span>
-              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
-                {t.howTo.title}
-              </h2>
-              <OrnamentDivider className="mt-6" />
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-16 max-w-4xl mx-auto">
-              {[
-                { step: "01", title: t.howTo.step1, desc: t.howTo.step1Desc },
-                { step: "02", title: t.howTo.step2, desc: t.howTo.step2Desc },
-                { step: "03", title: t.howTo.step3, desc: t.howTo.step3Desc },
-              ].map((s) => (
-                <div key={s.step} className="text-center">
-                  <span className="text-[40px] font-display font-normal text-gold">
-                    {s.step}
-                  </span>
-                  <h3 className="font-medium text-[25px] tracking-wide mt-3 mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="text-muted-foreground font-light text-xs">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Drink Pour Image */}
-            <div className="mt-16 max-w-3xl mx-auto aspect-[16/7] relative rounded-sm overflow-hidden">
-              <Image
-                src="/images/products/bloomie-drink-pour.webp"
-                alt="Pouring Bloomie pomegranate drink"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 768px"
-              />
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* ============================================ */}
       {/* HORIZONTAL SCROLL GALLERY                    */}

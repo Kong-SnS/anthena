@@ -10,7 +10,7 @@ import { LanguageSwitcher } from "@/components/layout/language-switcher"
 import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { useTranslation } from "@/lib/i18n"
 import { createClient } from "@/lib/supabase/client"
-import { useAnnouncementVisible } from "@/components/layout/announcement-bar"
+import { useAnnouncementVisible, useNavbarVisible } from "@/components/layout/announcement-bar"
 import { useState, useEffect } from "react"
 
 export function Navbar() {
@@ -23,6 +23,7 @@ export function Navbar() {
   const openCartDrawer = useCartDrawer((s) => s.show)
 
   const announcementVisible = useAnnouncementVisible()
+  const navbarVisible = useNavbarVisible()
   useEffect(() => setMounted(true), [])
   const { t } = useTranslation()
   const isHome = pathname === "/"
@@ -52,7 +53,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-        announcementVisible ? "top-9" : "top-0"
+        !navbarVisible ? "-top-24" : announcementVisible ? "top-9" : "top-0"
       } ${
         useDarkText
           ? "glass-nav shadow-sm"
@@ -60,7 +61,68 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
-        <Link href="/" className="relative z-10">
+        {/* Mobile: Menu button (left) */}
+        <div className="md:hidden">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger
+              aria-label="Open menu"
+              render={
+                <button
+                  className={`flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
+                    useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
+                  }`}
+                />
+              }
+            >
+              <Menu className="h-5 w-5" />
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[85vw] max-w-sm bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] border-gold/10 px-8">
+              <div className="flex flex-col mt-16">
+                <div className="flex items-center justify-between mb-10">
+                  <p className="text-[25px] font-display font-medium tracking-[0.2em] uppercase text-gold">{t.nav.menu}</p>
+                  <div className="scale-125 origin-right">
+                    <LanguageSwitcher />
+                  </div>
+                </div>
+                <nav className="flex flex-col">
+                  {[
+                    { href: "/", label: t.nav.home },
+                    { href: "/shop", label: "Bloomie" },
+                    { href: "/#about", label: "About Us" },
+                    { href: "/#testimonials", label: t.nav.reviews },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-foreground text-[25px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href={accountHref}
+                    className="text-foreground text-[25px] font-display tracking-wide py-4 hover:text-gold transition-colors"
+                    onClick={() => setOpen(false)}
+                  >
+                    Login
+                  </Link>
+                </nav>
+                <a
+                  href="https://wa.me/60126431737?text=PMBloomie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-12 btn-rose-gold text-center py-3.5 text-xs font-medium tracking-[0.15em] uppercase rounded-sm"
+                >
+                  {t.nav.whatsappUs}
+                </a>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Logo - center on mobile, left on desktop */}
+        <Link href="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-10">
           <span
             className={`text-[25px] font-display tracking-[0.2em] uppercase transition-all duration-500 ${
               useDarkText ? "logo-gold-3d" : "text-white drop-shadow-lg"
@@ -70,6 +132,7 @@ export function Navbar() {
           </span>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
@@ -84,6 +147,7 @@ export function Navbar() {
           ))}
         </nav>
 
+        {/* Right side: desktop icons + mobile cart */}
         <div className="flex items-center gap-1">
           <div className="hidden md:block">
             <LanguageSwitcher dark={!useDarkText} />
@@ -114,57 +178,6 @@ export function Navbar() {
               </span>
             )}
           </button>
-
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger
-              className="md:hidden"
-              aria-label="Open menu"
-              render={
-                <button
-                  className={`flex items-center justify-center w-11 h-11 rounded-md transition-colors duration-500 ${
-                    useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
-                  }`}
-                />
-              }
-            >
-              <Menu className="h-5 w-5" />
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] max-w-sm bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] border-gold/10 px-8">
-              <div className="flex flex-col mt-16">
-                <div className="flex items-center justify-between mb-10">
-                  <p className="text-xs font-medium tracking-[0.3em] uppercase text-gold">{t.nav.menu}</p>
-                  <LanguageSwitcher />
-                </div>
-                <nav className="flex flex-col">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="text-foreground text-[25px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                  <Link
-                    href={accountHref}
-                    className="text-foreground text-[25px] font-display tracking-wide py-4 hover:text-gold transition-colors"
-                    onClick={() => setOpen(false)}
-                  >
-                    {isLoggedIn ? t.nav.account : "Login"}
-                  </Link>
-                </nav>
-                <a
-                  href="https://wa.me/60126431737?text=PMBloomie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-12 btn-rose-gold text-center py-3.5 text-xs font-medium tracking-[0.15em] uppercase rounded-sm"
-                >
-                  {t.nav.whatsappUs}
-                </a>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>

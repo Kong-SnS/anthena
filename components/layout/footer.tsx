@@ -2,24 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
-import { ChevronDown, Instagram, MessageCircle, Mail, User } from "lucide-react"
-
-function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="md:hidden border-b border-white/10">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-4">
-        <span className="text-xs font-medium tracking-[0.2em] uppercase">{title}</span>
-        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-60 pb-4" : "max-h-0"}`}>
-        {children}
-      </div>
-    </div>
-  )
-}
+import { Instagram, MessageCircle, Mail, User } from "lucide-react"
 
 export function Footer() {
   const { t } = useTranslation()
@@ -28,95 +12,35 @@ export function Footer() {
   return (
     <footer className="bg-gradient-to-br from-[#ffdde1] to-[#e48d98] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="md:col-span-4 text-center md:text-left">
-            <h3 className="text-[25px] font-display tracking-[0.2em] uppercase mb-4">
-              Athena
-            </h3>
-            <p className="text-white/80 text-xs leading-relaxed max-w-sm font-light mx-auto md:mx-0">
-              {t.footer.tagline}
-            </p>
-          </div>
-
-          {/* Navigation - Collapsible on mobile */}
-          <div className="md:col-span-2">
-            <FooterAccordion title={t.footer.navigation}>
-              <ul className="space-y-2.5">
-                {[
-                  { href: "/shop", label: t.nav.shop },
-                  { href: "/#about", label: t.nav.about },
-                  { href: "/cart", label: t.cart?.title || "Cart" },
-                  { href: "/#testimonials", label: t.nav.reviews },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-white/80 text-xs font-light hover:text-white transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </FooterAccordion>
-            {/* Desktop - always visible */}
-            <div className="hidden md:block">
-              <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.navigation}</h4>
-              <ul className="space-y-2.5">
-                {[
-                  { href: "/shop", label: t.nav.shop },
-                  { href: "/#about", label: t.nav.about },
-                  { href: "/cart", label: t.cart?.title || "Cart" },
-                  { href: "/#testimonials", label: t.nav.reviews },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-white/80 text-xs font-light hover:text-white transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact - Collapsible on mobile */}
-          <div className="md:col-span-3">
-            <FooterAccordion title={t.footer.contact}>
-              <div className="flex gap-3 justify-center">
-                <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
-                  <MessageCircle className="h-4 w-4" />
-                </a>
-                <a href="mailto:woosisterstrading@gmail.com" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Email">
-                  <Mail className="h-4 w-4" />
-                </a>
-                <Link href="/auth/login" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Account">
-                  <User className="h-4 w-4" />
-                </Link>
-              </div>
-            </FooterAccordion>
-            <div className="hidden md:block">
-              <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.contact}</h4>
-              <div className="flex gap-3">
-                <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
-                  <MessageCircle className="h-4 w-4" />
-                </a>
-                <a href="mailto:woosisterstrading@gmail.com" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Email">
-                  <Mail className="h-4 w-4" />
-                </a>
-                <Link href="/auth/login" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Account">
-                  <User className="h-4 w-4" />
-                </Link>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {/* Contact */}
+          <div className="text-center md:text-left">
+            <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.contact}</h4>
+            <div className="flex gap-3 justify-center md:justify-start">
+              <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
+                <MessageCircle className="h-4 w-4" />
+              </a>
+              <a href="mailto:woosisterstrading@gmail.com" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Email">
+                <Mail className="h-4 w-4" />
+              </a>
+              <Link href="/auth/login" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Account">
+                <User className="h-4 w-4" />
+              </Link>
+              <a href="https://www.instagram.com/bloomie_int/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Instagram">
+                <Instagram className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
           {/* Newsletter Subscribe */}
-          <div className="md:col-span-3 text-center md:text-left">
+          <div className="text-center md:text-left">
             <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">Subscribe to Our Newsletter</h4>
             <form
               onSubmit={(e) => {
                 e.preventDefault()
                 setEmail("")
               }}
-              className="flex"
+              className="flex max-w-sm mx-auto md:mx-0"
             >
               <input
                 type="email"
@@ -129,13 +53,6 @@ export function Footer() {
                 <span className="text-white text-xs">→</span>
               </button>
             </form>
-
-            {/* Social Icons */}
-            <div className="flex gap-4 mt-6 justify-center md:justify-start">
-              <a href="https://www.instagram.com/bloomie_int/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Instagram className="h-4 w-4" />
-              </a>
-            </div>
           </div>
         </div>
 

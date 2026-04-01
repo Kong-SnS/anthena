@@ -174,8 +174,8 @@ export function ProductDetailContent({
                         quantity >= 2 ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
                       }`}
                     >
-                      <Image src="/images/best-seller-logo.svg" alt="Best Seller" width={56} height={56} className="absolute -bottom-3 -right-3 w-12 h-12 drop-shadow-md" />
-                      <span className="block text-xs font-medium">2 Boxes</span>
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">Best Value Trio</span>
+                      <span className="block text-xs font-medium mt-1">2 Boxes</span>
                       <span className="block text-[25px] font-light mt-0.5">RM 209</span>
                       <span className="block text-xs text-gold font-medium">+ 1 Box FREE</span>
                     </button>
