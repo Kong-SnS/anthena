@@ -41,7 +41,7 @@ export default function AdminOrdersPage() {
       const supabase = createClient()
       const { data } = await supabase
         .from("orders")
-        .select("*, customer:customers(name, email)")
+        .select("*, customer:customers(name, email), payment_method")
         .order("created_at", { ascending: false })
       setOrders(data || [])
     }
@@ -111,7 +111,7 @@ export default function AdminOrdersPage() {
                       <p className="text-xs text-muted-foreground">{order.customer?.email}</p>
                     </div>
                   </TableCell>
-                  <TableCell>RM {Number(order.total).toFixed(2)}</TableCell>
+                  <TableCell>{(order as any).payment_method === "stripe" ? "S$" : "RM"} {Number(order.total).toFixed(2)}</TableCell>
                   <TableCell>
                     <Badge className={statusColors[order.status] || ""}>{order.status}</Badge>
                   </TableCell>

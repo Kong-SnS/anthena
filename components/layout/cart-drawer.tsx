@@ -26,7 +26,8 @@ export function CartDrawer() {
   }, 0)
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
-  const freeShipping = subtotal >= 150
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0)
+  const freeShipping = totalQuantity >= 2
 
   return (
     <Sheet open={open} onOpenChange={(val) => !val && close()}>
@@ -137,12 +138,12 @@ export function CartDrawer() {
             <SheetFooter className="border-t border-gold/10 pt-4 gap-3">
               {!freeShipping && (
                 <p className="text-xs text-center text-muted-foreground">
-                  Add RM {(150 - subtotal).toFixed(2)} more for free shipping
+                  Buy 2 boxes for free shipping (Peninsular)
                 </p>
               )}
               {freeShipping && (
                 <p className="text-xs text-center text-gold font-medium">
-                  You qualify for free shipping!
+                  Free shipping for Peninsular Malaysia!
                 </p>
               )}
 

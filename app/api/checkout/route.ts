@@ -3,6 +3,7 @@ import { createAdminClient } from "@/lib/supabase/admin"
 import { createBill } from "@/lib/billplz"
 import { calculatePrice } from "@/lib/pricing"
 import { rateLimit, getIP } from "@/lib/rate-limit"
+import { getRegion, calculateShipping } from "@/lib/shipping"
 
 function parseCookies(cookieHeader: string) {
   return cookieHeader.split(";").map((c) => {
@@ -84,8 +85,11 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Free shipping for orders RM150+
-    const validShippingCost = subtotal >= 150 ? 0 : Math.max(0, Number(shipping_cost) || 8)
+    // Calculate shipping based on region and quantity
+    const totalQuantity = validatedItems.reduce((sum, i) => sum + i.quantity, 0)
+    const region = getRegion(customer.state || "")
+    const shipping = calculateShipping(region, totalQuantity)
+    const validShippingCost = shipping.cost
     const total = subtotal + validShippingCost
 
     // --- Try to get logged-in user ID ---

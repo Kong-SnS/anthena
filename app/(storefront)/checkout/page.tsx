@@ -17,6 +17,7 @@ import { ArrowLeft, Loader2, Lock } from "lucide-react"
 import { useCart } from "@/hooks/use-cart"
 import { createClient } from "@/lib/supabase/client"
 import { calculatePrice } from "@/lib/pricing"
+import { getRegion, calculateShipping } from "@/lib/shipping"
 import { toast } from "sonner"
 
 const MY_STATES = [
@@ -96,7 +97,10 @@ export default function CheckoutPage() {
   }, [])
 
   const subtotal = items.reduce((sum, item) => sum + calculatePrice(item.quantity).total, 0)
-  const shippingCost = subtotal >= 150 ? 0 : 8.0
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0)
+  const region = getRegion(form.state || "")
+  const shipping = calculateShipping(region, totalQuantity)
+  const shippingCost = shipping.cost
   const total = subtotal + shippingCost
 
   const updateField = (field: string, value: string) => {

@@ -103,7 +103,7 @@ export default function AdminDashboard() {
                     <div>
                       <span className="font-medium">#{order.order_number}</span>
                       <span className="text-muted-foreground ml-2">
-                        RM {Number(order.total).toFixed(2)}
+                        {(order as any).payment_method === "stripe" ? "S$" : "RM"} {Number(order.total).toFixed(2)}
                       </span>
                     </div>
                     <Badge className={statusColors[order.status] || ""}>{order.status}</Badge>

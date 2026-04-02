@@ -170,7 +170,7 @@ export default function AdminInvoicesPage() {
                   </TableCell>
                   <TableCell>#{inv.order?.order_number}</TableCell>
                   <TableCell>{inv.order?.customer?.name || "N/A"}</TableCell>
-                  <TableCell>RM {Number(inv.order?.total || 0).toFixed(2)}</TableCell>
+                  <TableCell>{(inv.order as any)?.payment_method === "stripe" ? "S$" : "RM"} {Number(inv.order?.total || 0).toFixed(2)}</TableCell>
                   <TableCell className="text-sm text-muted-foreground">
                     {new Date(inv.issued_at).toLocaleDateString("en-MY")}
                   </TableCell>

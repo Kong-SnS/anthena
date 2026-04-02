@@ -171,7 +171,7 @@ export default function AdminCustomerDetailPage({ params }: { params: Promise<{ 
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-medium">RM {Number(order.total).toFixed(2)}</span>
+                      <span className="text-sm font-medium">{(order as any).payment_method === "stripe" ? "S$" : "RM"} {Number(order.total).toFixed(2)}</span>
                       <Badge className={statusColors[order.status] || ""}>{order.status}</Badge>
                     </div>
                   </Link>

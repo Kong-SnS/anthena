@@ -142,6 +142,9 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
     return <p className="text-muted-foreground">Order not found</p>
   }
 
+  const isSG = (order as any).payment_method === "stripe"
+  const currency = isSG ? "S$" : "RM"
+
   return (
     <div className="max-w-3xl">
       <Link
@@ -250,7 +253,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
                   <span>
                     {item.product_name} <span className="text-muted-foreground">x{item.quantity}</span>
                   </span>
-                  <span className="font-medium">RM {(item.unit_price * item.quantity).toFixed(2)}</span>
+                  <span className="font-medium">{currency} {(item.unit_price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
@@ -258,16 +261,16 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span>RM {Number(order.subtotal).toFixed(2)}</span>
+                <span>{currency} {Number(order.subtotal).toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Shipping</span>
-                <span>RM {Number(order.shipping_cost).toFixed(2)}</span>
+                <span>{currency} {Number(order.shipping_cost).toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-base">
                 <span>Total</span>
-                <span>RM {Number(order.total).toFixed(2)}</span>
+                <span>{currency} {Number(order.total).toFixed(2)}</span>
               </div>
             </div>
           </CardContent>
