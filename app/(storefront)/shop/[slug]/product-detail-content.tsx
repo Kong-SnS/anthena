@@ -164,7 +164,7 @@ export function ProductDetailContent({
                         quantity === 1 ? "border-gold bg-gold/5" : "border-gold/15 hover:border-gold/25"
                       }`}
                     >
-                      <span className="block text-xs font-medium">1 Box</span>
+                      <span className="block text-xs font-medium">1 Box (Trial)</span>
                       <span className="block text-[25px] font-light mt-0.5">RM 138</span>
                       <span className="block text-xs text-muted-foreground">15 sachets</span>
                     </button>
@@ -174,10 +174,10 @@ export function ProductDetailContent({
                         quantity >= 2 ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
                       }`}
                     >
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">Best Value Trio</span>
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
                       <span className="block text-xs font-medium mt-1">2 Boxes</span>
-                      <span className="block text-[25px] font-light mt-0.5">RM 209</span>
-                      <span className="block text-xs text-gold font-medium">+ 1 Box FREE</span>
+                      <span className="block text-[25px] font-light mt-0.5">RM 229</span>
+                      <span className="block text-xs text-gold font-medium">30 Sachets</span>
                     </button>
                   </div>
                 </>

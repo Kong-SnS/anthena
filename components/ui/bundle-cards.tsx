@@ -13,7 +13,7 @@ export function BundleCards() {
           <div className="flex items-center gap-6">
             <div className="w-24 h-32 relative shrink-0">
               <Image
-                src="/images/products/bloomie-main.png"
+                src="/images/products/bloomie-product-new.png"
                 alt="Bloomie 1 Box"
                 fill
                 className="object-contain transition-transform duration-500 group-hover:scale-110"
@@ -44,7 +44,7 @@ export function BundleCards() {
           <div className="flex items-center gap-6">
             <div className="w-24 h-32 relative shrink-0">
               <Image
-                src="/images/products/bloomie-main.png"
+                src="/images/products/bloomie-product-new.png"
                 alt="Bloomie 2 Boxes"
                 fill
                 className="object-contain transition-transform duration-500 group-hover:scale-110"

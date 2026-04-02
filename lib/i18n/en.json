@@ -17,13 +17,13 @@
     "learnBtn": "Learn More"
   },
   "marquee": {
-    "items": ["French Patented Formula", "Clinically Proven", "12 Premium Botanicals", "Science-Backed Ingredients", "Free Shipping RM150+", "Buy 2 Free 1", "Women's Hormonal Health", "Made with Love"]
+    "items": ["Exclusive Patented Formula", "Clinically Proven", "12 Premium Botanicals", "Science-Backed Ingredients", "Free Shipping Min. Purchase 2 Box", "Women's Hormonal Health", "Made with Love"]
   },
   "product": {
     "introducing": "Affordable Premium Wellness",
-    "subtitle": "Botanical Beverage Mix Pomegranate",
-    "description": "A delicious pomegranate-flavored wellness drink infused with 12 premium botanicals from France, USA, Spain, and Asia. French patented formula, clinically proven, with science-backed ingredients.",
-    "promo": "Buy 2 Free 1 · Free Shipping RM150+",
+    "subtitle": "Intimate Hydration \u00b7 Menstrual Comfort \u00b7 Uterine Health",
+    "description": "A delicious pomegranate-flavored wellness drink infused with 12 premium botanicals from France, USA, Spain, and Asia. Exclusive patented formula with clinically proven results.",
+    "promo": "Free Shipping Min. Purchase 2 Box",
     "box1": "1 Box",
     "box2": "2 Boxes",
     "sachets": "15 sachets",
@@ -47,20 +47,28 @@
     "backToShop": "Back to Shop"
   },
   "benefits": {
-    "label": "Why Bloomie",
+    "label": "Functions of Bloomie",
     "title": "Feel the Difference",
     "menstrualRelief": "Menstrual Relief",
-    "menstrualReliefDesc": "Relieves cramps & regulates cycle",
+    "menstrualReliefDesc": "Relieves & regulates menstrual cramps",
     "hormonalBalance": "Hormonal Balance",
     "hormonalBalanceDesc": "Improves PCOS & irregular periods",
-    "betterSleep": "Better Sleep",
-    "betterSleepDesc": "Stabilizes mood & reduces stress",
+    "coldHands": "Body Warmth",
+    "coldHandsDesc": "Improves cold hands & feet, brings warmth back",
+    "vaginalDryness": "Intimate Hydration",
+    "vaginalDrynessDesc": "Improves vaginal dryness",
     "energyBoost": "Energy Boost",
-    "energyBoostDesc": "Reduces fatigue during menstruation",
+    "energyBoostDesc": "Reduces fatigue & low energy during menstruation",
     "uterineHealth": "Uterine Health",
-    "uterineHealthDesc": "Supports anti-aging & recovery",
-    "skinClarity": "Skin Clarity",
-    "skinClarityDesc": "Clears hormonal acne for radiant glow"
+    "uterineHealthDesc": "Supports uterine anti-aging & postpartum recovery",
+    "moodSwings": "Mood Stability",
+    "moodSwingsDesc": "Stabilizes mood swings & relieves stress",
+    "hormonalAcne": "Skin Clarity",
+    "hormonalAcneDesc": "Reduces hormonal acne",
+    "migraines": "Migraine Relief",
+    "migrainesDesc": "Helps with menstrual-related migraines",
+    "bodyOdor": "Body Freshness",
+    "bodyOdorDesc": "Reduces body odor due to hormonal imbalance"
   },
   "stats": {
     "happyCustomers": "Happy Customers",

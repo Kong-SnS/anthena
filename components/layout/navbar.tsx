@@ -123,13 +123,14 @@ export function Navbar() {
 
         {/* Logo - center on mobile, left on desktop */}
         <Link href="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 z-10">
-          <span
-            className={`text-[25px] font-display tracking-[0.2em] uppercase transition-all duration-500 ${
-              useDarkText ? "logo-gold-3d" : "text-white drop-shadow-lg"
-            }`}
-          >
-            Athena
-          </span>
+          <Image
+            src="/images/athena-logo.png"
+            alt="Athena"
+            width={140}
+            height={40}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

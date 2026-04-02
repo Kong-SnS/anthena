@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
     await supabase.from("order_items").insert({
       order_id: order.id,
       product_id: null,
-      product_name: `Bloomie (${pricing.label})`,
+      product_name: `OseoVital (${pricing.label})`,
       quantity: pricing.totalBoxes,
       unit_price: subtotalCents / 100 / pricing.totalBoxes,
     })
@@ -123,8 +123,8 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: "sgd",
             product_data: {
-              name: `Bloomie - ${pricing.shortLabel}`,
-              description: `${pricing.totalBoxes} boxes of Bloomie Botanical Beverage (${pricing.label})`,
+              name: `OseoVital - ${pricing.shortLabel}`,
+              description: `${pricing.totalBoxes} boxes of OseoVital Botanical Beverage (${pricing.label})`,
             },
             unit_amount: subtotalCents,
           },
@@ -145,8 +145,8 @@ export async function POST(request: NextRequest) {
         order_id: order.id,
         order_number: orderNumber,
       },
-      success_url: `${baseUrl}/sg/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/sg/cancel`,
+      success_url: `${baseUrl}/oseovital/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/oseovital/cancel`,
     })
 
     // Save stripe session ID

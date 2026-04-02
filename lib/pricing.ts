@@ -1,10 +1,10 @@
 // Bloomie pricing tiers
 // 1 box = RM138 (you get 1 box)
-// 2 boxes = RM209 + 1 FREE box (you get 3 boxes, pay for 2)
-// 4 boxes = RM209 x2 + 2 FREE boxes (you get 6, pay for 4)
+// 2 boxes = RM229 + 1 FREE box (you get 3 boxes, pay for 2)
+// 4 boxes = RM229 x2 + 2 FREE boxes (you get 6, pay for 4)
 
 const PRICE_1 = 138
-const PRICE_2 = 209 // buy 2 get 1 free
+const PRICE_2 = 229 // buy 2 get 1 free
 
 export function calculatePrice(quantity: number): {
   total: number
@@ -27,7 +27,7 @@ export function calculatePrice(quantity: number): {
     }
   }
 
-  // Every 2 boxes = RM209 + 1 free box
+  // Every 2 boxes = RM229 + 1 free box
   const pairs = Math.floor(quantity / 2)
   const remainder = quantity % 2
 

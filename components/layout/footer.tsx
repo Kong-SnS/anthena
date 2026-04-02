@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
 import { Instagram, MessageCircle, Mail, User } from "lucide-react"
 
@@ -56,8 +57,13 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Logo */}
+        <div className="mt-8 flex justify-center">
+          <Image src="/images/athena-logo.png" alt="Athena" width={160} height={46} className="h-12 w-auto object-contain brightness-0 invert opacity-70" />
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col items-center sm:flex-row sm:justify-between gap-3 text-center sm:text-left">
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-center sm:flex-row sm:justify-between gap-3 text-center sm:text-left">
           <p className="text-white/60 text-xs font-light tracking-wider">
             &copy; {new Date().getFullYear()} {t.footer.copyright}
           </p>

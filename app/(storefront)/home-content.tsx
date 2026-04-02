@@ -32,11 +32,14 @@ import {
   Shield,
   Zap,
   Droplets,
+  Sun,
+  Brain,
+  Wind,
 } from "lucide-react"
 import type { Product } from "@/types"
 
-const benefitIcons = [Heart, Sparkles, Moon, Zap, Shield, Droplets]
-const benefitKeys = ["menstrualRelief", "hormonalBalance", "betterSleep", "energyBoost", "uterineHealth", "skinClarity"] as const
+const benefitIcons = [Heart, Sparkles, Sun, Droplets, Zap, Shield, Moon, Flower2, Brain, Wind]
+const benefitKeys = ["menstrualRelief", "hormonalBalance", "coldHands", "vaginalDryness", "energyBoost", "uterineHealth", "moodSwings", "hormonalAcne", "migraines", "bodyOdor"] as const
 const ingredientKeys = ["ginfortGinger", "frenchAstaxanthin", "gojiBerry", "usaAshwagandha", "dongQuai", "usaChamomile", "chasteberry", "magnesiumOxide", "cinnamon", "vitaminBComplex", "spanishFerrousFumarate", "pomegranate"] as const
 
 function useInView(threshold = 0.15) {
@@ -110,7 +113,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             loop
             playsInline
             className="h-[120%] w-full object-cover"
-            poster="/images/hero-poster.jpg"
+            poster="/images/products/bloomie-product-new.png"
           >
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
@@ -173,7 +176,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               <ImageReveal direction="left">
                 <div className="aspect-square bg-gradient-to-br from-[#faf8f5] to-[#faf8f5] rounded-sm overflow-hidden relative glow-gold group">
                   <Image
-                    src="/images/products/bloomie-main.png"
+                    src="/images/products/bloomie-product-new.png"
                     alt="Bloomie Botanical Beverage"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -210,15 +213,15 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 {/* Pricing Tiers */}
                 <div className="flex gap-4 mb-8">
                   <div className="border border-gold/15 px-5 py-3 text-center">
-                    <p className="text-xs text-muted-foreground font-light">1 Box</p>
+                    <p className="text-xs text-muted-foreground font-light">1 Box (Trial)</p>
                     <p className="text-[25px] font-light mt-1">RM 138</p>
                     <p className="text-xs text-muted-foreground">15 sachets</p>
                   </div>
                   <div className="border-2 border-gold px-5 py-3 text-center relative">
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">Best Value Trio</span>
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
                     <p className="text-xs text-muted-foreground font-light mt-1">2 Boxes</p>
-                    <p className="text-[25px] font-light mt-1">RM 209</p>
-                    <p className="text-xs text-muted-foreground">+ 1 Box FREE</p>
+                    <p className="text-[25px] font-light mt-1">RM 229</p>
+                    <p className="text-xs text-muted-foreground">30 Sachets</p>
                   </div>
                 </div>
 
@@ -253,7 +256,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             </div>
           </AnimatedSection>
 
-          <StaggerChildren className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10" staggerDelay={0.12}>
+          <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6" staggerDelay={0.08}>
               {benefitKeys.map((key, i) => {
                 const Icon = benefitIcons[i]
                 return (
@@ -334,8 +337,8 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               {/* Image - Right */}
               <div className="aspect-[4/3] relative overflow-hidden rounded-sm">
                 <Image
-                  src="/images/products/bloomie-lifestyle-drink.webp"
-                  alt="Bloomie pomegranate drink on marble table"
+                  src="/images/products/bloomie-product-new.png"
+                  alt="Bloomie product"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -353,11 +356,9 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
       <section className="bg-[#faf8f5]">
         <HorizontalScrollGallery
           images={[
-            { src: "/images/products/bloomie-main.png", alt: "Bloomie product" },
-            { src: "/images/products/bloomie-lifestyle-drink.webp", alt: "Bloomie drink" },
-            { src: "/images/products/bloomie-flatlay.webp", alt: "Bloomie ingredients" },
-            { src: "/images/products/bloomie-drink-pour.webp", alt: "Bloomie pour" },
-            { src: "/images/products/bloomie-lifestyle-box.webp", alt: "Bloomie box" },
+            { src: "/images/products/bloomie-product-new.png", alt: "Bloomie product" },
+            { src: "/images/products/bloomie-functions.png", alt: "Bloomie functions" },
+            { src: "/images/products/bloomie-ingredients.png", alt: "Bloomie ingredients" },
           ]}
         />
       </section>

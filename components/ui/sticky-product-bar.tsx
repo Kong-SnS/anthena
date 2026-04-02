@@ -36,7 +36,7 @@ export function StickyProductBar() {
             <div className="container mx-auto px-6 lg:px-8 flex items-center justify-between h-12">
               <div className="flex items-center gap-4">
                 <span className="font-display text-xs tracking-wide">Bloomie</span>
-                <span className="text-xs text-muted-foreground">Botanical Beverage Mix</span>
+                <span className="text-xs text-muted-foreground">Intimate Hydration · Menstrual Comfort · Uterine Health</span>
                 <span className="text-xs font-medium">RM 138</span>
                 <span className="text-xs btn-rose-gold px-2 py-0.5 tracking-wider uppercase">Buy 2 Free 1</span>
               </div>
