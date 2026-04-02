@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { stripe } from "@/lib/stripe"
+import { getStripe } from "@/lib/stripe"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { calculatePriceSGD } from "@/lib/pricing-sg"
 import { SG_SHIPPING_SGD } from "@/lib/shipping"
@@ -113,6 +113,7 @@ export async function POST(request: NextRequest) {
     // Create Stripe Checkout Session
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3002"
 
+    const stripe = getStripe()
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       currency: "sgd",
