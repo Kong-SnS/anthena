@@ -57,10 +57,18 @@ export default async function ProductDetailPage({
     .neq("id", product.id)
     .limit(4)
 
+  // Fetch the 2-box bundle product (hidden from shop listing)
+  const { data: bundleProduct } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", "bloomie-2box")
+    .single()
+
   return (
     <ProductDetailContent
       product={product as Product}
       relatedProducts={(relatedProducts || []) as Product[]}
+      bundleProduct={bundleProduct as Product | null}
     />
   )
 }

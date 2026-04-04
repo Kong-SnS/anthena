@@ -1,33 +1,15 @@
 "use client"
 
-import { useEffect } from "react"
+import Image from "next/image"
+import { Instagram } from "lucide-react"
 
-// Update these post IDs with your latest Instagram posts
 const INSTAGRAM_POSTS = [
-  "DGvAJzQzSHl",
-  "DGqx3LATkrM",
-  "DGjXoqpTUhZ",
-  "DGeFIR8z7ak",
+  { url: "https://www.instagram.com/bloomie_int/p/DWgkL8DEtBa/", image: "/images/instagram/ig-1.png" },
+  { url: "https://www.instagram.com/bloomie_int/p/DWTlajNklTX/", image: "/images/instagram/ig-2.png" },
+  { url: "https://www.instagram.com/bloomie_int/p/DWCyojrkmFS/", image: "/images/instagram/ig-3.png" },
 ]
 
 export function InstagramFeed() {
-  useEffect(() => {
-    // Load Instagram embed script
-    const script = document.createElement("script")
-    script.src = "https://www.instagram.com/embed.js"
-    script.async = true
-    document.body.appendChild(script)
-
-    // Re-process embeds when script loads
-    script.onload = () => {
-      (window as any).instgrm?.Embeds?.process()
-    }
-
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [])
-
   return (
     <section className="py-24 lg:py-32 bg-[#faf8f5]">
       <div className="container mx-auto px-6 lg:px-8">
@@ -38,35 +20,40 @@ export function InstagramFeed() {
           <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
             Follow Us on Instagram
           </h2>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4">
+          {INSTAGRAM_POSTS.map((post) => (
+            <a
+              key={post.url}
+              href={post.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative aspect-square overflow-hidden"
+            >
+              <Image
+                src={post.image}
+                alt="Instagram post"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 33vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center">
+                <Instagram className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
           <a
             href="https://www.instagram.com/bloomie_int/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 btn-rose-gold px-6 py-2 text-xs font-medium tracking-[0.15em] uppercase"
+            className="inline-block btn-rose-gold px-6 py-2 text-xs font-medium tracking-[0.15em] uppercase"
           >
             Follow @bloomie_int
           </a>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {INSTAGRAM_POSTS.map((postId) => (
-            <div key={postId} className="overflow-hidden rounded-sm">
-              <blockquote
-                className="instagram-media"
-                data-instgrm-captioned={false}
-                data-instgrm-permalink={`https://www.instagram.com/p/${postId}/`}
-                data-instgrm-version="14"
-                style={{
-                  background: "#FFF",
-                  border: 0,
-                  margin: 0,
-                  padding: 0,
-                  width: "100%",
-                  maxWidth: "100%",
-                }}
-              />
-            </div>
-          ))}
         </div>
       </div>
     </section>

@@ -53,14 +53,14 @@ export function Navbar() {
   return (
     <header
       className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-        !navbarVisible ? "-top-24" : announcementVisible ? "top-9" : "top-0"
+        !navbarVisible ? "-top-28" : announcementVisible ? "top-9" : "top-0"
       } ${
         useDarkText
           ? "glass-nav shadow-sm"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
+      <div className="container mx-auto flex h-24 items-center justify-between px-6 lg:px-8">
         {/* Mobile: Menu button (left) */}
         <div className="md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
@@ -126,9 +126,9 @@ export function Navbar() {
           <Image
             src="/images/athena-logo.png"
             alt="Athena"
-            width={140}
-            height={40}
-            className="h-10 w-auto object-contain"
+            width={280}
+            height={280}
+            className="h-28 w-auto object-contain"
             priority
           />
         </Link>

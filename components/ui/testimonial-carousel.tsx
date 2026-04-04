@@ -29,7 +29,7 @@ export function TestimonialCarousel({ testimonials }: { testimonials: Testimonia
                   <Star key={j} className="h-3.5 w-3.5 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-foreground/70 text-xs font-light leading-relaxed mb-8 italic">
+              <p className="text-foreground/70 text-base font-light leading-relaxed mb-8 italic">
                 &ldquo;{review.text}&rdquo;
               </p>
               <div className="border-t border-gold/10 pt-6 flex items-center gap-3">

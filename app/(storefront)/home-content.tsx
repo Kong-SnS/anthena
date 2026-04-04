@@ -8,6 +8,7 @@ import { ImageReveal } from "@/components/ui/image-reveal"
 import { TestimonialCarousel } from "@/components/ui/testimonial-carousel"
 import { OrnamentDivider } from "@/components/ui/ornament-divider"
 import { CountdownTimer } from "@/components/ui/countdown-timer"
+import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { TypingEffect } from "@/components/ui/typing-effect"
 import { HorizontalScrollGallery } from "@/components/ui/horizontal-scroll-gallery"
 import { PopIn } from "@/components/ui/pop-in"
@@ -38,8 +39,8 @@ import {
 } from "lucide-react"
 import type { Product } from "@/types"
 
-const benefitIcons = [Heart, Sparkles, Sun, Droplets, Zap, Shield, Moon, Flower2, Brain, Wind]
-const benefitKeys = ["menstrualRelief", "hormonalBalance", "coldHands", "vaginalDryness", "energyBoost", "uterineHealth", "moodSwings", "hormonalAcne", "migraines", "bodyOdor"] as const
+const benefitIcons = [Heart, Brain, Sun, Droplets, Zap, Sparkles, Moon, Shield, Flower2, Wind, Wind]
+const benefitKeys = ["menstrualRelief", "migraines", "coldHands", "vaginalDryness", "energyBoost", "hormonalBalance", "moodSwings", "uterineHealth", "stressSleep", "hormonalAcne", "bodyOdor"] as const
 const ingredientKeys = ["ginfortGinger", "frenchAstaxanthin", "gojiBerry", "usaAshwagandha", "dongQuai", "usaChamomile", "chasteberry", "magnesiumOxide", "cinnamon", "vitaminBComplex", "spanishFerrousFumarate", "pomegranate"] as const
 
 function useInView(threshold = 0.15) {
@@ -91,11 +92,13 @@ function useParallax(offset: number = -50) {
 }
 
 // Countdown: 30 days from now (adjust as needed)
-const promoEndDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+const promoEndDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
 
-export function HomeContent({ featuredProducts }: { featuredProducts: Product[] }) {
+export function HomeContent({ featuredProducts, bundleProduct = null }: { featuredProducts: Product[]; bundleProduct?: Product | null }) {
   const product = featuredProducts[0]
   const { t } = useTranslation()
+  const addItem = useCart((s) => s.addItem)
+  const openCartDrawer = useCartDrawer((s) => s.show)
 
   return (
     <div className="bg-background">
@@ -130,7 +133,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             <br />
             <span className="font-display italic shimmer-gold">{t.hero.title2}</span>
           </h1>
-          <p className="animate-fade-in-up animation-delay-400 mt-6 text-xs md:text-[25px] text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
+          <p className="animate-fade-in-up animation-delay-400 mt-6 text-base md:text-[25px] text-white/70 font-light max-w-lg leading-relaxed drop-shadow-sm">
             <TypingEffect text={t.hero.subtitle} delay={1500} speed={25} />
           </p>
           <div className="animate-fade-in-up animation-delay-600 flex gap-4 mt-10">
@@ -196,7 +199,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                 <p className="text-[25px] text-muted-foreground font-light mb-2">
                   {t.product.subtitle}
                 </p>
-                <p className="text-muted-foreground font-light leading-relaxed mb-6 text-xs">
+                <p className="text-muted-foreground font-light leading-relaxed mb-6 text-base">
                   {t.product.description}
                 </p>
 
@@ -212,27 +215,27 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
 
                 {/* Pricing Tiers */}
                 <div className="flex gap-4 mb-8">
-                  <div className="border border-gold/15 px-5 py-3 text-center">
-                    <p className="text-xs text-muted-foreground font-light">1 Box (Trial)</p>
+                  <button
+                    className="border border-gold/15 px-5 py-3 text-center hover:border-gold/30 transition-all"
+                    onClick={() => {
+                      if (product) { addItem(product, 1); openCartDrawer() }
+                    }}
+                  >
+                    <p className="text-xs text-muted-foreground font-light">1 Box</p>
                     <p className="text-[25px] font-light mt-1">RM 138</p>
-                    <p className="text-xs text-muted-foreground">15 sachets</p>
-                  </div>
-                  <div className="border-2 border-gold px-5 py-3 text-center relative">
+                  </button>
+                  <button
+                    className="border-2 border-gold px-5 py-3 text-center relative hover:bg-gold/5 transition-all"
+                    onClick={() => {
+                      if (bundleProduct) { addItem(bundleProduct, 1); openCartDrawer() }
+                    }}
+                  >
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
                     <p className="text-xs text-muted-foreground font-light mt-1">2 Boxes</p>
                     <p className="text-[25px] font-light mt-1">RM 229</p>
                     <p className="text-xs text-muted-foreground">30 Sachets</p>
-                  </div>
+                  </button>
                 </div>
-
-                <Button
-                  size="lg"
-                  className="btn-rose-gold rounded-none px-10 h-12 text-xs font-medium tracking-[0.15em] uppercase"
-                  render={<Link href="/shop/bloomie" />}
-                >
-                  {t.product.orderNow}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
               </div>
             </div>
           </AnimatedSection>
@@ -256,7 +259,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
             </div>
           </AnimatedSection>
 
-          <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6" staggerDelay={0.08}>
+          <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6" staggerDelay={0.08}>
               {benefitKeys.map((key, i) => {
                 const Icon = benefitIcons[i]
                 return (
@@ -268,7 +271,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                       <h3 className="font-medium text-xs tracking-wide mb-1.5">
                         {t.benefits[key]}
                       </h3>
-                      <p className="text-xs text-muted-foreground font-light">
+                      <p className="text-base text-muted-foreground font-light leading-relaxed">
                         {t.benefits[`${key}Desc` as keyof typeof t.benefits]}
                       </p>
                     </div>
@@ -321,7 +324,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
                   <br />
                   <span className="italic font-light text-gold">{t.lifestyle.title2}</span>
                 </h2>
-                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-xs">
+                <p className="text-muted-foreground font-light leading-relaxed mb-8 text-base">
                   {t.lifestyle.description}
                 </p>
                 <Button
@@ -421,7 +424,7 @@ export function HomeContent({ featuredProducts }: { featuredProducts: Product[] 
               {t.cta.btn}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <p className="text-xs text-muted-foreground mt-4 font-light">
+            <p className="text-base text-muted-foreground mt-4 font-light">
               {t.cta.price}
             </p>
           </AnimatedSection>

@@ -16,7 +16,6 @@ import {
 import { ArrowLeft, Loader2, Lock } from "lucide-react"
 import { useCart } from "@/hooks/use-cart"
 import { createClient } from "@/lib/supabase/client"
-import { calculatePrice } from "@/lib/pricing"
 import { getRegion, calculateShipping } from "@/lib/shipping"
 import { toast } from "sonner"
 
@@ -96,7 +95,7 @@ export default function CheckoutPage() {
     loadUserInfo()
   }, [])
 
-  const subtotal = items.reduce((sum, item) => sum + calculatePrice(item.quantity).total, 0)
+  const subtotal = items.reduce((sum, item) => sum + Number(item.product.price) * item.quantity, 0)
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0)
   const region = getRegion(form.state || "")
   const shipping = calculateShipping(region, totalQuantity)
@@ -165,7 +164,7 @@ export default function CheckoutPage() {
           <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">
             Nothing to checkout
           </h1>
-          <p className="text-muted-foreground font-light text-xs mb-8">
+          <p className="text-muted-foreground font-light text-base mb-8">
             Add some products to your cart first.
           </p>
           <Button
@@ -336,7 +335,7 @@ export default function CheckoutPage() {
                         {item.product.name}
                       </span>
                       <span className="font-medium whitespace-nowrap">
-                        RM {calculatePrice(item.quantity).total.toFixed(2)}
+                        RM {(Number(item.product.price) * item.quantity).toFixed(2)}
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground">Qty: {item.quantity}</span>
@@ -385,7 +384,7 @@ export default function CheckoutPage() {
                 )}
               </button>
 
-              <p className="text-xs text-center text-muted-foreground mt-4 font-light">
+              <p className="text-base text-center text-muted-foreground mt-4 font-light">
                 Secure payment powered by Billplz
               </p>
             </div>

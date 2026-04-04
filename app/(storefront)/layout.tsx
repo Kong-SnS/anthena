@@ -8,7 +8,6 @@ import { SmoothScroll } from "@/components/ui/smooth-scroll"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { BackToTop } from "@/components/ui/back-to-top"
 import { SocialProof } from "@/components/ui/social-proof"
-import { StickyProductBar } from "@/components/ui/sticky-product-bar"
 import { EmailPopup } from "@/components/ui/email-popup"
 import { CartDrawer } from "@/components/layout/cart-drawer"
 import { I18nProvider } from "@/lib/i18n"
@@ -26,7 +25,6 @@ export default function StorefrontLayout({
       <FloatingPetals />
       <AnnouncementBar />
       <Navbar />
-      <StickyProductBar />
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />

@@ -50,7 +50,7 @@ export function SocialProof() {
             <p className="text-xs font-medium">
               {current.name} from {current.city}
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               purchased Bloomie · {current.time}
             </p>
           </div>

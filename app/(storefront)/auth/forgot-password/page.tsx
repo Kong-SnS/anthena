@@ -38,7 +38,7 @@ export default function ForgotPasswordPage() {
           {sent ? (
             <div className="text-center">
               <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">Check Your Email</h1>
-              <p className="text-xs text-muted-foreground font-light mb-8">
+              <p className="text-base text-muted-foreground font-light mb-8">
                 We sent a password reset link to <strong>{email}</strong>. Click the link to set a new password.
               </p>
               <Link href="/auth/login" className="text-xs font-medium hover:underline">
@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
             <>
               <div className="text-center mb-10">
                 <h1 className="text-[25px] font-display font-normal tracking-tight">Forgot Password</h1>
-                <p className="text-xs text-muted-foreground font-light mt-2">
+                <p className="text-base text-muted-foreground font-light mt-2">
                   Enter your email and we&apos;ll send you a reset link
                 </p>
               </div>
@@ -74,7 +74,7 @@ export default function ForgotPasswordPage() {
                 </button>
               </form>
 
-              <p className="text-xs text-center text-muted-foreground mt-8 font-light">
+              <p className="text-base text-center text-muted-foreground mt-8 font-light">
                 <Link href="/auth/login" className="inline-flex items-center gap-1 text-foreground font-medium hover:underline">
                   <ArrowLeft className="h-3.5 w-3.5" /> Back to Sign In
                 </Link>

@@ -92,7 +92,7 @@ export default function AccountPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-[25px] font-display font-normal tracking-tight">My Account</h1>
-          <p className="text-muted-foreground font-light text-xs mt-1">{user?.email}</p>
+          <p className="text-muted-foreground font-light text-base mt-1">{user?.email}</p>
         </div>
         <Button variant="outline" onClick={handleLogout}>
           <LogOut className="h-4 w-4 mr-2" /> Logout

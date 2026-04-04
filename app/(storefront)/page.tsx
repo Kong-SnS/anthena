@@ -11,5 +11,11 @@ export default async function HomePage() {
     .order("created_at", { ascending: false })
     .limit(4)
 
-  return <HomeContent featuredProducts={(data || []) as Product[]} />
+  const { data: bundleProduct } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", "bloomie-2box")
+    .single()
+
+  return <HomeContent featuredProducts={(data || []) as Product[]} bundleProduct={bundleProduct as Product | null} />
 }

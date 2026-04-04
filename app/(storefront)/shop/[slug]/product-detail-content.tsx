@@ -5,10 +5,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Minus, Plus, ArrowLeft, Truck, Shield, RotateCcw, Gift } from "lucide-react"
+import { Minus, Plus, ArrowLeft, Truck, Shield, RotateCcw } from "lucide-react"
 import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { ProductCard } from "@/components/shop/product-card"
-import { calculatePrice } from "@/lib/pricing"
 import type { Product } from "@/types"
 
 function AccordionItem({ title, children }: { title: string; children: React.ReactNode }) {
@@ -25,7 +24,7 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
       <div
         className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-4" : "max-h-0"}`}
       >
-        <p className="text-xs text-muted-foreground font-light leading-relaxed">{children}</p>
+        <p className="text-base text-muted-foreground font-light leading-relaxed">{children}</p>
       </div>
     </div>
   )
@@ -34,14 +33,20 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
 export function ProductDetailContent({
   product,
   relatedProducts,
+  bundleProduct = null,
 }: {
   product: Product
   relatedProducts: Product[]
+  bundleProduct?: Product | null
 }) {
   const [quantity, setQuantity] = useState(1)
   const [activeImage, setActiveImage] = useState(0)
+  const [selectedTier, setSelectedTier] = useState<"1box" | "2box">("1box")
   const addItem = useCart((s) => s.addItem)
   const openCartDrawer = useCartDrawer((s) => s.show)
+  const activeProduct = selectedTier === "2box" && bundleProduct ? bundleProduct : product
+  const unitPrice = Number(activeProduct.price)
+  const lineTotal = unitPrice * quantity
 
   const hasImages = product.images && product.images.length > 0 && product.images[0]
   const discount = product.compare_price
@@ -120,69 +125,45 @@ export function ProductDetailContent({
             <h1 className="text-[40px] font-display font-normal tracking-tight mb-3">
               {product.name}
             </h1>
-            <p className="text-muted-foreground font-light text-xs mb-6">
+            <p className="text-muted-foreground font-light text-base mb-6">
               {product.short_description}
             </p>
 
-            {/* Pricing Tiers */}
-            {(() => {
-              const pricing = calculatePrice(quantity)
-              return (
-                <>
-                  <div className="mb-4">
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-[25px] font-light">
-                        RM {pricing.total.toFixed(2)}
-                      </span>
-                      {pricing.savings > 0 && (
-                        <span className="text-xs text-muted-foreground line-through">
-                          RM {(quantity * Number(product.price)).toFixed(2)}
-                        </span>
-                      )}
-                    </div>
-                    {pricing.savings > 0 && (
-                      <p className="text-xs font-medium text-green-600 mt-1">
-                        You save RM {pricing.savings.toFixed(2)}
-                      </p>
-                    )}
-                    {pricing.freeBoxes > 0 && (
-                      <div className="flex items-center gap-1.5 mt-1.5">
-                        <Gift className="h-3.5 w-3.5 text-gold" />
-                        <p className="text-xs font-medium text-gold">
-                          {pricing.freeBoxes} FREE box{pricing.freeBoxes > 1 ? "es" : ""} — You get {pricing.totalBoxes} boxes!
-                        </p>
-                      </div>
-                    )}
-                    <p className="text-xs text-muted-foreground mt-1">{pricing.breakdown}</p>
-                  </div>
+            {/* Price Display */}
+            <div className="mb-4">
+              <span className="text-[25px] font-light">
+                RM {lineTotal.toFixed(2)}
+              </span>
+              {quantity > 1 && (
+                <span className="text-xs text-muted-foreground ml-2">
+                  (RM {unitPrice.toFixed(2)} x {quantity})
+                </span>
+              )}
+            </div>
 
-                  {/* Quick tier buttons */}
-                  <div className="flex gap-3 mb-4">
-                    <button
-                      onClick={() => setQuantity(1)}
-                      className={`flex-1 border px-4 py-3 text-center transition-all ${
-                        quantity === 1 ? "border-gold bg-gold/5" : "border-gold/15 hover:border-gold/25"
-                      }`}
-                    >
-                      <span className="block text-xs font-medium">1 Box (Trial)</span>
-                      <span className="block text-[25px] font-light mt-0.5">RM 138</span>
-                      <span className="block text-xs text-muted-foreground">15 sachets</span>
-                    </button>
-                    <button
-                      onClick={() => setQuantity(2)}
-                      className={`flex-1 border-2 px-4 py-3 text-center transition-all relative ${
-                        quantity >= 2 ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
-                      }`}
-                    >
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
-                      <span className="block text-xs font-medium mt-1">2 Boxes</span>
-                      <span className="block text-[25px] font-light mt-0.5">RM 229</span>
-                      <span className="block text-xs text-gold font-medium">30 Sachets</span>
-                    </button>
-                  </div>
-                </>
-              )
-            })()}
+            {/* Tier selector */}
+            <div className="flex gap-3 mb-4">
+              <button
+                onClick={() => { setSelectedTier("1box"); setQuantity(1) }}
+                className={`flex-1 border px-4 py-3 text-center transition-all ${
+                  selectedTier === "1box" ? "border-gold bg-gold/5" : "border-gold/15 hover:border-gold/25"
+                }`}
+              >
+                <span className="block text-xs font-medium">1 Box</span>
+                <span className="block text-[25px] font-light mt-0.5">RM 138</span>
+              </button>
+              <button
+                onClick={() => { setSelectedTier("2box"); setQuantity(1) }}
+                className={`flex-1 border-2 px-4 py-3 text-center transition-all relative ${
+                  selectedTier === "2box" ? "border-gold bg-gold/5" : "border-gold/40 hover:border-gold"
+                }`}
+              >
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
+                <span className="block text-xs font-medium mt-1">2 Boxes</span>
+                <span className="block text-[25px] font-light mt-0.5">RM 229</span>
+                <span className="block text-xs text-gold font-medium">30 Sachets</span>
+              </button>
+            </div>
 
             {/* Stock Status */}
             <div className="mb-4">
@@ -216,7 +197,7 @@ export function ProductDetailContent({
                 <button
                   className="h-12 w-12 flex items-center justify-center hover:bg-gold/5 transition-colors"
                   onClick={() =>
-                    setQuantity(Math.min(product.stock_count, quantity + 1))
+                    setQuantity(Math.min(activeProduct.stock_count, quantity + 1))
                   }
                 >
                   <Plus className="h-3.5 w-3.5" />
@@ -224,9 +205,9 @@ export function ProductDetailContent({
               </div>
               <button
                 className="flex-1 h-12 btn-rose-gold text-xs font-medium tracking-[0.15em] uppercase disabled:opacity-40"
-                disabled={product.stock_count === 0}
+                disabled={activeProduct.stock_count === 0}
                 onClick={() => {
-                  addItem(product, quantity)
+                  addItem(activeProduct, quantity)
                   openCartDrawer()
                   setQuantity(1)
                 }}
@@ -240,14 +221,14 @@ export function ProductDetailContent({
             {/* Features */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
               {[
-                { icon: Truck, label: "Free Shipping", sub: "Orders over RM150" },
+                { icon: Truck, label: "Free Shipping", sub: "Min. Purchase 2 Box" },
                 { icon: Shield, label: "Quality Assured", sub: "GMP Certified" },
                 { icon: RotateCcw, label: "Easy Returns", sub: "30-day policy" },
               ].map((f) => (
                 <div key={f.label} className="text-center">
                   <f.icon className="h-4 w-4 mx-auto mb-2 text-muted-foreground" />
                   <p className="text-xs font-medium tracking-wide">{f.label}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{f.sub}</p>
+                  <p className="text-base text-muted-foreground mt-0.5">{f.sub}</p>
                 </div>
               ))}
             </div>
@@ -306,14 +287,14 @@ export function ProductDetailContent({
       {/* Sticky Add to Cart bar - mobile only */}
       <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-gold/10 px-4 py-3 flex items-center gap-3">
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-display truncate">{product.name}</p>
-          <p className="text-xs font-medium">RM {calculatePrice(quantity).total.toFixed(2)}</p>
+          <p className="text-xs font-display truncate">{activeProduct.name}</p>
+          <p className="text-xs font-medium">RM {lineTotal.toFixed(2)}</p>
         </div>
         <button
           className="btn-rose-gold px-6 py-2.5 text-xs font-medium tracking-[0.15em] uppercase whitespace-nowrap disabled:opacity-40"
-          disabled={product.stock_count === 0}
+          disabled={activeProduct.stock_count === 0}
           onClick={() => {
-            addItem(product, quantity)
+            addItem(activeProduct, quantity)
             openCartDrawer()
           }}
         >

@@ -79,7 +79,7 @@ export function ShopContent({
             <p className="text-muted-foreground font-light text-[25px]">
               No products found
             </p>
-            <p className="text-xs text-muted-foreground mt-2 font-light">
+            <p className="text-base text-muted-foreground mt-2 font-light">
               Try adjusting your search or filter
             </p>
           </div>

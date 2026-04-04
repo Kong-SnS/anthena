@@ -69,7 +69,7 @@ export function EmailPopup() {
                 <h2 className="text-[25px] font-display tracking-wide">
                   Welcome Gift
                 </h2>
-                <p className="text-white/80 text-xs font-light mt-2">
+                <p className="text-white/80 text-base font-light mt-2">
                   Get RM10 off your first Bloomie order
                 </p>
               </div>
@@ -79,13 +79,13 @@ export function EmailPopup() {
                 {submitted ? (
                   <div className="text-center py-4">
                     <p className="text-[25px] font-display text-gold">Thank You!</p>
-                    <p className="text-xs text-muted-foreground font-light mt-2">
+                    <p className="text-base text-muted-foreground font-light mt-2">
                       Check your email for your RM10 discount code.
                     </p>
                   </div>
                 ) : (
                   <>
-                    <p className="text-xs text-muted-foreground font-light text-center mb-6">
+                    <p className="text-base text-muted-foreground font-light text-center mb-6">
                       Join our community and receive exclusive offers, wellness tips, and your first order discount.
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-3">
@@ -104,7 +104,7 @@ export function EmailPopup() {
                         Get RM10 Off
                       </button>
                     </form>
-                    <p className="text-xs text-muted-foreground text-center mt-4 font-light">
+                    <p className="text-base text-muted-foreground text-center mt-4 font-light">
                       No spam, unsubscribe anytime.
                     </p>
                   </>

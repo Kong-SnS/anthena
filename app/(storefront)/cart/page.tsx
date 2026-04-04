@@ -4,9 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, ArrowRight, Gift } from "lucide-react"
+import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, ArrowRight } from "lucide-react"
 import { useCart } from "@/hooks/use-cart"
-import { calculatePrice } from "@/lib/pricing"
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, getTotal, clearCart } = useCart()
@@ -19,7 +18,7 @@ export default function CartPage() {
           <h1 className="text-[25px] font-display font-normal tracking-tight mb-2">
             Your cart is empty
           </h1>
-          <p className="text-muted-foreground font-light text-xs mb-8">
+          <p className="text-muted-foreground font-light text-base mb-8">
             Discover our curated collection of premium supplements.
           </p>
           <Button
@@ -33,14 +32,7 @@ export default function CartPage() {
     )
   }
 
-  // Calculate tiered pricing per product
-  const cartPricing = items.map((item) => ({
-    ...item,
-    pricing: calculatePrice(item.quantity),
-  }))
-  const subtotal = cartPricing.reduce((sum, item) => sum + item.pricing.total, 0)
-  const fullPrice = items.reduce((sum, item) => sum + Number(item.product.price) * item.quantity, 0)
-  const totalSavings = fullPrice - subtotal
+  const subtotal = items.reduce((sum, item) => sum + Number(item.product.price) * item.quantity, 0)
 
   return (
     <div className="pt-20">
@@ -131,16 +123,11 @@ export default function CartPage() {
                         </div>
                         <div className="text-right">
                           <p className="font-medium text-xs">
-                            RM {calculatePrice(item.quantity).total.toFixed(2)}
+                            RM {(Number(item.product.price) * item.quantity).toFixed(2)}
                           </p>
-                          {calculatePrice(item.quantity).savings > 0 && (
-                            <p className="text-xs text-green-600 font-medium">
-                              Save RM {calculatePrice(item.quantity).savings.toFixed(2)}
-                            </p>
-                          )}
-                          {calculatePrice(item.quantity).freeBoxes > 0 && (
-                            <p className="text-xs text-gold font-medium flex items-center gap-1 justify-end">
-                              <Gift className="h-3 w-3" /> {calculatePrice(item.quantity).freeBoxes} FREE
+                          {item.quantity > 1 && (
+                            <p className="text-xs text-muted-foreground">
+                              RM {Number(item.product.price).toFixed(2)} x {item.quantity}
                             </p>
                           )}
                         </div>
@@ -176,22 +163,10 @@ export default function CartPage() {
               </h2>
 
               <div className="space-y-3 mb-6">
-                {totalSavings > 0 && (
-                  <div className="flex justify-between text-xs">
-                    <span className="text-muted-foreground font-light line-through">Original</span>
-                    <span className="text-muted-foreground font-light line-through">RM {fullPrice.toFixed(2)}</span>
-                  </div>
-                )}
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">Subtotal</span>
                   <span className="font-medium">RM {subtotal.toFixed(2)}</span>
                 </div>
-                {totalSavings > 0 && (
-                  <div className="flex justify-between text-xs">
-                    <span className="text-green-600 font-medium">Savings</span>
-                    <span className="text-green-600 font-medium">-RM {totalSavings.toFixed(2)}</span>
-                  </div>
-                )}
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">Shipping</span>
                   <span className="text-muted-foreground text-xs font-light">
@@ -217,7 +192,7 @@ export default function CartPage() {
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <p className="text-xs text-center text-muted-foreground mt-4 font-light">
+              <p className="text-base text-center text-muted-foreground mt-4 font-light">
                 Secure payment via Billplz
               </p>
             </div>

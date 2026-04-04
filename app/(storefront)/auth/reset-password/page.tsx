@@ -48,7 +48,7 @@ export default function ResetPasswordPage() {
         <div className="max-w-sm w-full">
           <div className="text-center mb-10">
             <h1 className="text-[25px] font-display font-normal tracking-tight">Set New Password</h1>
-            <p className="text-xs text-muted-foreground font-light mt-2">Enter your new password below</p>
+            <p className="text-base text-muted-foreground font-light mt-2">Enter your new password below</p>
           </div>
 
           <form onSubmit={handleReset} className="space-y-5">

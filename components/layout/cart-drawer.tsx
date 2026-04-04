@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
 import { useCart, useCartDrawer } from "@/hooks/use-cart"
-import { calculatePrice } from "@/lib/pricing"
 
 export function CartDrawer() {
   const { open, close } = useCartDrawer()
@@ -21,8 +20,7 @@ export function CartDrawer() {
   const updateQuantity = useCart((s) => s.updateQuantity)
 
   const subtotal = items.reduce((sum, item) => {
-    const pricing = calculatePrice(item.quantity)
-    return sum + pricing.total
+    return sum + Number(item.product.price) * item.quantity
   }, 0)
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
@@ -39,23 +37,37 @@ export function CartDrawer() {
         </SheetHeader>
 
         {items.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center px-6">
+          <div className="flex-1 flex flex-col items-center justify-center gap-5 text-center px-6">
             <ShoppingBag className="h-12 w-12 text-gold/30" />
-            <p className="text-xs text-muted-foreground font-light">
-              Your cart is empty
-            </p>
+            <div>
+              <p className="text-xs font-medium mb-1">Your cart is empty</p>
+              <p className="text-base text-muted-foreground font-light">
+                Browse our products and add items to your cart
+              </p>
+            </div>
             <button
               onClick={close}
-              className="btn-rose-gold px-6 py-2.5 text-xs font-medium tracking-[0.15em] uppercase"
+              className="w-full btn-rose-gold py-3 text-xs font-medium tracking-[0.15em] uppercase"
             >
               Continue Shopping
             </button>
+            <div className="border-t border-gold/10 pt-4 w-full">
+              <p className="text-base text-muted-foreground mb-3">
+                Have an account? Log in for faster checkout
+              </p>
+              <Link
+                href="/auth/login"
+                onClick={close}
+                className="block w-full border border-gold/20 py-2.5 text-xs font-medium tracking-[0.15em] uppercase text-center hover:bg-gold/5 transition-colors"
+              >
+                Log In
+              </Link>
+            </div>
           </div>
         ) : (
           <>
             <div className="flex-1 overflow-y-auto px-4 py-2 space-y-4">
               {items.map((item) => {
-                const pricing = calculatePrice(item.quantity)
                 const hasImage = item.product.images?.[0]
 
                 return (
@@ -85,13 +97,11 @@ export function CartDrawer() {
                         {item.product.name}
                       </p>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        RM {pricing.total.toFixed(2)}
+                        RM {(Number(item.product.price) * item.quantity).toFixed(2)}
+                        {item.quantity > 1 && (
+                          <span className="text-muted-foreground/60"> (RM {Number(item.product.price).toFixed(2)} x {item.quantity})</span>
+                        )}
                       </p>
-                      {pricing.freeBoxes > 0 && (
-                        <p className="text-xs text-gold font-medium mt-0.5">
-                          +{pricing.freeBoxes} FREE box
-                        </p>
-                      )}
 
                       {/* Quantity controls */}
                       <div className="flex items-center gap-2 mt-2">
@@ -137,7 +147,7 @@ export function CartDrawer() {
 
             <SheetFooter className="border-t border-gold/10 pt-4 gap-3">
               {!freeShipping && (
-                <p className="text-xs text-center text-muted-foreground">
+                <p className="text-base text-center text-muted-foreground">
                   Buy 2 boxes for free shipping (Peninsular)
                 </p>
               )}

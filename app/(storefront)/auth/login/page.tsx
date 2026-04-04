@@ -50,7 +50,7 @@ export default function LoginPage() {
             <h1 className="text-[25px] font-display font-normal tracking-tight">
               Welcome Back
             </h1>
-            <p className="text-xs text-muted-foreground font-light mt-2">
+            <p className="text-base text-muted-foreground font-light mt-2">
               Sign in to your account
             </p>
           </div>
@@ -98,7 +98,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p className="text-xs text-center text-muted-foreground mt-8 font-light">
+          <p className="text-base text-center text-muted-foreground mt-8 font-light">
             Don&apos;t have an account?{" "}
             <Link
               href="/auth/register"

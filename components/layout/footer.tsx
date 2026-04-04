@@ -13,11 +13,16 @@ export function Footer() {
   return (
     <footer className="bg-gradient-to-br from-[#ffdde1] to-[#e48d98] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
+        {/* Logo */}
+        <div className="mb-10">
+          <Image src="/images/athena-logo.png" alt="Athena" width={280} height={280} className="h-28 w-auto object-contain opacity-80" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact */}
-          <div className="text-center md:text-left">
+          <div className="text-left">
             <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">{t.footer.contact}</h4>
-            <div className="flex gap-3 justify-center md:justify-start">
+            <div className="flex gap-3 justify-start">
               <a href="https://wa.me/60126431737?text=PMBloomie" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp">
                 <MessageCircle className="h-4 w-4" />
               </a>
@@ -34,14 +39,14 @@ export function Footer() {
           </div>
 
           {/* Newsletter Subscribe */}
-          <div className="text-center md:text-left">
+          <div className="text-left">
             <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-white/70 mb-4">Subscribe to Our Newsletter</h4>
             <form
               onSubmit={(e) => {
                 e.preventDefault()
                 setEmail("")
               }}
-              className="flex max-w-sm mx-auto md:mx-0"
+              className="flex max-w-sm"
             >
               <input
                 type="email"
@@ -57,13 +62,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Logo */}
-        <div className="mt-8 flex justify-center">
-          <Image src="/images/athena-logo.png" alt="Athena" width={160} height={46} className="h-12 w-auto object-contain brightness-0 invert opacity-70" />
-        </div>
-
         {/* Bottom bar */}
-        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-center sm:flex-row sm:justify-between gap-3 text-center sm:text-left">
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col items-start sm:flex-row sm:justify-between gap-3 text-left">
           <p className="text-white/60 text-xs font-light tracking-wider">
             &copy; {new Date().getFullYear()} {t.footer.copyright}
           </p>

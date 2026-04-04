@@ -46,7 +46,7 @@ export default function RegisterPage() {
             <h1 className="text-[25px] font-display font-normal tracking-tight">
               Create Account
             </h1>
-            <p className="text-xs text-muted-foreground font-light mt-2">
+            <p className="text-base text-muted-foreground font-light mt-2">
               Join the Athena community
             </p>
           </div>
@@ -107,7 +107,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <p className="text-xs text-center text-muted-foreground mt-8 font-light">
+          <p className="text-base text-center text-muted-foreground mt-8 font-light">
             Already have an account?{" "}
             <Link
               href="/auth/login"

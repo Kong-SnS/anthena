@@ -33,7 +33,7 @@ export default async function CheckoutSuccessPage({
             <h1 className="text-[40px] font-display font-normal tracking-tight mb-2">
               Order Confirmed
             </h1>
-            <p className="text-muted-foreground font-light text-xs">
+            <p className="text-muted-foreground font-light text-base">
               Thank you for your purchase!
             </p>
           </div>
@@ -83,12 +83,12 @@ export default async function CheckoutSuccessPage({
           )}
 
           {!order && billplz_id && (
-            <p className="text-xs text-muted-foreground text-center mb-8 font-light">
+            <p className="text-base text-muted-foreground text-center mb-8 font-light">
               Reference: {billplz_id}
             </p>
           )}
 
-          <p className="text-xs text-muted-foreground font-light text-center mb-8 leading-relaxed">
+          <p className="text-base text-muted-foreground font-light text-center mb-8 leading-relaxed">
             A confirmation email with your order details will be sent shortly.
           </p>
 
