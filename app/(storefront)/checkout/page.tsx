@@ -46,11 +46,9 @@ export default function CheckoutPage() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) return
 
-      // Get profile name
       const name = user.user_metadata?.name || ""
       const email = user.email || ""
 
-      // Check if customer record exists with address
       const { data: customer } = await supabase
         .from("customers")
         .select("*")
@@ -69,7 +67,6 @@ export default function CheckoutPage() {
           postcode: customer.postcode || "",
         })
       } else {
-        // Try finding by email
         const { data: existingCustomer } = await supabase
           .from("customers")
           .select("*")
@@ -96,9 +93,13 @@ export default function CheckoutPage() {
   }, [])
 
   const subtotal = items.reduce((sum, item) => sum + Number(item.product.price) * item.quantity, 0)
-  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0)
+  // Count total boxes (2-box SKU = 2 boxes per unit)
+  const totalBoxes = items.reduce((sum, item) => {
+    const boxesPerUnit = item.product.slug?.includes("2box") ? 2 : 1
+    return sum + item.quantity * boxesPerUnit
+  }, 0)
   const region = getRegion(form.state || "")
-  const shipping = calculateShipping(region, totalQuantity)
+  const shipping = calculateShipping(region, totalBoxes)
   const shippingCost = shipping.cost
   const total = subtotal + shippingCost
 
@@ -347,16 +348,14 @@ export default function CheckoutPage() {
 
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground font-light">
-                    Subtotal
-                  </span>
+                  <span className="text-muted-foreground font-light">Subtotal</span>
                   <span>RM {subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-xs">
                   <span className="text-muted-foreground font-light">
-                    Shipping
+                    Shipping ({shipping.carriers.join(" / ")})
                   </span>
-                  <span>RM {shippingCost.toFixed(2)}</span>
+                  <span>{shipping.isFree ? "FREE" : `RM ${shippingCost.toFixed(2)}`}</span>
                 </div>
               </div>
 

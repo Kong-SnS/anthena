@@ -24,8 +24,11 @@ export function CartDrawer() {
   }, 0)
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
-  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0)
-  const freeShipping = totalQuantity >= 2
+  const totalBoxes = items.reduce((sum, item) => {
+    const boxesPerUnit = item.product.slug?.includes("2box") ? 2 : 1
+    return sum + item.quantity * boxesPerUnit
+  }, 0)
+  const freeShipping = totalBoxes >= 2
 
   return (
     <Sheet open={open} onOpenChange={(val) => !val && close()}>

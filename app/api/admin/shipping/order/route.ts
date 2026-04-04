@@ -22,43 +22,63 @@ export async function POST(request: NextRequest) {
     }
 
     const totalWeight = order.order_items.reduce(
-      (sum: number, item: any) => sum + (Number(item.quantity) * 0.1),
-      0.3 // minimum weight
+      (sum: number, item: any) => sum + (Number(item.quantity) * 0.2),
+      0
     )
 
     const result = await createOrder({
       reference: order.order_number,
       service_id,
-      weight: totalWeight,
+      weight: Math.max(totalWeight, 0.5),
       sender: {
         name: "Athena Healthcare",
-        contact: "0126431737",
+        phone: "0126431737",
+        email: "woosisterstrading@gmail.com",
         address1: "Athena Warehouse",
+        address2: "",
         city: "Batu 9 Cheras",
         state: "Selangor",
         postcode: "43200",
       },
       receiver: {
         name: order.customer.name,
-        contact: order.customer.phone,
+        phone: order.customer.phone,
+        email: order.customer.email,
         address1: order.customer.address_line1,
+        address2: order.customer.address_line2 || "",
         city: order.customer.city,
         state: order.customer.state,
         postcode: order.customer.postcode,
       },
-      items: [{ content: `Athena Order #${order.order_number}`, weight: totalWeight, value: Number(order.total) }],
+      items: order.order_items.map((item: any) => ({
+        content: item.product_name,
+        weight: Number(item.quantity) * 0.2,
+        value: Number(item.unit_price) * Number(item.quantity),
+        quantity: Number(item.quantity),
+      })),
     })
 
-    const orderResult = result.result?.[0]
-    const easyparcelOrderId = orderResult?.order_number || null
-    const trackingNumber = orderResult?.tracking_number || null
+    // Parse response from OpenAPI format
+    const orderResult = result.data?.[0]
+    const shipment = orderResult?.shipments?.[0]
+    const easyparcelOrderId = orderResult?.order_details?.order_number || null
+    const trackingNumber = shipment?.awb_number || null
+    const trackingUrl = shipment?.tracking_url || null
+    const awbUrl = shipment?.awb_url || null
+    const courierName = shipment?.courier || null
+    const courierLogo = shipment?.courier_logo || null
 
     await supabase
       .from("orders")
       .update({
         easyparcel_order_id: easyparcelOrderId,
         tracking_number: trackingNumber,
+        tracking_url: trackingUrl,
+        awb_url: awbUrl,
+        shipping_courier_name: courierName,
+        shipping_courier_logo: courierLogo,
         status: "shipped",
+        shipping_method: service_id,
         updated_at: new Date().toISOString(),
       })
       .eq("id", order_id)
@@ -66,6 +86,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       easyparcel_order_id: easyparcelOrderId,
       tracking_number: trackingNumber,
+      tracking_url: trackingUrl,
+      awb_url: awbUrl,
+      shipping_courier_name: courierName,
+      shipping_courier_logo: courierLogo,
     })
   } catch (err) {
     console.error("EasyParcel order error:", err)

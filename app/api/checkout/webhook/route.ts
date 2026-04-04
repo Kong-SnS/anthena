@@ -93,7 +93,9 @@ export async function POST(request: NextRequest) {
             quantity: i.quantity,
             price: i.unit_price * i.quantity,
           })),
-          order.total
+          Number(order.subtotal),
+          Number(order.shipping_cost),
+          Number(order.total)
         )
 
         const result = await sendEmail({

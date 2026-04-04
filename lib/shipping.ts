@@ -39,5 +39,13 @@ export function calculateShipping(region: Region, quantity: number): {
   }
 }
 
+// Allowed carriers per region (for admin EasyParcel selection)
+// Names must partially match EasyParcel courier_name (case-insensitive)
+export const ALLOWED_CARRIERS: Record<Region, string[]> = {
+  peninsular: ["DHL", "City-Link", "Poslaju"],
+  east: ["City-Link", "Poslaju"],
+  singapore: [],
+}
+
 // SGD shipping for Singapore Stripe checkout
 export const SG_SHIPPING_SGD = 10 // ~RM30 equivalent in SGD

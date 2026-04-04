@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
     const html = shippingUpdateEmail(
       order.order_number,
       tracking_number,
-      order.shipping_method || "Courier"
+      order.shipping_courier_name || order.shipping_method || "Courier",
+      order.tracking_url || undefined
     )
 
     const result = await sendEmail({

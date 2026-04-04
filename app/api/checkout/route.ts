@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { createBill } from "@/lib/billplz"
-import { calculatePrice } from "@/lib/pricing"
 import { rateLimit, getIP } from "@/lib/rate-limit"
 import { getRegion, calculateShipping } from "@/lib/shipping"
 
@@ -49,7 +48,7 @@ export async function POST(request: NextRequest) {
 
     // --- Server-side price recalculation (never trust client prices) ---
     let subtotal = 0
-    const validatedItems: { product_id: string; product_name: string; quantity: number; unit_price: number }[] = []
+    const validatedItems: { product_id: string; product_name: string; slug: string; quantity: number; unit_price: number }[] = []
 
     for (const item of items) {
       if (!item.product_id || !item.quantity || item.quantity < 1) {
@@ -58,9 +57,8 @@ export async function POST(request: NextRequest) {
 
       const { data: product } = await supabase
         .from("products")
-        .select("id, name, price, stock_count")
+        .select("id, name, slug, price, stock_count")
         .eq("id", item.product_id)
-        .eq("is_active", true)
         .single()
 
       if (!product) {
@@ -75,20 +73,23 @@ export async function POST(request: NextRequest) {
       }
 
       const unitPrice = Number(product.price)
-      const tieredPrice = calculatePrice(item.quantity)
-      subtotal += tieredPrice.total
+      subtotal += unitPrice * item.quantity
       validatedItems.push({
         product_id: product.id,
         product_name: product.name,
+        slug: product.slug,
         quantity: item.quantity,
-        unit_price: tieredPrice.total / item.quantity, // effective unit price after discount
+        unit_price: unitPrice,
       })
     }
 
-    // Calculate shipping based on region and quantity
-    const totalQuantity = validatedItems.reduce((sum, i) => sum + i.quantity, 0)
+    // Calculate shipping based on region and total boxes
+    const totalBoxes = validatedItems.reduce((sum, i) => {
+      const boxesPerUnit = i.slug?.includes("2box") ? 2 : 1
+      return sum + i.quantity * boxesPerUnit
+    }, 0)
     const region = getRegion(customer.state || "")
-    const shipping = calculateShipping(region, totalQuantity)
+    const shipping = calculateShipping(region, totalBoxes)
     const validShippingCost = shipping.cost
     const total = subtotal + validShippingCost
 

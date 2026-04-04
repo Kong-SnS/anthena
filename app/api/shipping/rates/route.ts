@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { checkRates } from "@/lib/easyparcel"
+import { getRegion, ALLOWED_CARRIERS } from "@/lib/shipping"
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,8 +11,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    // Default pickup from warehouse (update with actual warehouse address)
-    const rates = await checkRates({
+    // Default pickup from warehouse
+    const quotations = await checkRates({
       sender_postcode: "43200",
       sender_state: "Selangor",
       receiver_postcode: send_postcode,
@@ -19,15 +20,23 @@ export async function POST(request: NextRequest) {
       weight,
     })
 
-    // Format rates for frontend
-    const formattedRates = rates.map((r: any) => ({
-      service_id: r.service_id,
-      service_name: r.service_name || r.courier_name,
-      courier_name: r.courier_name,
-      price: parseFloat(r.price || r.rate),
-      estimated_days: r.delivery || "2-4 days",
-      service_type: r.service_detail,
-    }))
+    // Filter to allowed carriers based on region
+    const region = getRegion(send_state)
+    const allowed = ALLOWED_CARRIERS[region] || []
+
+    const formattedRates = quotations
+      .map((q: any) => ({
+        service_id: q.courier?.service_id,
+        service_name: q.courier?.service_name,
+        courier_name: q.courier?.courier_name,
+        courier_logo: q.courier?.courier_logo,
+        price: parseFloat(q.pricing?.total_amount || "0"),
+        is_pickup: q.courier?.is_pickup,
+        is_dropoff: q.courier?.is_dropoff,
+      }))
+      .filter((r: any) =>
+        allowed.some((name) => r.courier_name?.toLowerCase().includes(name.toLowerCase()))
+      )
 
     return NextResponse.json({ rates: formattedRates })
   } catch (err) {
