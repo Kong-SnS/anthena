@@ -4,7 +4,6 @@ import { AnnouncementBar } from "@/components/layout/announcement-bar"
 import { WhatsAppButton } from "@/components/layout/whatsapp-button"
 import { FloatingPetals } from "@/components/ui/floating-petals"
 import { LoadingScreen } from "@/components/ui/loading-screen"
-import { SmoothScroll } from "@/components/ui/smooth-scroll"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { BackToTop } from "@/components/ui/back-to-top"
 import { SocialProof } from "@/components/ui/social-proof"
@@ -20,7 +19,6 @@ export default function StorefrontLayout({
   return (
     <I18nProvider>
       <LoadingScreen />
-      <SmoothScroll />
       <ScrollProgress />
       <FloatingPetals />
       <AnnouncementBar />
