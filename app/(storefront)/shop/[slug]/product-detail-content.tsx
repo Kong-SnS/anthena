@@ -221,7 +221,7 @@ export function ProductDetailContent({
             {/* Features */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
               {[
-                { icon: Truck, label: "Free Shipping", sub: "Min. Purchase 2 Box" },
+                { icon: Truck, label: "Free Shipping", sub: "Min. Purchase 2 Boxes" },
                 { icon: Shield, label: "Quality Assured", sub: "GMP Certified" },
                 { icon: RotateCcw, label: "Easy Returns", sub: "30-day policy" },
               ].map((f) => (
