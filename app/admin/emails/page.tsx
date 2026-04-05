@@ -26,6 +26,13 @@ const statusColors: Record<string, string> = {
   failed: "bg-red-100 text-red-800",
 }
 
+const templateLabels: Record<string, string> = {
+  order_confirmation: "Order Confirmation",
+  shipping_update: "Shipping Update",
+  shipping_update_resend: "Shipping Update (Resend)",
+  invoice: "Invoice",
+}
+
 export default function AdminEmailLogsPage() {
   const [emails, setEmails] = useState<EmailLog[]>([])
   const [search, setSearch] = useState("")
@@ -99,7 +106,7 @@ export default function AdminEmailLogsPage() {
                   <TableCell className="text-sm">{email.to_email}</TableCell>
                   <TableCell className="text-sm max-w-xs truncate">{email.subject}</TableCell>
                   <TableCell>
-                    <Badge variant="outline">{email.template}</Badge>
+                    <Badge variant="outline">{templateLabels[email.template] || email.template}</Badge>
                   </TableCell>
                   <TableCell>
                     <Badge className={statusColors[email.status] || ""}>{email.status}</Badge>

@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { useTranslation } from "@/lib/i18n"
 import { Instagram, MessageCircle, Mail, User } from "lucide-react"
 
@@ -13,11 +12,6 @@ export function Footer() {
   return (
     <footer className="bg-gradient-to-br from-[#ffdde1] to-[#e48d98] text-white">
       <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        {/* Logo */}
-        <div className="mb-10">
-          <Image src="/images/athena-logo.png" alt="Athena" width={280} height={280} className="h-28 w-auto object-contain opacity-80" />
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact */}
           <div className="text-left">

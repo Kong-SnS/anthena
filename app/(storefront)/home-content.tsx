@@ -360,8 +360,8 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
         <HorizontalScrollGallery
           images={[
             { src: "/images/products/bloomie-product-new.png", alt: "Bloomie product" },
-            { src: "/images/products/bloomie-functions.png", alt: "Bloomie functions" },
-            { src: "/images/products/bloomie-ingredients.png", alt: "Bloomie ingredients" },
+            { src: "/images/products/bloomie-functions-2.png", alt: "Bloomie functions" },
+            { src: "/images/products/bloomie-Ingredient-2.png", alt: "Bloomie ingredients" },
           ]}
         />
       </section>
