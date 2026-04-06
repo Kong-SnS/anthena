@@ -223,6 +223,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
                   >
                     <p className="text-xs text-muted-foreground font-light">1 Box</p>
                     <p className="text-[25px] font-light mt-1">RM 138</p>
+                    <p className="text-xs text-muted-foreground">15 Sachets</p>
                   </button>
                   <button
                     className="border-2 border-gold px-5 py-3 text-center relative hover:bg-gold/5 transition-all"
