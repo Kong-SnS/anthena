@@ -92,7 +92,7 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="text-foreground text-[20px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
+                      className="text-rose-gold text-[20px] font-display tracking-wide py-4 border-b border-gold/10 hover:text-gold transition-colors"
                       onClick={() => setOpen(false)}
                     >
                       {link.label}
@@ -100,7 +100,7 @@ export function Navbar() {
                   ))}
                   <Link
                     href={accountHref}
-                    className="text-foreground text-[20px] font-display tracking-wide py-4 hover:text-gold transition-colors"
+                    className="text-rose-gold text-[20px] font-display tracking-wide py-4 hover:text-gold transition-colors"
                     onClick={() => setOpen(false)}
                   >
                     Login
