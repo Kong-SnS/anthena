@@ -128,7 +128,7 @@ export function Navbar() {
             alt="Athena"
             width={280}
             height={280}
-            className="h-28 w-auto object-contain"
+            className="h-36 w-auto object-contain"
             priority
           />
         </Link>
