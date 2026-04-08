@@ -22,13 +22,13 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
       <button
         onClick={() => setOpen(!open)}
         aria-label="Change language"
-        className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-xs font-medium tracking-wider uppercase transition-colors ${
+        className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[20px] font-medium tracking-wider uppercase transition-colors ${
           dark
             ? "text-white/70 hover:text-white hover:bg-white/10"
             : "text-foreground/70 hover:text-foreground hover:bg-gold/5"
         }`}
       >
-        <Globe className="h-3.5 w-3.5" />
+        <Globe className="h-5 w-5" />
         {localeNames[locale]}
       </button>
 

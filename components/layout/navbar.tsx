@@ -80,9 +80,7 @@ export function Navbar() {
               <div className="flex flex-col mt-16">
                 <div className="flex items-center justify-between mb-10">
                   <p className="text-[20px] font-display font-medium tracking-[0.2em] uppercase text-gold">{t.nav.menu}</p>
-                  <div className="scale-[1.67] origin-right">
-                    <LanguageSwitcher />
-                  </div>
+                  <LanguageSwitcher />
                 </div>
                 <nav className="flex flex-col">
                   {[
@@ -160,7 +158,7 @@ export function Navbar() {
               useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
             }`}
           >
-            <User className="h-[18px] w-[18px]" />
+            <User className="h-6 w-6" />
           </Link>
           <button
             onClick={openCartDrawer}
@@ -169,7 +167,7 @@ export function Navbar() {
               useDarkText ? "text-foreground hover:bg-gold/5" : "text-white hover:bg-white/10"
             }`}
           >
-            <ShoppingCart className="h-[18px] w-[18px]" />
+            <ShoppingCart className="h-6 w-6" />
             {mounted && itemCount > 0 && (
               <span
                 key={itemCount}
