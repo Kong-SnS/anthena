@@ -139,7 +139,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-xs font-medium tracking-[0.15em] uppercase transition-colors duration-500 hover:opacity-70 py-2 ${
+              className={`text-[20px] font-medium tracking-[0.15em] uppercase transition-colors duration-500 hover:opacity-70 py-2 ${
                 useDarkText ? "text-foreground" : "text-white/90"
               }`}
             >
