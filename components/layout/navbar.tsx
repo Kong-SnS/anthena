@@ -79,7 +79,7 @@ export function Navbar() {
             <SheetContent side="left" className="w-[85vw] max-w-sm bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] border-gold/10 px-8">
               <div className="flex flex-col mt-16">
                 <div className="flex items-center justify-between mb-10">
-                  <p className="text-[20px] font-display font-medium tracking-[0.2em] uppercase text-gold">{t.nav.menu}</p>
+                  <p className="text-[20px] font-display font-medium tracking-[0.2em] uppercase text-foreground/70">{t.nav.menu}</p>
                   <LanguageSwitcher />
                 </div>
                 <nav className="flex flex-col">
