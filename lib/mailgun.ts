@@ -188,6 +188,111 @@ export function shippingUpdateEmail(
   `)
 }
 
+// ============================================
+// OseoVital Email Templates — Navy + Gold Theme
+// ============================================
+
+const oseoEmailWrapper = (content: string) => `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif">
+  <div style="max-width:600px;margin:0 auto;background:#ffffff">
+    <!-- Header -->
+    <div style="background:#00007b;padding:32px 24px;text-align:center">
+      <h1 style="color:white;font-size:28px;font-weight:700;letter-spacing:0.15em;margin:0;text-transform:uppercase">OSEOVITAL</h1>
+      <p style="color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:0.15em;margin:8px 0 0;text-transform:uppercase">Premium Joint & Bone Health</p>
+    </div>
+    <!-- Gold Line -->
+    <div style="height:3px;background:linear-gradient(135deg,#b8860b,#d4af37,#f0c75e,#d4af37,#b8860b)"></div>
+
+    <!-- Content -->
+    <div style="padding:40px 32px">
+      ${content}
+    </div>
+
+    <!-- Footer -->
+    <div style="height:3px;background:linear-gradient(135deg,#b8860b,#d4af37,#f0c75e,#d4af37,#b8860b)"></div>
+    <div style="background:#00007b;padding:24px 32px;text-align:center">
+      <div style="margin-bottom:16px">
+        <a href="https://www.instagram.com/oseovital_sg/" style="color:#d4af37;font-size:12px;text-decoration:none;letter-spacing:0.05em;margin:0 8px">Instagram</a>
+        <span style="color:rgba(255,255,255,0.3)">|</span>
+        <a href="https://www.facebook.com/OseoVitalSG/" style="color:#d4af37;font-size:12px;text-decoration:none;letter-spacing:0.05em;margin:0 8px">Facebook</a>
+      </div>
+      <p style="color:rgba(255,255,255,0.5);font-size:12px;margin:0">OseoVital by S&S Technology Solution</p>
+      <p style="color:rgba(255,255,255,0.4);font-size:11px;margin:8px 0 0">You received this email because you placed an order with OseoVital.</p>
+    </div>
+  </div>
+</body>
+</html>
+`
+
+export function oseoOrderConfirmationEmail(
+  orderNumber: string,
+  customerName: string,
+  items: { name: string; quantity: number; price: number }[],
+  subtotal: number,
+  shippingCost: number,
+  total: number
+) {
+  const itemRows = items
+    .map(
+      (i) => `
+      <tr>
+        <td style="padding:14px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;color:#1a1a1a">${i.name}</td>
+        <td style="padding:14px 12px;border-bottom:1px solid #e5e7eb;text-align:center;font-size:14px;color:#666">${i.quantity}</td>
+        <td style="padding:14px 12px;border-bottom:1px solid #e5e7eb;text-align:right;font-size:14px;color:#1a1a1a;font-weight:500">S$${i.price.toFixed(2)}</td>
+      </tr>`
+    )
+    .join("")
+
+  return oseoEmailWrapper(`
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="width:56px;height:56px;border-radius:50%;background:#00007b;margin:0 auto 16px;line-height:56px;color:white;font-size:24px">✓</div>
+      <h2 style="font-size:24px;font-weight:700;color:#1a1a1a;margin:0">Order Confirmed</h2>
+      <p style="color:#666;font-size:14px;margin:10px 0 0">Thank you for your purchase, ${customerName}!</p>
+      <p style="font-size:13px;font-weight:600;margin:6px 0 0;letter-spacing:0.1em;text-transform:uppercase;background:linear-gradient(135deg,#b8860b,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Order #${orderNumber}</p>
+    </div>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0">
+      <thead>
+        <tr style="background:#f5f5f5">
+          <th style="padding:10px 12px;text-align:left;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#999;font-weight:500">Product</th>
+          <th style="padding:10px 12px;text-align:center;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#999;font-weight:500">Qty</th>
+          <th style="padding:10px 12px;text-align:right;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#999;font-weight:500">Price</th>
+        </tr>
+      </thead>
+      <tbody>${itemRows}</tbody>
+    </table>
+
+    <div style="background:#f5f5f5;padding:16px 20px;margin:24px 0">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="color:#666;font-size:13px">Subtotal</span>
+        <span style="color:#1a1a1a;font-size:13px">S$${subtotal.toFixed(2)}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="color:#666;font-size:13px">Shipping</span>
+        <span style="color:#1a1a1a;font-size:13px">${shippingCost === 0 ? "FREE" : "S$" + shippingCost.toFixed(2)}</span>
+      </div>
+      <div style="border-top:3px solid;border-image:linear-gradient(135deg,#b8860b,#d4af37,#f0c75e) 1;padding-top:12px;margin-top:8px;display:flex;justify-content:space-between">
+        <span style="color:#1a1a1a;font-size:16px;font-weight:700">Total</span>
+        <span style="color:#00007b;font-size:16px;font-weight:700">S$${total.toFixed(2)}</span>
+      </div>
+    </div>
+
+    <div style="background:#f9f9ff;border-left:3px solid #00007b;padding:16px 20px;margin:24px 0">
+      <p style="color:#00007b;font-size:13px;font-weight:600;margin:0 0 8px">What's Next?</p>
+      <p style="color:#666;font-size:13px;line-height:1.7;margin:0">Your order will be shipped to Singapore within <strong>3–5 business days</strong>. We will send you a tracking number once it's on its way!</p>
+    </div>
+
+    <p style="color:#666;font-size:13px;line-height:1.7;margin-top:24px">If you have any questions about your order, feel free to reach out to us on Instagram <a href="https://www.instagram.com/oseovital_sg/" style="color:#00007b;text-decoration:none;font-weight:500">@oseovital_sg</a>.</p>
+
+    <div style="text-align:center;margin-top:32px">
+      <a href="https://www.instagram.com/oseovital_sg/" style="display:inline-block;background:#00007b;color:white;text-decoration:none;padding:12px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;font-weight:500">Follow Us on Instagram</a>
+    </div>
+  `)
+}
+
 export function invoiceEmail(
   invoiceNumber: string,
   orderNumber: string,

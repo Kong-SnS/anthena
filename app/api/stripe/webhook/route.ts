@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getStripe } from "@/lib/stripe"
 import { createAdminClient } from "@/lib/supabase/admin"
+import { sendEmail, oseoOrderConfirmationEmail } from "@/lib/mailgun"
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
@@ -82,6 +83,50 @@ export async function POST(request: NextRequest) {
       status: "paid",
       issued_at: new Date().toISOString(),
     })
+
+    // Send confirmation email
+    try {
+      const { data: order } = await supabase
+        .from("orders")
+        .select("*, customer:customers(email, name), order_items(*)")
+        .eq("id", orderId)
+        .single()
+
+      if (order?.customer?.email) {
+        const items = (order.order_items || []).map((i: any) => ({
+          name: i.product_name,
+          quantity: i.quantity,
+          price: Number(i.unit_price),
+        }))
+
+        const html = oseoOrderConfirmationEmail(
+          orderNumber!,
+          order.customer.name,
+          items,
+          Number(order.subtotal),
+          Number(order.shipping_cost),
+          Number(order.total)
+        )
+
+        const result = await sendEmail({
+          to: order.customer.email,
+          subject: `Order Confirmed #${orderNumber} - OseoVital`,
+          html,
+        })
+
+        await supabase.from("email_logs").insert({
+          order_id: orderId,
+          customer_id: order.customer_id,
+          to_email: order.customer.email,
+          subject: `Order Confirmed #${orderNumber} - OseoVital`,
+          template: "oseo_order_confirmation",
+          mailgun_message_id: result.id || null,
+          status: "sent",
+        })
+      }
+    } catch (emailErr) {
+      console.error("Failed to send OseoVital confirmation email:", emailErr)
+    }
 
     console.log(`Stripe payment confirmed for order ${orderNumber}`)
   }
