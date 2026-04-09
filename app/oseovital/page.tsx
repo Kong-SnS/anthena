@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Loader2, Lock, Gift, Truck, Shield, Star, Clock, Quote, Plus, Minus, Instagram, Facebook } from "lucide-react"
+import { Loader2, Lock, Gift, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook } from "lucide-react"
 import type { SGQuantity } from "@/lib/pricing-sg"
 
 const NAVY = "#00007b"
@@ -13,15 +13,6 @@ const tiers = [
   { qty: 1 as SGQuantity, label: "Buy 1 Free 1", desc: "Free extra 5 sachets", sachets: "15 + 15 sachets", price: 188, badge: null },
   { qty: 2 as SGQuantity, label: "Buy 2 Free 2", desc: "Free extra 10 sachets", sachets: "30 + 30 sachets", price: 268, badge: "Popular" },
   { qty: 3 as SGQuantity, label: "Buy 3 Free 3", desc: "Free extra 15 sachets", sachets: "45 + 45 sachets", price: 358, badge: "Best Value" },
-]
-
-const situations = [
-  { icon: "🦵", title: "Knee Pain", desc: "Difficulty climbing stairs or standing up from sitting" },
-  { icon: "🏃", title: "Joint Stiffness", desc: "Morning stiffness that limits your daily activities" },
-  { icon: "💪", title: "Weak Bones", desc: "Concerns about bone density and fracture risk" },
-  { icon: "🔄", title: "Back Pain", desc: "Chronic lower back discomfort affecting your posture" },
-  { icon: "🖐️", title: "Swollen Joints", desc: "Inflammation and swelling in fingers, wrists, or ankles" },
-  { icon: "😴", title: "Sleepless Nights", desc: "Joint pain keeping you awake at night" },
 ]
 
 const functions = [
@@ -61,6 +52,14 @@ const accordionSections = [
     ),
   },
   {
+    title: "Key Ingredients",
+    content: null,
+  },
+  {
+    title: "Nutritional Facts",
+    content: null,
+  },
+  {
     title: "How to Consume",
     content: (
       <p>
@@ -88,8 +87,8 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
         <span className="text-xs font-bold tracking-[0.1em] uppercase" style={{ color: NAVY }}>{title}</span>
         {open ? <Minus className="h-4 w-4" style={{ color: NAVY }} /> : <Plus className="h-4 w-4" style={{ color: NAVY }} />}
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-[600px] pb-5" : "max-h-0"}`}>
-        <div className="text-xs text-gray-600 leading-relaxed">{children}</div>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-[1000px] pb-5" : "max-h-0"}`}>
+        <div className="text-sm text-gray-600 leading-relaxed">{children}</div>
       </div>
     </div>
   )
@@ -163,7 +162,7 @@ export default function OseoVitalPage() {
         <div className="relative z-10 px-6">
           <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ background: GOLD_GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Premium Joint & Bone Health</p>
           <h1 className="text-[40px] font-bold tracking-tight mb-4">OseoVital</h1>
-          <p className="text-xs text-white/80 max-w-lg mx-auto leading-relaxed mb-8">
+          <p className="text-sm text-white/80 max-w-lg mx-auto leading-relaxed mb-8">
             Advanced botanical formula for joint comfort, bone strength, and mobility. Clinically proven ingredients from Switzerland and Japan.
           </p>
           <button onClick={scrollToOrder} className="inline-block px-8 py-3 text-xs font-bold tracking-[0.15em] uppercase text-white border-2 transition-all hover:opacity-90" style={{ background: GOLD_GRADIENT, borderColor: "#d4af37" }}>
@@ -199,7 +198,7 @@ export default function OseoVitalPage() {
           {/* Right: Package Selector + Accordion */}
           <div>
             <h2 className="text-[25px] font-bold mb-2" style={{ color: NAVY }}>OseoVital</h2>
-            <p className="text-xs text-gray-500 mb-6">Botanical Mixed Beverage · Joint, Bone, Nerve & Muscle Health</p>
+            <p className="text-sm text-gray-500 mb-6">Botanical Mixed Beverage · Joint, Bone, Nerve & Muscle Health</p>
 
             <div className="space-y-3">
               {tiers.map((tier) => (
@@ -218,11 +217,11 @@ export default function OseoVitalPage() {
                     </span>
                   )}
                   <div className={tier.badge ? "mt-1" : ""}>
-                    <p className="text-xs font-bold">{tier.label}</p>
-                    <p className="text-xs text-gray-500">{tier.sachets}</p>
+                    <p className="text-sm font-bold">{tier.label}</p>
+                    <p className="text-sm text-gray-500">{tier.sachets}</p>
                     <div className="flex items-center gap-1 mt-1">
                       <Gift className="h-3 w-3" style={{ color: NAVY }} />
-                      <p className="text-xs font-medium" style={{ color: NAVY }}>{tier.desc}</p>
+                      <p className="text-sm font-medium" style={{ color: NAVY }}>{tier.desc}</p>
                     </div>
                   </div>
                   <p className="text-[25px] font-bold" style={{ color: NAVY }}>S${tier.price}</p>
@@ -232,7 +231,7 @@ export default function OseoVitalPage() {
 
             <div className="flex items-center gap-2 mt-4 text-gray-500">
               <Truck className="h-3.5 w-3.5" />
-              <p className="text-xs">Flat rate S$10 shipping to Singapore</p>
+              <p className="text-sm">Flat rate S$10 shipping to Singapore</p>
             </div>
 
             <button onClick={scrollToOrder} className="mt-6 w-full py-4 text-white text-xs font-bold tracking-[0.15em] uppercase" style={{ background: NAVY }}>
@@ -243,9 +242,17 @@ export default function OseoVitalPage() {
             <div className="mt-10">
               {accordionSections.map((section) => (
                 <AccordionItem key={section.title} title={section.title}>
-                  {section.content === null ? (
+                  {section.title === "What's Inside That Counts" ? (
                     <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
                       <Image src="/images/Eng Digital Flyer 1.2.jpg" alt="What's Inside OseoVital" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
+                    </div>
+                  ) : section.title === "Key Ingredients" ? (
+                    <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
+                      <Image src="/images/key.png" alt="OseoVital Key Ingredients" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
+                    </div>
+                  ) : section.title === "Nutritional Facts" ? (
+                    <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
+                      <Image src="/images/Oseo Nutritional Facts.png" alt="OseoVital Nutritional Facts" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   ) : (
                     section.content
@@ -257,24 +264,6 @@ export default function OseoVitalPage() {
         </div>
       </div>
 
-      {/* Have You Experienced These Situations? */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-[25px] font-bold">Have You Experienced These Situations?</h2>
-            <div className="w-16 h-[2px] mx-auto mt-4" style={{ background: GOLD_GRADIENT }} />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {situations.map((s) => (
-              <div key={s.title} className="bg-white p-5 text-center border border-gray-100">
-                <span className="text-[25px] block mb-3">{s.icon}</span>
-                <h3 className="text-xs font-bold mb-1">{s.title}</h3>
-                <p className="text-xs text-gray-500 leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Functions of OseoVital */}
       <div className="py-16">
@@ -290,34 +279,13 @@ export default function OseoVitalPage() {
                 <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-white text-xs font-bold" style={{ background: GOLD_GRADIENT, color: NAVY }}>
                   {i + 1}
                 </span>
-                <p className="text-xs font-medium">{f}</p>
+                <p className="text-sm font-medium">{f}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Results Timeline */}
-      <div style={{ background: NAVY }} className="py-16 text-white relative">
-        <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: GOLD_GRADIENT }} />
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <Clock className="h-8 w-8 mx-auto mb-3 text-white/60" />
-          <h2 className="text-[25px] font-bold mb-8">See Results in Just Weeks</h2>
-          <div className="grid grid-cols-3 gap-6">
-            {[
-              { day: "Day 7", text: "Pain starts to reduce" },
-              { day: "Day 14", text: "Noticeable improvement in mobility" },
-              { day: "Day 21", text: "Significant joint comfort restored" },
-            ].map((r) => (
-              <div key={r.day} className="text-center">
-                <p className="text-[25px] font-bold mb-2" style={{ background: GOLD_GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{r.day}</p>
-                <p className="text-xs text-white/70">{r.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ background: GOLD_GRADIENT }} />
-      </div>
 
       {/* Customer Reviews */}
       <div className="py-16 bg-gray-50">
@@ -331,11 +299,11 @@ export default function OseoVitalPage() {
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white p-6 border border-gray-100">
                 <Quote className="h-5 w-5 mb-3" style={{ color: NAVY }} />
-                <p className="text-xs leading-relaxed mb-4 text-gray-600">&ldquo;{t.text}&rdquo;</p>
+                <p className="text-sm leading-relaxed mb-4 text-gray-600">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-bold">{t.name}</p>
-                    <p className="text-xs text-gray-400">Age {t.age}</p>
+                    <p className="text-sm font-bold">{t.name}</p>
+                    <p className="text-sm text-gray-400">Age {t.age}</p>
                   </div>
                   <div className="flex gap-0.5">
                     {Array.from({ length: t.rating }).map((_, j) => (
@@ -355,7 +323,7 @@ export default function OseoVitalPage() {
           <div className="text-center mb-12">
             <h2 className="text-[25px] font-bold">Complete Your Order</h2>
             <div className="w-16 h-[2px] mx-auto mt-4" style={{ background: GOLD_GRADIENT }} />
-            <p className="text-xs text-gray-500 mt-4">Selected: <strong style={{ color: NAVY }}>{selected.label}</strong> · {selected.sachets}</p>
+            <p className="text-sm text-gray-500 mt-4">Selected: <strong style={{ color: NAVY }}>{selected.label}</strong> · {selected.sachets}</p>
           </div>
 
           <div>
@@ -372,7 +340,7 @@ export default function OseoVitalPage() {
                       type={f.type}
                       value={(form as any)[f.field]}
                       onChange={update(f.field)}
-                      className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-xs focus:outline-none"
+                      className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none"
                       onFocus={(e) => e.target.style.borderColor = NAVY}
                       onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
                       required
@@ -381,39 +349,39 @@ export default function OseoVitalPage() {
                 ))}
                 <div>
                   <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Address</label>
-                  <input type="text" value={form.address_line1} onChange={update("address_line1")} placeholder="Street address" className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-xs focus:outline-none placeholder:text-gray-300" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
+                  <input type="text" value={form.address_line1} onChange={update("address_line1")} placeholder="Street address" className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none placeholder:text-gray-300" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
                 <div>
                   <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Unit / Floor (optional)</label>
-                  <input type="text" value={form.address_line2} onChange={update("address_line2")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-xs focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} />
+                  <input type="text" value={form.address_line2} onChange={update("address_line2")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} />
                 </div>
                 <div>
                   <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Postal Code</label>
-                  <input type="text" value={form.postcode} onChange={update("postcode")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-xs focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
+                  <input type="text" value={form.postcode} onChange={update("postcode")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
 
                 {/* Order Summary */}
                 <div className="border-t border-gray-200 pt-4 mt-6 space-y-2">
-                  <div className="flex justify-between text-xs">
+                  <div className="flex justify-between text-sm">
                     <span>{selected.label}</span>
                     <span>S${subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-xs">
+                  <div className="flex justify-between text-sm">
                     <span>Shipping to Singapore</span>
                     <span>S${shippingSGD.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-xs font-bold pt-2 border-t border-gray-200">
+                  <div className="flex justify-between text-sm font-bold pt-2 border-t border-gray-200">
                     <span>Total</span>
                     <span className="text-[25px]" style={{ color: NAVY }}>S${total}</span>
                   </div>
                 </div>
 
-                {error && <p className="text-xs text-red-500 text-center">{error}</p>}
+                {error && <p className="text-sm text-red-500 text-center">{error}</p>}
 
                 <button type="submit" disabled={loading} className="w-full h-12 text-white text-xs font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 disabled:opacity-50 transition-opacity" style={{ background: NAVY }}>
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Lock className="h-3.5 w-3.5" /> Pay S${total}</>}
                 </button>
-                <p className="text-xs text-gray-400 text-center">Secure payment powered by Stripe</p>
+                <p className="text-sm text-gray-400 text-center">Secure payment powered by Stripe</p>
               </form>
           </div>
         </div>
