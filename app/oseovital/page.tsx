@@ -220,7 +220,7 @@ export default function OseoVitalPage() {
           {/* Left: Product Image (sticky) */}
           <div className="lg:sticky lg:top-24 h-fit">
             <div className="aspect-square relative overflow-hidden bg-gray-50">
-              <Image src="/images/ov_3dbox_right 1.png" alt="OseoVital Product" fill className="object-contain" sizes="(max-width: 1024px) 100vw, 50vw" priority />
+              <Image src="/images/oseo-vital-product.png" alt="OseoVital Product" fill className="object-contain" sizes="(max-width: 1024px) 100vw, 50vw" priority />
             </div>
           </div>
 
