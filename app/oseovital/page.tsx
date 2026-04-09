@@ -396,7 +396,7 @@ export default function OseoVitalPage() {
                     <span>S${subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Shipping to Singapore</span>
+                    <span>Shipping</span>
                     <span>S${shippingSGD.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm font-bold pt-2 border-t border-gray-200">
