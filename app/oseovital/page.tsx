@@ -39,7 +39,10 @@ const accordionSections = [
     content: (
       <div className="space-y-2">
         <p>OseoVital is a premium botanical mixed beverage formulated with patented Boswellia Serrata Extract, Glycostat® Wild Bitter Melon, and Colla2gen™ chicken cartilage to support joint, bone, nerve, and muscle health.</p>
+        <p>Made using real orange fruit powder (Orange Flavour)</p>
         <p>Made with science-backed ingredients sourced globally for clinically proven results.</p>
+        <p>✨ For All Joint-related Problems: Bone, Nerve & Muscle</p>
+        <p>✨ Treat Joint Pain, Weakness, Stiffness, Numbness, Swelling</p>
       </div>
     ),
   },
@@ -52,7 +55,7 @@ const accordionSections = [
     ),
   },
   {
-    title: "Key Ingredients",
+    title: "Key Science-backed Ingredients",
     content: null,
   },
   {
@@ -275,7 +278,7 @@ export default function OseoVitalPage() {
                     <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
                       <Image src="/images/Oseo 4 Major Functions.png" alt="OseoVital 4 Major Functions" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
-                  ) : section.title === "Key Ingredients" ? (
+                  ) : section.title === "Key Science-backed Ingredients" ? (
                     <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
                       <Image src="/images/key.png" alt="OseoVital Key Ingredients" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
