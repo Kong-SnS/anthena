@@ -38,9 +38,7 @@ const accordionSections = [
     title: "Description",
     content: (
       <div className="space-y-2">
-        <p>OseoVital is a premium botanical mixed beverage formulated with patented Boswellia Serrata Extract, Glycostat® Wild Bitter Melon, and Colla2gen™ chicken cartilage to support joint, bone, nerve, and muscle health.</p>
         <p>Made using real orange fruit powder (Orange Flavour)</p>
-        <p>Made with science-backed ingredients sourced globally for clinically proven results.</p>
         <p>✨ For All Joint-related Problems: Bone, Nerve & Muscle</p>
         <p>✨ Treat Joint Pain, Weakness, Stiffness, Numbness, Swelling</p>
       </div>
