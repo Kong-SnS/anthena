@@ -273,7 +273,7 @@ export default function OseoVitalPage() {
                 <AccordionItem key={section.title} title={section.title}>
                   {section.title === "What's Inside That Counts" ? (
                     <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
-                      <Image src="/images/Eng Digital Flyer 1.2.jpg" alt="What's Inside OseoVital" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
+                      <Image src="/images/Oseo 4 Major Functions.png" alt="OseoVital 4 Major Functions" fill className="object-contain" sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   ) : section.title === "Key Ingredients" ? (
                     <div className="relative w-full" style={{ aspectRatio: "1/1.4" }}>
