@@ -70,10 +70,10 @@ const accordionSections = [
 ]
 
 const testimonials = [
-  { name: "Mr. Tan K.H.", age: 62, text: "After 2 weeks of OseoVital, my knee pain reduced significantly. I can now climb stairs without holding the railing.", rating: 5 },
-  { name: "Mdm. Lee S.M.", age: 55, text: "I was skeptical at first but the results speak for themselves. My morning stiffness is almost gone after just 10 days.", rating: 5 },
-  { name: "Mr. Ahmad R.", age: 68, text: "My doctor noticed improvement in my joint mobility. I've been taking OseoVital for 3 months now and won't stop.", rating: 5 },
-  { name: "Mrs. Wong Y.L.", age: 59, text: "The back pain that troubled me for years has improved drastically. I can finally enjoy gardening again!", rating: 5 },
+  { name: "Caroline Yew", title: "Long Term Sciatica (L4-L5) Sufferer", text: "I suffered from sciatica pain for 5 long years — every step was torture and painkillers never gave lasting relief. After just 3 boxes of OseoVital, the pain finally eased. Even my doctor was shocked at how fast it worked! I'm so glad I took that first step to try it.", rating: 5 },
+  { name: "Michelle Tan", title: "Active in Sports", text: "I love jogging, but my sciatica pain stopped me for months. The sharp pain shot from my back to my foot every time I moved. With 4 boxes of OseoVital, I'm finally back on track and enjoying my runs again.", rating: 5 },
+  { name: "Jason Lim", title: "Office Worker", text: "Sitting for hours at work was unbearable — the shooting pain down my leg made it impossible to focus. After 2 boxes of OseoVital, my sciatica eased so much I can finally sit and work without constant pain.", rating: 5 },
+  { name: "Mdm. Lee S.M.", title: "Retired Teacher", text: "My knee and back pain made daily tasks a struggle. After trying OseoVital for just 2 weeks, I noticed a real difference. Now I can walk to the market and carry groceries without wincing. This product truly changed my quality of life.", rating: 5 },
 ]
 
 function AccordionItem({ title, children }: { title: string; children: React.ReactNode }) {
@@ -332,7 +332,7 @@ export default function OseoVitalPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-bold">{t.name}</p>
-                    <p className="text-sm text-gray-400">Age {t.age}</p>
+                    <p className="text-sm text-gray-400">{t.title}</p>
                   </div>
                   <div className="flex gap-0.5">
                     {Array.from({ length: t.rating }).map((_, j) => (
