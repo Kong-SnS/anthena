@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create pending order
-    const shippingCents = SG_SHIPPING_SGD * 100
+    const shippingCents = 0  // Free shipping for OseoVital
     const subtotalCents = pricing.total
     const totalCents = subtotalCents + shippingCents
     const { data: order, error: orderError } = await supabase
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
         customer_id: customerId,
         status: "pending",
         subtotal: subtotalCents / 100,
-        shipping_cost: SG_SHIPPING_SGD,
+        shipping_cost: 0,
         total: totalCents / 100,
         payment_method: "stripe",
       })
@@ -130,16 +130,16 @@ export async function POST(request: NextRequest) {
           },
           quantity: 1,
         },
-        {
+        ...(shippingCents > 0 ? [{
           price_data: {
             currency: "sgd",
             product_data: {
-              name: "Shipping to Singapore",
+              name: "Shipping",
             },
             unit_amount: shippingCents,
           },
           quantity: 1,
-        },
+        }] : []),
       ],
       metadata: {
         order_id: order.id,

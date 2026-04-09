@@ -15,7 +15,7 @@ export default function OseoVitalSuccessPage() {
           Your payment was successful. We&apos;ll send a confirmation email shortly.
         </p>
         <p className="text-xs text-gray-500 mb-8">
-          Your OseoVital will be shipped to Singapore within 3-5 business days.
+          Your OseoVital will be shipped within 3-5 business days.
         </p>
         <Link
           href="/oseovital"

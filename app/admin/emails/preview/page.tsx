@@ -165,8 +165,8 @@ const sampleOseoOrder = {
     { name: "OseoVital (Buy 2 Free 2)", quantity: 4, price: 67 },
   ],
   subtotal: 268,
-  shippingCost: 10,
-  total: 278,
+  shippingCost: 0,
+  total: 268,
 }
 
 function oseoEmailWrapper(content: string) {
@@ -228,7 +228,7 @@ function generateOseoOrderConfirmation() {
     </div>
     <div style="background:#f9f9ff;border-left:3px solid #00007b;padding:16px 20px;margin:24px 0">
       <p style="color:#00007b;font-size:13px;font-weight:600;margin:0 0 8px">What's Next?</p>
-      <p style="color:#666;font-size:13px;line-height:1.7;margin:0">Your order will be shipped to Singapore within <strong>3–5 business days</strong>. We will send you a tracking number once it's on its way!</p>
+      <p style="color:#666;font-size:13px;line-height:1.7;margin:0">Your order will be shipped within <strong>3–5 business days</strong>. We will send you a tracking number once it's on its way!</p>
     </div>
     <p style="color:#666;font-size:13px;line-height:1.7;margin-top:24px">If you have any questions about your order, feel free to reach out to us on Instagram <a href="https://www.instagram.com/oseovital_sg/" style="color:#00007b;text-decoration:none;font-weight:500">@oseovital_sg</a>.</p>
     <div style="text-align:center;margin-top:32px">

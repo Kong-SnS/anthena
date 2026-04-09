@@ -108,7 +108,7 @@ export default function OseoVitalPage() {
     postcode: "",
   })
 
-  const shippingSGD = 10
+  const shippingSGD = 0
   const selected = tiers.find((t) => t.qty === quantity)!
   const subtotal = selected.price
   const total = (subtotal + shippingSGD).toFixed(2)
@@ -144,7 +144,7 @@ export default function OseoVitalPage() {
       {/* Announcement Bar */}
       <div style={{ background: NAVY }} className="py-2.5 text-center">
         <p className="text-xs font-medium tracking-wider uppercase text-white">
-          Free Shipping Singapore — Min Purchase 2 Boxes
+          Specially Made for Joint (Bone, Nerve, Muscle) Problems · Science-backed Ingredients · Swiss Formulated
         </p>
       </div>
 
@@ -231,7 +231,7 @@ export default function OseoVitalPage() {
 
             <div className="flex items-center gap-2 mt-4 text-gray-500">
               <Truck className="h-3.5 w-3.5" />
-              <p className="text-sm">Flat rate S$10 shipping to Singapore</p>
+              <p className="text-sm text-green-600 font-medium">Free Shipping</p>
             </div>
 
             <button onClick={scrollToOrder} className="mt-6 w-full py-4 text-white text-xs font-bold tracking-[0.15em] uppercase" style={{ background: NAVY }}>
