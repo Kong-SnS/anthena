@@ -420,8 +420,8 @@ export default function OseoVitalPage() {
       <div style={{ background: NAVY }} className="py-12 text-center text-white relative">
         <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: GOLD_GRADIENT }} />
         <div className="container mx-auto px-6">
-          <h3 className="text-[25px] font-bold mb-4" style={{ background: GOLD_GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Follow Us on Instagram</h3>
-          <p className="text-xs text-white/70 mb-6">@oseovital_sg</p>
+          <h3 className="text-[25px] font-bold mb-2" style={{ background: GOLD_GRADIENT, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Follow Us</h3>
+          <a href="https://www.instagram.com/oseovital_sg/" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors mb-6 inline-block">@oseovital_sg</a>
           <div className="flex justify-center gap-4 mb-8">
             <a
               href="https://www.instagram.com/oseovital_sg/"
