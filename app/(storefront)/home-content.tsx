@@ -253,7 +253,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
               <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
                 {t.benefits.label}
               </span>
-              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
+              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 text-rose-gold">
                 {t.benefits.title}
               </h2>
               <OrnamentDivider className="mt-6" />
@@ -320,10 +320,10 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
                 <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold/70">
                   {t.lifestyle.label}
                 </span>
-                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-foreground">
+                <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 mb-4 leading-snug text-rose-gold">
                   {t.lifestyle.title1}
                   <br />
-                  <span className="italic font-light text-gold">{t.lifestyle.title2}</span>
+                  <span className="italic font-light text-rose-gold">{t.lifestyle.title2}</span>
                 </h2>
                 <p className="text-muted-foreground font-light leading-relaxed mb-8 text-base">
                   {t.lifestyle.description}
@@ -377,7 +377,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
               <span className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground">
                 {t.testimonials.label}
               </span>
-              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
+              <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 text-rose-gold">
                 {t.testimonials.title}
               </h2>
               <OrnamentDivider className="mt-6" />
@@ -409,7 +409,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
             <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
               {t.cta.label}
             </span>
-            <h2 className="text-[40px] font-display font-normal tracking-tight mt-4 mb-6 leading-snug">
+            <h2 className="text-[40px] font-display font-normal tracking-tight mt-4 mb-6 leading-snug text-rose-gold">
               {t.cta.title1}
               <br />
               <span className="italic font-light">{t.cta.title2}</span>

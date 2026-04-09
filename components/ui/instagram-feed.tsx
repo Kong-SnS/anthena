@@ -17,7 +17,7 @@ export function InstagramFeed() {
           <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
             @bloomie_int
           </span>
-          <h2 className="text-[40px] font-display font-normal tracking-tight mt-3">
+          <h2 className="text-[40px] font-display font-normal tracking-tight mt-3 text-rose-gold">
             Follow Us on Instagram
           </h2>
         </div>
