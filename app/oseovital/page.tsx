@@ -228,7 +228,7 @@ export default function OseoVitalPage() {
           {/* Right: Package Selector + Accordion */}
           <div>
             <h2 className="text-[25px] font-bold mb-2" style={{ color: NAVY }}>OseoVital</h2>
-            <p className="text-sm text-gray-500 mb-6">Botanical Mixed Beverage · Joint, Bone, Nerve & Muscle Health</p>
+            <p className="text-sm text-gray-500 mb-6">Joint • Bone • Nerve • Muscle Health</p>
 
             <div className="space-y-3">
               {tiers.map((tier) => (
