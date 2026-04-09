@@ -230,9 +230,9 @@ function generateOseoOrderConfirmation() {
       <p style="color:#00007b;font-size:13px;font-weight:600;margin:0 0 8px">What's Next?</p>
       <p style="color:#666;font-size:13px;line-height:1.7;margin:0">Your order will be shipped within <strong>3–5 business days</strong>. We will send you a tracking number once it's on its way!</p>
     </div>
-    <p style="color:#666;font-size:13px;line-height:1.7;margin-top:24px">If you have any questions about your order, feel free to reach out to us on Instagram <a href="https://www.instagram.com/oseovital_sg/" style="color:#00007b;text-decoration:none;font-weight:500">@oseovital_sg</a>.</p>
+    <p style="color:#666;font-size:13px;line-height:1.7;margin-top:24px">If you have any questions about your order, feel free to reach out to us on Facebook <a href="https://www.facebook.com/OseoVitalSG/" style="color:#00007b;text-decoration:none;font-weight:500">OseoVital SG</a>.</p>
     <div style="text-align:center;margin-top:32px">
-      <a href="https://www.instagram.com/oseovital_sg/" style="display:inline-block;background:#00007b;color:white;text-decoration:none;padding:12px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;font-weight:500">Follow Us on Instagram</a>
+      <a href="https://www.facebook.com/OseoVitalSG/" style="display:inline-block;background:#00007b;color:white;text-decoration:none;padding:12px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;font-weight:500">Follow Us on Facebook</a>
     </div>
   `)
 }

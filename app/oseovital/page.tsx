@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Loader2, Lock, Gift, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook } from "lucide-react"
@@ -94,6 +94,39 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
   )
 }
 
+const bannerMessages = [
+  "Specially Made for Joint (Bone, Nerve, Muscle) Problems",
+  "Science-backed Ingredients",
+  "Swiss Formulated",
+]
+
+function OseoBanner() {
+  const [index, setIndex] = useState(0)
+  const [fade, setFade] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false)
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % bannerMessages.length)
+        setFade(true)
+      }, 300)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div style={{ background: NAVY }} className="py-2.5 text-center overflow-hidden">
+      <p
+        className="text-xs font-medium tracking-wider uppercase text-white transition-opacity duration-300"
+        style={{ opacity: fade ? 1 : 0 }}
+      >
+        {bannerMessages[index]}
+      </p>
+    </div>
+  )
+}
+
 export default function OseoVitalPage() {
   const [quantity, setQuantity] = useState<SGQuantity>(2)
   const [loading, setLoading] = useState(false)
@@ -142,11 +175,7 @@ export default function OseoVitalPage() {
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
       {/* Announcement Bar */}
-      <div style={{ background: NAVY }} className="py-2.5 text-center">
-        <p className="text-xs font-medium tracking-wider uppercase text-white">
-          Specially Made for Joint (Bone, Nerve, Muscle) Problems · Science-backed Ingredients · Swiss Formulated
-        </p>
-      </div>
+      <OseoBanner />
 
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white border-b border-gray-100 py-4 text-center">
