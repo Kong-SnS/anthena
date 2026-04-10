@@ -105,26 +105,44 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
       {/* ============================================ */}
       {/* HERO - Fullscreen Video Background           */}
       {/* ============================================ */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden bg-black">
+        {/* Blurred background video (fills entire width) */}
         <motion.div
-          className="absolute inset-0"
-          style={{ y: useParallax(-50) }}
+          className="absolute inset-0 scale-[1.5]"
+          style={{ y: useParallax(0), filter: "blur(30px) brightness(0.6)" }}
         >
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="h-[120%] w-full object-cover"
-            poster="/images/products/bloomie-product-new.png"
+            className="h-full w-full object-cover"
           >
-            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src="/videos/bloomie-intro-video.mp4" type="video/mp4" />
           </video>
         </motion.div>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 z-[1]" />
+        {/* Sharp centered vertical video */}
+        <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 1 }}>
+          <div className="relative h-full aspect-[9/16] max-h-full">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover"
+              poster="/images/products/bloomie-product-new.png"
+            >
+              <source src="/videos/bloomie-intro-video.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
 
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        {/* Dark overlay */}
+        <div className="absolute inset-0" style={{ zIndex: 2, background: "linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35), rgba(0,0,0,0.65))" }} />
+
+        {/* Text content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ zIndex: 3 }}>
           <span className="animate-fade-in-up text-xs font-medium tracking-[0.35em] uppercase text-white/75 mb-6">
             {t.hero.label}
           </span>
@@ -160,7 +178,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style={{ zIndex: 3 }}>
           <ChevronDown className="h-5 w-5 text-white/40" />
         </div>
       </section>
@@ -214,26 +232,26 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
                 </div>
 
                 {/* Pricing Tiers */}
-                <div className="flex gap-4 mb-8">
+                <div className="flex items-stretch gap-4 mb-8">
                   <button
-                    className="border border-gold/15 px-5 py-3 text-center hover:border-gold/30 transition-all"
+                    className="border border-gold/15 px-5 py-3 text-center hover:border-gold/30 transition-all flex flex-col items-center justify-center"
                     onClick={() => {
                       if (product) { addItem(product, 1); openCartDrawer() }
                     }}
                   >
                     <p className="text-xs text-muted-foreground font-light">1 Box</p>
-                    <p className="text-[25px] font-light mt-1">RM 138</p>
+                    <p className="text-[25px] font-light mt-1 text-rose-gold">RM 138</p>
                     <p className="text-xs text-muted-foreground">15 Sachets</p>
                   </button>
                   <button
-                    className="border-2 border-gold px-5 py-3 text-center relative hover:bg-gold/5 transition-all"
+                    className="border-2 border-gold px-5 py-3 text-center relative hover:bg-gold/5 transition-all flex flex-col items-center justify-center"
                     onClick={() => {
                       if (bundleProduct) { addItem(bundleProduct, 1); openCartDrawer() }
                     }}
                   >
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 btn-rose-gold text-xs font-medium tracking-wider px-3 py-0.5 whitespace-nowrap">SAVED RM 47</span>
-                    <p className="text-xs text-muted-foreground font-light mt-1">2 Boxes</p>
-                    <p className="text-[25px] font-light mt-1">RM 229</p>
+                    <p className="text-xs text-muted-foreground font-light">2 Boxes</p>
+                    <p className="text-[25px] font-light mt-1 text-rose-gold">RM 229</p>
                     <p className="text-xs text-muted-foreground">30 Sachets</p>
                   </button>
                 </div>
@@ -406,13 +424,11 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#ee9ca7]/15 rounded-full blur-3xl" />
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <span className="text-xs font-medium tracking-[0.3em] uppercase text-gold">
+            <span className="text-xs font-medium tracking-[0.3em] uppercase text-rose-gold">
               {t.cta.label}
             </span>
             <h2 className="text-[40px] font-display font-normal tracking-tight mt-4 mb-6 leading-snug text-rose-gold">
-              {t.cta.title1}
-              <br />
-              <span className="italic font-light">{t.cta.title2}</span>
+              {t.cta.title1} {t.cta.title2}
             </h2>
             <p className="text-muted-foreground font-light max-w-md mx-auto mb-10 leading-relaxed">
               {t.cta.description}
@@ -425,7 +441,7 @@ export function HomeContent({ featuredProducts, bundleProduct = null }: { featur
               {t.cta.btn}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <p className="text-base text-muted-foreground mt-4 font-light">
+            <p className="text-xs text-rose-gold mt-4 font-medium tracking-[0.1em] uppercase">
               {t.cta.price}
             </p>
           </AnimatedSection>

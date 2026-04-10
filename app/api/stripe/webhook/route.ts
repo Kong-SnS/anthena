@@ -112,6 +112,7 @@ export async function POST(request: NextRequest) {
           to: order.customer.email,
           subject: `Order Confirmed #${orderNumber} - OseoVital`,
           html,
+          fromName: "OseoVital",
         })
 
         await supabase.from("email_logs").insert({

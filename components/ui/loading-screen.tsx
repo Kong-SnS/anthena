@@ -9,7 +9,7 @@ export function LoadingScreen() {
   const [show, setShow] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(false), 3500)
+    const timer = setTimeout(() => setShow(false), 2000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -19,7 +19,7 @@ export function LoadingScreen() {
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#faf8f5]"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <div className="text-center">
             <h1 className="text-[40px] font-display tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.3em] uppercase">
@@ -30,8 +30,8 @@ export function LoadingScreen() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.6,
-                    delay: 0.2 + i * 0.1,
+                    duration: 0.35,
+                    delay: 0.1 + i * 0.06,
                     ease: [0.33, 1, 0.68, 1],
                   }}
                 >
@@ -44,14 +44,14 @@ export function LoadingScreen() {
               className="h-[1px] mx-auto mt-6 line-rose-gold"
               initial={{ width: 0 }}
               animate={{ width: 96 }}
-              transition={{ duration: 1, delay: 1.2, ease: "easeInOut" }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeInOut" }}
             />
 
             <motion.p
               className="text-xs tracking-[0.15em] sm:tracking-[0.25em] uppercase text-gold/50 mt-5 font-light px-4"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.8 }}
+              transition={{ duration: 0.5, delay: 1.0 }}
             >
               Affordable Premium Wellness
             </motion.p>

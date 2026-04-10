@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Minus, Plus, ArrowLeft, Truck, Shield, RotateCcw } from "lucide-react"
+import { Minus, Plus, ArrowLeft, Truck, Shield } from "lucide-react"
 import { useCart, useCartDrawer } from "@/hooks/use-cart"
 import { ProductCard } from "@/components/shop/product-card"
 import type { Product } from "@/types"
@@ -219,16 +219,15 @@ export function ProductDetailContent({
             <Separator className="my-6 bg-gold/5" />
 
             {/* Features */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {[
                 { icon: Truck, label: "Free Shipping", sub: "Min. Purchase 2 Boxes" },
                 { icon: Shield, label: "Quality Assured", sub: "GMP Certified" },
-                { icon: RotateCcw, label: "Easy Returns", sub: "30-day policy" },
               ].map((f) => (
                 <div key={f.label} className="text-center">
-                  <f.icon className="h-4 w-4 mx-auto mb-2 text-muted-foreground" />
-                  <p className="text-xs font-medium tracking-wide">{f.label}</p>
-                  <p className="text-base text-muted-foreground mt-0.5">{f.sub}</p>
+                  <f.icon className="h-5 w-5 mx-auto mb-2 text-muted-foreground" />
+                  <p className="text-sm font-medium tracking-wide">{f.label}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{f.sub}</p>
                 </div>
               ))}
             </div>

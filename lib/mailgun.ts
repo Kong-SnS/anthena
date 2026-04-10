@@ -5,11 +5,12 @@ interface SendEmailParams {
   to: string
   subject: string
   html: string
+  fromName?: string
 }
 
 export async function sendEmail(params: SendEmailParams) {
   const domain = process.env.MAILGUN_DOMAIN!
-  const fromName = process.env.MAILGUN_FROM_NAME || "Athena"
+  const fromName = params.fromName || process.env.MAILGUN_FROM_NAME || "Athena"
   const fromEmail = process.env.MAILGUN_FROM_EMAIL || `noreply@${domain}`
   const form = new URLSearchParams()
   form.append("from", `${fromName} <${fromEmail}>`)

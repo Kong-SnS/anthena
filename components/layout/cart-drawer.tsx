@@ -42,12 +42,7 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-5 text-center px-6">
             <ShoppingBag className="h-12 w-12 text-gold/30" />
-            <div>
-              <p className="text-xs font-medium mb-1">Your cart is empty</p>
-              <p className="text-base text-muted-foreground font-light">
-                Browse our products and add items to your cart
-              </p>
-            </div>
+            <p className="text-xs font-medium">Your cart is empty</p>
             <button
               onClick={close}
               className="w-full btn-rose-gold py-3 text-xs font-medium tracking-[0.15em] uppercase"

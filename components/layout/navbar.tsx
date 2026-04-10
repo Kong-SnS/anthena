@@ -32,8 +32,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: t.nav.home },
-    { href: "/shop", label: t.nav.shop },
-    { href: "/#about", label: t.nav.about },
+    { href: "/shop", label: "Shop All" },
     { href: "/#testimonials", label: t.nav.reviews },
   ]
 
@@ -84,10 +83,8 @@ export function Navbar() {
                 </div>
                 <nav className="flex flex-col">
                   {[
-                    { href: "/", label: t.nav.home },
-                    { href: "/shop", label: "Bloomie" },
-                    { href: "/#about", label: "About Us" },
-                    { href: "/#testimonials", label: t.nav.reviews },
+                    { href: "/shop", label: "Shop All" },
+                    { href: "/#about", label: "Contact" },
                   ].map((link) => (
                     <Link
                       key={link.href}
