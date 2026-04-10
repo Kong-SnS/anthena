@@ -3,20 +3,18 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { createClient } from "@/lib/supabase/client"
-import { Loader2, LogOut, Package } from "lucide-react"
+import { Loader2, LogOut, Package, Truck } from "lucide-react"
 import type { Order } from "@/types"
 
-const statusColors: Record<string, string> = {
-  pending: "bg-yellow-100 text-yellow-800",
-  paid: "bg-blue-100 text-blue-800",
-  processing: "bg-purple-100 text-purple-800",
-  shipped: "bg-indigo-100 text-indigo-800",
-  delivered: "bg-green-100 text-green-800",
-  cancelled: "bg-red-100 text-red-800",
+const statusConfig: Record<string, { label: string; color: string }> = {
+  pending: { label: "Pending", color: "bg-amber-50 text-amber-700 border-amber-200" },
+  paid: { label: "Paid", color: "bg-blue-50 text-blue-700 border-blue-200" },
+  processing: { label: "Processing", color: "bg-purple-50 text-purple-700 border-purple-200" },
+  shipped: { label: "Shipped", color: "bg-indigo-50 text-indigo-700 border-indigo-200" },
+  delivered: { label: "Delivered", color: "bg-green-50 text-green-700 border-green-200" },
+  cancelled: { label: "Cancelled", color: "bg-red-50 text-red-700 border-red-200" },
 }
 
 export default function AccountPage() {
@@ -37,7 +35,6 @@ export default function AccountPage() {
 
       setUser({ email: authUser.email || "", name: authUser.user_metadata?.name || "" })
 
-      // Look up customer by user_id first, then by email as fallback
       let customer = null
       const { data: byUserId } = await supabase
         .from("customers")
@@ -88,70 +85,103 @@ export default function AccountPage() {
 
   return (
     <div className="pt-20">
-      <div className="container mx-auto px-6 lg:px-8 py-10 max-w-3xl">
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-[25px] font-display font-normal tracking-tight">My Account</h1>
-          <p className="text-muted-foreground font-light text-base mt-1">{user?.email}</p>
+      {/* Header */}
+      <div className="bg-[#faf8f5] py-16 lg:py-20">
+        <div className="container mx-auto px-6 lg:px-8 text-center">
+          <span className="text-xs font-medium tracking-[0.35em] uppercase text-rose-gold">
+            Welcome Back
+          </span>
+          <h1 className="text-[40px] font-display font-normal tracking-tight mt-3">
+            My Account
+          </h1>
+          <p className="text-muted-foreground font-light text-base mt-2">{user?.email}</p>
         </div>
-        <Button variant="outline" onClick={handleLogout}>
-          <LogOut className="h-4 w-4 mr-2" /> Logout
-        </Button>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Package className="h-5 w-5" /> Order History
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+      <div className="container mx-auto px-6 lg:px-8 py-12 lg:py-16 max-w-3xl">
+        {/* Logout */}
+        <div className="flex justify-end mb-8">
+          <Button
+            variant="outline"
+            className="rounded-none border-gold/15 text-xs font-medium tracking-[0.1em] uppercase h-10 px-6"
+            onClick={handleLogout}
+          >
+            <LogOut className="h-3.5 w-3.5 mr-2" /> Logout
+          </Button>
+        </div>
+
+        {/* Order History */}
+        <div>
+          <div className="flex items-center gap-2 mb-8">
+            <Package className="h-4 w-4 text-rose-gold" />
+            <h2 className="text-xs font-medium tracking-[0.2em] uppercase">Order History</h2>
+          </div>
+
           {orders.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">No orders yet</p>
+            <div className="bg-[#faf8f5] py-16 text-center">
+              <p className="text-muted-foreground font-light">No orders yet</p>
+            </div>
           ) : (
             <div className="space-y-4">
-              {orders.map((order) => (
-                <div key={order.id} className="border rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold">#{order.order_number}</span>
-                    <Badge className={statusColors[order.status] || ""}>
-                      {order.status}
-                    </Badge>
-                  </div>
-                  <div className="text-xs text-muted-foreground mb-2">
-                    {new Date(order.created_at).toLocaleDateString("en-MY", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </div>
-                  {order.order_items && (
-                    <div className="text-xs space-y-1">
-                      {order.order_items.map((item) => (
-                        <div key={item.id} className="flex justify-between">
-                          <span>{item.product_name} x{item.quantity}</span>
-                          <span>RM {(item.unit_price * item.quantity).toFixed(2)}</span>
-                        </div>
-                      ))}
+              {orders.map((order) => {
+                const status = statusConfig[order.status] || statusConfig.pending
+                return (
+                  <div key={order.id} className="border border-gold/10 p-6 hover:border-gold/20 transition-colors">
+                    {/* Order header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <span className="text-xs font-medium tracking-wide">#{order.order_number}</span>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {new Date(order.created_at).toLocaleDateString("en-MY", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </p>
+                      </div>
+                      <span className={`text-xs font-medium tracking-wider uppercase px-3 py-1 border ${status.color}`}>
+                        {status.label}
+                      </span>
                     </div>
-                  )}
-                  <Separator className="my-2" />
-                  <div className="flex justify-between font-semibold text-xs">
-                    <span>Total</span>
-                    <span>RM {order.total.toFixed(2)}</span>
+
+                    {/* Items */}
+                    {order.order_items && (
+                      <div className="space-y-2 mb-4">
+                        {order.order_items.map((item) => (
+                          <div key={item.id} className="flex justify-between text-xs">
+                            <span className="text-muted-foreground font-light">
+                              {item.product_name} <span className="text-muted-foreground/60">x{item.quantity}</span>
+                            </span>
+                            <span>RM {(item.unit_price * item.quantity).toFixed(2)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <Separator className="bg-gold/5 my-4" />
+
+                    {/* Total + Tracking */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="flex justify-between text-xs">
+                          <span className="font-medium">Total</span>
+                        </div>
+                        {order.tracking_number && (
+                          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <Truck className="h-3 w-3" />
+                            <span>{order.tracking_number}</span>
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-sm font-medium text-rose-gold">RM {order.total.toFixed(2)}</span>
+                    </div>
                   </div>
-                  {order.tracking_number && (
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Tracking: {order.tracking_number}
-                    </p>
-                  )}
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+      </div>
     </div>
   )
 }

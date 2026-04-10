@@ -184,7 +184,7 @@ export default function CheckoutPage() {
       {/* Header */}
       <div className="bg-gradient-to-b from-[#faf8f5] to-[#faf8f5] py-20 lg:py-24">
         <div className="container mx-auto px-6 lg:px-8 text-center">
-          <span className="text-xs font-medium tracking-[0.35em] uppercase text-white/40">
+          <span className="text-xs font-medium tracking-[0.35em] uppercase text-rose-gold">
             Secure
           </span>
           <h1 className="text-[40px] font-display font-normal tracking-tight mt-3">
@@ -275,7 +275,7 @@ export default function CheckoutPage() {
                     className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11"
                   />
                 </div>
-                <div className="grid sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4">
                   <div>
                     <Label className="text-xs font-medium tracking-wider uppercase text-muted-foreground">
                       City *
@@ -294,7 +294,7 @@ export default function CheckoutPage() {
                       value={form.state}
                       onValueChange={(v) => updateField("state", v ?? "")}
                     >
-                      <SelectTrigger className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11">
+                      <SelectTrigger className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11 text-xs">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
