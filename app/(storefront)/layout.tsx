@@ -7,7 +7,6 @@ import { LoadingScreen } from "@/components/ui/loading-screen"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { BackToTop } from "@/components/ui/back-to-top"
 import { SocialProof } from "@/components/ui/social-proof"
-import { EmailPopup } from "@/components/ui/email-popup"
 import { CartDrawer } from "@/components/layout/cart-drawer"
 import { I18nProvider } from "@/lib/i18n"
 
@@ -28,7 +27,6 @@ export default function StorefrontLayout({
       <WhatsAppButton />
       <BackToTop />
       <SocialProof />
-      <EmailPopup />
       <CartDrawer />
     </I18nProvider>
   )
