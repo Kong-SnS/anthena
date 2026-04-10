@@ -3,12 +3,13 @@
 
 export type SGQuantity = 1 | 2 | 3
 
+// TODO: TESTING - revert to real prices after testing (35800, 26800, 18800)
 export function calculatePriceSGD(quantity: SGQuantity) {
   switch (quantity) {
     case 3:
       return {
-        total: 35800,
-        display: "358.00",
+        total: 100,
+        display: "1.00",
         totalBoxes: 6,
         freeBoxes: 3,
         freeSachets: 15,
@@ -17,8 +18,8 @@ export function calculatePriceSGD(quantity: SGQuantity) {
       }
     case 2:
       return {
-        total: 26800,
-        display: "268.00",
+        total: 100,
+        display: "1.00",
         totalBoxes: 4,
         freeBoxes: 2,
         freeSachets: 10,
@@ -27,8 +28,8 @@ export function calculatePriceSGD(quantity: SGQuantity) {
       }
     default:
       return {
-        total: 18800,
-        display: "188.00",
+        total: 100,
+        display: "1.00",
         totalBoxes: 2,
         freeBoxes: 1,
         freeSachets: 5,
