@@ -19,23 +19,22 @@ export function calculateShipping(region: Region, quantity: number): {
 } {
   const minPurchase = quantity >= 2
 
-  // TODO: TESTING - revert to real rates after testing
   if (region === "singapore") {
-    return { cost: 1, isFree: false, carriers: ["International Shipping"] }
+    return { cost: 30, isFree: false, carriers: ["International Shipping"] }
   }
 
   if (region === "east") {
     return {
-      cost: 1,
-      isFree: false,
+      cost: minPurchase ? 0 : 12,
+      isFree: minPurchase,
       carriers: ["Citylink", "Poslaju"],
     }
   }
 
   // peninsular
   return {
-    cost: 1,
-    isFree: false,
+    cost: minPurchase ? 0 : 6.5,
+    isFree: minPurchase,
     carriers: ["DHL", "Citylink", "Poslaju"],
   }
 }
