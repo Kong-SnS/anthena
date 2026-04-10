@@ -2,14 +2,19 @@ import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
+  const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get("code")
-  const redirectTo = searchParams.get("redirect_to") || "/auth/reset-password"
+  const next = searchParams.get("next") || searchParams.get("redirect_to") || "/"
 
   if (code) {
     const supabase = await createClient()
-    await supabase.auth.exchangeCodeForSession(code)
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+
+    if (!error) {
+      return NextResponse.redirect(new URL(next, origin))
+    }
   }
 
-  return NextResponse.redirect(new URL(redirectTo, request.url))
+  // If code exchange fails, redirect to login with error
+  return NextResponse.redirect(new URL("/auth/login?error=invalid_link", origin))
 }
