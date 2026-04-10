@@ -25,6 +25,25 @@ export async function middleware(request: NextRequest) {
     }
   )
 
+  // Handle auth code exchange (password reset, email confirm)
+  const code = request.nextUrl.searchParams.get("code")
+  if (code && request.nextUrl.pathname === "/") {
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    if (!error) {
+      // Check if this is a recovery (password reset) session
+      const { data: { session } } = await supabase.auth.getSession()
+      if (session?.user?.recovery_sent_at) {
+        const url = new URL("/auth/reset-password", request.url)
+        const response = NextResponse.redirect(url)
+        // Copy cookies from supabase response
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+          response.cookies.set(cookie.name, cookie.value)
+        })
+        return response
+      }
+    }
+  }
+
   const { data: { user } } = await supabase.auth.getUser()
 
   // Protect admin routes
@@ -55,5 +74,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/account/:path*"],
+  matcher: ["/", "/admin/:path*", "/account/:path*"],
 }
