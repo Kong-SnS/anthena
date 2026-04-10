@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Loader2, Lock, Gift, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook } from "lucide-react"
+import { Loader2, Lock, Gift, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook, ShoppingBag } from "lucide-react"
 import type { SGQuantity } from "@/lib/pricing-sg"
 
 const NAVY = "#00007b"
@@ -142,7 +142,10 @@ function FomoNotification() {
         transform: visible ? "translateY(0)" : "translateY(20px)",
       }}
     >
-      <div className="bg-white shadow-lg border border-gray-200 px-5 py-4 max-w-sm">
+      <div className="bg-white shadow-lg border border-gray-200 px-5 py-4 max-w-sm flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: NAVY }}>
+          <ShoppingBag className="h-4 w-4 text-white" />
+        </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900 truncate">
             {data.name} <span className="font-normal text-gray-500">from {data.area}</span>
