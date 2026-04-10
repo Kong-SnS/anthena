@@ -95,6 +95,70 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
   )
 }
 
+const fomoNames = [
+  "Wei Ling", "Hui Min", "Siti Aminah", "Kumar R.", "Jason T.", "Mei Xian",
+  "Priya S.", "Ahmad B.", "Rachel Ng", "David Tan", "Nurul H.", "Raj K.",
+  "Yvonne L.", "Boon Keat", "Farah Z.", "Cheng Wei", "Aishah M.", "Derek W.",
+  "Su Lin", "Muthu S.", "Sharon C.", "Hafiz A.", "Jenny Lim", "Kelvin O.",
+  "Devi P.", "Zhi Hao", "Nadia I.", "Wai Keong", "Amirah R.", "Steven Goh",
+]
+
+const fomoAreas = [
+  "Tampines", "Jurong East", "Bedok", "Woodlands", "Ang Mo Kio",
+  "Toa Payoh", "Clementi", "Bukit Batok", "Punggol", "Sengkang",
+  "Hougang", "Pasir Ris", "Yishun", "Bishan", "Bukit Timah",
+  "Marine Parade", "Queenstown", "Serangoon", "Choa Chu Kang", "Sembawang",
+]
+
+const fomoTiers = ["Buy 1 Free 1", "Buy 2 Free 2", "Buy 3 Free 3"]
+
+function FomoNotification() {
+  const [visible, setVisible] = useState(false)
+  const [data, setData] = useState({ name: "", area: "", tier: "", timeAgo: "" })
+
+  useEffect(() => {
+    const show = () => {
+      const name = fomoNames[Math.floor(Math.random() * fomoNames.length)]
+      const area = fomoAreas[Math.floor(Math.random() * fomoAreas.length)]
+      const tier = fomoTiers[Math.floor(Math.random() * fomoTiers.length)]
+      const mins = Math.floor(Math.random() * 45) + 2
+      const timeAgo = mins < 60 ? `${mins} min ago` : `1 hr ago`
+      setData({ name, area, tier, timeAgo })
+      setVisible(true)
+      setTimeout(() => setVisible(false), 4000)
+    }
+
+    const initialDelay = setTimeout(show, 5000)
+    const interval = setInterval(show, 15000 + Math.random() * 10000)
+    return () => { clearTimeout(initialDelay); clearInterval(interval) }
+  }, [])
+
+  return (
+    <div
+      className="fixed bottom-6 left-6 z-[100] transition-all duration-500 pointer-events-none"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+      }}
+    >
+      <div className="bg-white shadow-lg border border-gray-200 px-5 py-4 flex items-center gap-4 max-w-sm">
+        <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center text-white text-xs font-bold" style={{ background: NAVY }}>
+          🇸🇬
+        </div>
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-gray-900 truncate">
+            {data.name} <span className="font-normal text-gray-500">from {data.area}</span>
+          </p>
+          <p className="text-xs text-gray-500">
+            Purchased <span className="font-medium" style={{ color: NAVY }}>{data.tier}</span>
+          </p>
+          <p className="text-xs text-gray-400 mt-0.5">{data.timeAgo} · Singapore</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const bannerMessages = [
   "Specially Made for Joint (Bone, Nerve, Muscle) Problems",
   "Science-backed Ingredients",
@@ -175,6 +239,7 @@ export default function OseoVitalPage() {
 
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+      <FomoNotification />
       {/* Announcement Bar */}
       <OseoBanner />
 
