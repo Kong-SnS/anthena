@@ -24,6 +24,9 @@ export async function generateMetadata({
   return {
     title: `${product.name} | Athena`,
     description: product.short_description,
+    alternates: {
+      canonical: `https://www.boomingwellness.com.my/shop/${slug}`,
+    },
     openGraph: {
       title: product.name,
       description: product.short_description,
@@ -64,11 +67,42 @@ export default async function ProductDetailPage({
     .eq("slug", "bloomie-2box")
     .single()
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.boomingwellness.com.my",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: "https://www.boomingwellness.com.my/shop",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: `https://www.boomingwellness.com.my/shop/${slug}`,
+      },
+    ],
+  }
+
   return (
-    <ProductDetailContent
-      product={product as Product}
-      relatedProducts={(relatedProducts || []) as Product[]}
-      bundleProduct={bundleProduct as Product | null}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ProductDetailContent
+        product={product as Product}
+        relatedProducts={(relatedProducts || []) as Product[]}
+        bundleProduct={bundleProduct as Product | null}
+      />
+    </>
   )
 }

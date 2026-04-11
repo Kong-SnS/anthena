@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Athena",
   },
   description:
-    "Bloomie is a premium women's wellness supplement with 12 patented ingredients from France, USA, Spain & Asia. Relieves menstrual cramps, hormonal acne, mood swings & more. Free shipping on 2 boxes.",
+    "Bloomie by Athena: premium women's wellness supplement with 12 patented ingredients. Relieves menstrual cramps, hormonal acne & mood swings.",
   keywords: [
     "Bloomie",
     "Athena",

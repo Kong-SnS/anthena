@@ -294,7 +294,7 @@ export default function CheckoutPage() {
                       value={form.state}
                       onValueChange={(v) => updateField("state", v ?? "")}
                     >
-                      <SelectTrigger className="rounded-none border-gold/15 bg-transparent mt-1.5 h-11 text-xs">
+                      <SelectTrigger className="w-full rounded-none border-gold/15 bg-transparent mt-1.5 h-11 text-xs">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>

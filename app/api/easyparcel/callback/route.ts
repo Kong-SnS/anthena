@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
   }
 
   // Exchange code for tokens
-  const clientId = process.env.EASYPARCEL_CLIENT_ID || "be220dcd-0b09-49b7-a569-1b295cb3af52"
-  const clientSecret = process.env.EASYPARCEL_CLIENT_SECRET || "01c25868-aeff-454e-99ef-c058f365eb61"
+  const clientId = process.env.EASYPARCEL_CLIENT_ID!
+  const clientSecret = process.env.EASYPARCEL_CLIENT_SECRET!
 
   const res = await fetch("https://api.easyparcel.com/oauth/token", {
     method: "POST",
