@@ -7,8 +7,8 @@ export function calculatePriceSGD(quantity: SGQuantity) {
   switch (quantity) {
     case 3:
       return {
-        total: 35800,
-        display: "358.00",
+        total: 33900,
+        display: "339.00",
         totalBoxes: 6,
         freeBoxes: 3,
         freeSachets: 15,
@@ -17,8 +17,8 @@ export function calculatePriceSGD(quantity: SGQuantity) {
       }
     case 2:
       return {
-        total: 26800,
-        display: "268.00",
+        total: 24800,
+        display: "248.00",
         totalBoxes: 4,
         freeBoxes: 2,
         freeSachets: 10,
@@ -27,8 +27,8 @@ export function calculatePriceSGD(quantity: SGQuantity) {
       }
     default:
       return {
-        total: 18800,
-        display: "188.00",
+        total: 17800,
+        display: "178.00",
         totalBoxes: 2,
         freeBoxes: 1,
         freeSachets: 5,

@@ -10,9 +10,9 @@ const NAVY = "#00007b"
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b, #d4af37, #f0c75e, #d4af37, #b8860b)"
 
 const tiers = [
-  { qty: 1 as SGQuantity, label: "Buy 1 Free 1", desc: "Free extra 5 sachets", sachets: "15 + 15 sachets", price: 188, badge: null },
-  { qty: 2 as SGQuantity, label: "Buy 2 Free 2", desc: "Free extra 10 sachets", sachets: "30 + 30 sachets", price: 268, badge: "Popular" },
-  { qty: 3 as SGQuantity, label: "Buy 3 Free 3", desc: "Free extra 15 sachets", sachets: "45 + 45 sachets", price: 358, badge: "Best Value" },
+  { qty: 1 as SGQuantity, label: "Buy 1 Free 1", desc: "Free extra 5 sachets", sachets: "15 + 15 sachets", price: 178, badge: null },
+  { qty: 2 as SGQuantity, label: "Buy 2 Free 2", desc: "Free extra 10 sachets", sachets: "30 + 30 sachets", price: 248, badge: "Popular" },
+  { qty: 3 as SGQuantity, label: "Buy 3 Free 3", desc: "Free extra 15 sachets", sachets: "45 + 45 sachets", price: 339, badge: "Best Value" },
 ]
 
 const functions = [

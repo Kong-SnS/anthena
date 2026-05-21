@@ -162,11 +162,11 @@ const sampleOseoOrder = {
   orderNumber: "ANT-SG-SAMPLE001",
   customerName: "Mr. Tan K.H.",
   items: [
-    { name: "OseoVital (Buy 2 Free 2)", quantity: 4, price: 67 },
+    { name: "OseoVital (Buy 2 Free 2)", quantity: 4, price: 62 },
   ],
-  subtotal: 268,
+  subtotal: 248,
   shippingCost: 0,
-  total: 268,
+  total: 248,
 }
 
 function oseoEmailWrapper(content: string) {
