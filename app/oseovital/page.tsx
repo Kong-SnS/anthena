@@ -3,16 +3,16 @@
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Loader2, Lock, Gift, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook, ShoppingBag } from "lucide-react"
+import { Loader2, Lock, Truck, Shield, Star, Quote, Plus, Minus, Instagram, Facebook, ShoppingBag } from "lucide-react"
 import type { SGQuantity } from "@/lib/pricing-sg"
 
 const NAVY = "#00007b"
 const GOLD_GRADIENT = "linear-gradient(135deg, #b8860b, #d4af37, #f0c75e, #d4af37, #b8860b)"
 
 const tiers = [
-  { qty: 1 as SGQuantity, label: "Buy 1 Free 1", desc: "Free extra 5 sachets", sachets: "15 + 15 sachets", price: 178, badge: null },
-  { qty: 2 as SGQuantity, label: "Buy 2 Free 2", desc: "Free extra 10 sachets", sachets: "30 + 30 sachets", price: 248, badge: "Popular" },
-  { qty: 3 as SGQuantity, label: "Buy 3 Free 3", desc: "Free extra 15 sachets", sachets: "45 + 45 sachets", price: 339, badge: "Best Value" },
+  { qty: 1 as SGQuantity, label: "Buy 1 Free 1", sachets: "15 + 15 sachets", price: 178, badge: null },
+  { qty: 2 as SGQuantity, label: "Buy 2 Free 2", sachets: "30 + 30 sachets", price: 248, badge: "Popular" },
+  { qty: 3 as SGQuantity, label: "Buy 3 Free 3", sachets: "45 + 45 sachets", price: 339, badge: "Best Value" },
 ]
 
 const functions = [
@@ -314,10 +314,6 @@ export default function OseoVitalPage() {
                   <div className={tier.badge ? "mt-1" : ""}>
                     <p className="text-sm font-bold">{tier.label}</p>
                     <p className="text-sm text-gray-500">{tier.sachets}</p>
-                    <div className="flex items-center gap-1 mt-1">
-                      <Gift className="h-3 w-3" style={{ color: NAVY }} />
-                      <p className="text-sm font-medium" style={{ color: NAVY }}>{tier.desc}</p>
-                    </div>
                   </div>
                   <p className="text-[25px] font-bold" style={{ color: NAVY }}>S${tier.price}</p>
                 </button>
