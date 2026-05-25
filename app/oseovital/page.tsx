@@ -443,8 +443,8 @@ export default function OseoVitalPage() {
                   <input type="text" value={form.address_line1} onChange={update("address_line1")} placeholder="Street address" className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none placeholder:text-gray-300" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
                 <div>
-                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Unit / Floor (optional)</label>
-                  <input type="text" value={form.address_line2} onChange={update("address_line2")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} />
+                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Unit / Floor</label>
+                  <input type="text" value={form.address_line2} onChange={update("address_line2")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
                 <div>
                   <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Postal Code</label>
