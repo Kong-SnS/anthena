@@ -426,7 +426,7 @@ export default function OseoVitalPage() {
                   { label: "Phone", field: "phone", type: "tel" },
                 ].map((f) => (
                   <div key={f.field}>
-                    <label className="text-xs font-bold tracking-wider uppercase text-gray-400">{f.label}</label>
+                    <label className="text-xs font-bold tracking-wider uppercase text-gray-400">{f.label} <span className="text-red-500">*</span></label>
                     <input
                       type={f.type}
                       value={(form as any)[f.field]}
@@ -439,15 +439,15 @@ export default function OseoVitalPage() {
                   </div>
                 ))}
                 <div>
-                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Address</label>
+                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Address <span className="text-red-500">*</span></label>
                   <input type="text" value={form.address_line1} onChange={update("address_line1")} placeholder="Street address" className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none placeholder:text-gray-300" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
                 <div>
-                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Unit / Floor</label>
+                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Unit / Floor <span className="text-red-500">*</span></label>
                   <input type="text" value={form.address_line2} onChange={update("address_line2")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
                 <div>
-                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Postal Code</label>
+                  <label className="text-xs font-bold tracking-wider uppercase text-gray-400">Postal Code <span className="text-red-500">*</span></label>
                   <input type="text" value={form.postcode} onChange={update("postcode")} className="w-full h-11 px-3 mt-1.5 border border-gray-200 bg-white text-sm focus:outline-none" onFocus={(e) => e.target.style.borderColor = NAVY} onBlur={(e) => e.target.style.borderColor = "#e5e7eb"} required />
                 </div>
 
