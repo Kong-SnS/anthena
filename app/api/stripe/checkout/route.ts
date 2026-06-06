@@ -105,9 +105,9 @@ export async function POST(request: NextRequest) {
     await supabase.from("order_items").insert({
       order_id: order.id,
       product_id: null,
-      product_name: `OseoVital (${pricing.label})`,
+      product_name: `OseoVital - ${pricing.shortLabel}`,
       quantity: pricing.totalBoxes,
-      unit_price: subtotalCents / 100 / pricing.totalBoxes,
+      unit_price: subtotalCents / 100,
     })
 
     // Create Stripe Checkout Session
