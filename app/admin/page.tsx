@@ -8,10 +8,11 @@ import { DollarSign, ShoppingCart, Users, Package, AlertTriangle } from "lucide-
 
 interface Stats {
   totalOrders: number
-  totalRevenue: number
+  revenueMYR: number
+  revenueSGD: number
   totalCustomers: number
   totalProducts: number
-  recentOrders: { id: string; order_number: string; total: number; status: string; created_at: string }[]
+  recentOrders: { id: string; order_number: string; total: number; status: string; created_at: string; payment_method: string | null }[]
   lowStockProducts: { id: string; name: string; stock_count: number }[]
 }
 
@@ -27,7 +28,8 @@ const statusColors: Record<string, string> = {
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({
     totalOrders: 0,
-    totalRevenue: 0,
+    revenueMYR: 0,
+    revenueSGD: 0,
     totalCustomers: 0,
     totalProducts: 0,
     recentOrders: [],
@@ -39,7 +41,7 @@ export default function AdminDashboard() {
       const supabase = createClient()
 
       const [orders, customers, products] = await Promise.all([
-        supabase.from("orders").select("id, order_number, total, status, created_at").order("created_at", { ascending: false }),
+        supabase.from("orders").select("id, order_number, total, status, created_at, payment_method").order("created_at", { ascending: false }),
         supabase.from("customers").select("id", { count: "exact", head: true }),
         supabase.from("products").select("id, name, stock_count").eq("is_active", true),
       ])
@@ -49,7 +51,8 @@ export default function AdminDashboard() {
 
       setStats({
         totalOrders: allOrders.length,
-        totalRevenue: paidOrders.reduce((sum, o) => sum + Number(o.total), 0),
+        revenueMYR: paidOrders.filter((o) => o.payment_method !== "stripe").reduce((sum, o) => sum + Number(o.total), 0),
+        revenueSGD: paidOrders.filter((o) => o.payment_method === "stripe").reduce((sum, o) => sum + Number(o.total), 0),
         totalCustomers: customers.count || 0,
         totalProducts: (products.data || []).length,
         recentOrders: allOrders.slice(0, 5),
@@ -60,7 +63,6 @@ export default function AdminDashboard() {
   }, [])
 
   const statCards = [
-    { title: "Total Revenue", value: `RM ${stats.totalRevenue.toFixed(2)}`, icon: DollarSign, color: "text-green-600" },
     { title: "Total Orders", value: stats.totalOrders, icon: ShoppingCart, color: "text-blue-600" },
     { title: "Customers", value: stats.totalCustomers, icon: Users, color: "text-purple-600" },
     { title: "Products", value: stats.totalProducts, icon: Package, color: "text-orange-600" },
@@ -72,6 +74,18 @@ export default function AdminDashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Total Revenue</p>
+                <p className="text-lg font-bold mt-1">RM {stats.revenueMYR.toFixed(2)}</p>
+                <p className="text-lg font-bold">S$ {stats.revenueSGD.toFixed(2)}</p>
+              </div>
+              <DollarSign className="h-8 w-8 text-green-600 opacity-80" />
+            </div>
+          </CardContent>
+        </Card>
         {statCards.map((stat) => (
           <Card key={stat.title}>
             <CardContent className="p-4">

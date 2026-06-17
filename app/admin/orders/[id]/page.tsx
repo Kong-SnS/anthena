@@ -35,7 +35,7 @@ interface CarrierOption {
 
 export default function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
-  const [order, setOrder] = useState<Order & { customer: { name: string; email: string; phone: string; address_line1: string; city: string; state: string; postcode: string } | null } | null>(null)
+  const [order, setOrder] = useState<Order & { customer: { name: string; email: string; phone: string; address_line1: string; address_line2: string | null; city: string; state: string; postcode: string } | null } | null>(null)
   const [loading, setLoading] = useState(true)
   const [updating, setUpdating] = useState(false)
   const [trackingNumber, setTrackingNumber] = useState("")
@@ -462,7 +462,10 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
                   <p className="text-muted-foreground">{order.customer.phone}</p>
                 </div>
                 <div>
-                  <p className="text-muted-foreground">{order.customer.address_line1}</p>
+                  <p className="text-muted-foreground">
+                    {order.customer.address_line1}
+                    {order.customer.address_line2 ? `, ${order.customer.address_line2}` : ""}
+                  </p>
                   <p className="text-muted-foreground">
                     {order.customer.city}, {order.customer.state} {order.customer.postcode}
                   </p>
