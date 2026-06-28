@@ -11,11 +11,8 @@ export default function OseoVitalSuccessPage() {
         <h1 className="text-[40px] font-bold tracking-tight mb-3" style={{ color: "#00007b" }}>
           Thank You!
         </h1>
-        <p className="text-xs text-gray-500 mb-2">
-          Your payment was successful. We&apos;ll send a confirmation email shortly.
-        </p>
         <p className="text-xs text-gray-500 mb-8">
-          Your OseoVital will be shipped within 3-5 business days.
+          Your payment was successful. We&apos;ll send a confirmation email shortly.
         </p>
         <Link
           href="/oseovital"

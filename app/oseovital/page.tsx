@@ -13,6 +13,7 @@ const tiers = [
   { qty: 1 as SGQuantity, label: "Buy 1 Free 1", sachets: "15 + 15 sachets", price: 178, badge: null },
   { qty: 2 as SGQuantity, label: "Buy 2 Free 2", sachets: "30 + 30 sachets", price: 248, badge: "Popular" },
   { qty: 3 as SGQuantity, label: "Buy 3 Free 3", sachets: "45 + 45 sachets", price: 339, badge: "Best Value" },
+  { qty: 4 as SGQuantity, label: "Buy 3 Free 3, Top Up $60 Get Extra 2 Boxes", sachets: "45 + 45 + 30 sachets", price: 399, badge: "PWP Set" },
 ]
 
 const functions = [
@@ -300,7 +301,7 @@ export default function OseoVitalPage() {
                 <button
                   key={tier.qty}
                   onClick={() => setQuantity(tier.qty)}
-                  className="w-full px-5 py-4 text-left transition-all relative flex items-center justify-between"
+                  className="w-full px-5 py-4 text-left transition-all relative flex items-center justify-between gap-3"
                   style={{
                     border: quantity === tier.qty ? `2px solid ${NAVY}` : "2px solid #e5e7eb",
                     background: quantity === tier.qty ? `${NAVY}08` : "white",
@@ -315,7 +316,7 @@ export default function OseoVitalPage() {
                     <p className="text-sm font-bold">{tier.label}</p>
                     <p className="text-sm text-gray-500">{tier.sachets}</p>
                   </div>
-                  <p className="text-[25px] font-bold" style={{ color: NAVY }}>S${tier.price}</p>
+                  <p className="text-[25px] font-bold whitespace-nowrap" style={{ color: NAVY }}>S${tier.price}</p>
                 </button>
               ))}
             </div>

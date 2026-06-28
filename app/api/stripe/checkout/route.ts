@@ -22,14 +22,14 @@ export async function POST(request: NextRequest) {
   try {
     const { quantity, customer } = await request.json()
 
-    if (!quantity || ![1, 2, 3].includes(quantity)) {
+    if (!quantity || ![1, 2, 3, 4].includes(quantity)) {
       return NextResponse.json({ error: "Invalid quantity" }, { status: 400 })
     }
     if (!customer?.name || !customer?.email || !customer?.phone || !customer?.address_line1 || !customer?.postcode) {
       return NextResponse.json({ error: "All customer fields are required" }, { status: 400 })
     }
 
-    const pricing = calculatePriceSGD(quantity as 1 | 2 | 3)
+    const pricing = calculatePriceSGD(quantity as 1 | 2 | 3 | 4)
     const supabase = createAdminClient()
     const orderNumber = `ANT-SG-${Date.now().toString(36).toUpperCase()}`
 

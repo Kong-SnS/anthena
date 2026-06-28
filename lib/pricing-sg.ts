@@ -1,10 +1,20 @@
 // SGD pricing for Bloomie — amounts in cents
 // Buy X Free X promo (free extra sachets)
 
-export type SGQuantity = 1 | 2 | 3
+export type SGQuantity = 1 | 2 | 3 | 4
 
 export function calculatePriceSGD(quantity: SGQuantity) {
   switch (quantity) {
+    case 4:
+      return {
+        total: 39900,
+        display: "399.00",
+        totalBoxes: 8,
+        freeBoxes: 5,
+        freeSachets: 0,
+        label: "Buy 3 Free 3 + Top Up S$60 for Extra 2 Boxes",
+        shortLabel: "PWP Set (Buy 3 Free 3 + 2 Boxes)",
+      }
     case 3:
       return {
         total: 33900,
