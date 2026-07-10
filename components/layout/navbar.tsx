@@ -44,8 +44,8 @@ export function Navbar() {
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setIsLoggedIn(!!user)
+    supabase.auth.getClaims().then(({ data }) => {
+      setIsLoggedIn(!!data?.claims)
     })
   }, [pathname])
 

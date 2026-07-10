@@ -43,16 +43,17 @@ export default function CheckoutPage() {
   useEffect(() => {
     async function loadUserInfo() {
       const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
+      const { data: claimsData } = await supabase.auth.getClaims()
+      const claims = claimsData?.claims
+      if (!claims) return
 
-      const name = user.user_metadata?.name || ""
-      const email = user.email || ""
+      const name = (claims.user_metadata?.name as string) || ""
+      const email = (claims.email as string) || ""
 
       const { data: customer } = await supabase
         .from("customers")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", claims.sub)
         .single()
 
       if (customer) {

@@ -104,8 +104,8 @@ export async function POST(request: NextRequest) {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         { cookies: { getAll() { return parseCookies(cookieHeader) }, setAll() {} } }
       )
-      const { data: { user } } = await authSupabase.auth.getUser()
-      authUserId = user?.id || null
+      const { data } = await authSupabase.auth.getClaims()
+      authUserId = (data?.claims?.sub as string) || null
     } catch {}
 
     // --- Create or find customer ---

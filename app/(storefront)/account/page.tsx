@@ -26,29 +26,31 @@ export default function AccountPage() {
   useEffect(() => {
     async function loadData() {
       const supabase = createClient()
-      const { data: { user: authUser } } = await supabase.auth.getUser()
+      const { data: claimsData } = await supabase.auth.getClaims()
+      const claims = claimsData?.claims
 
-      if (!authUser) {
+      if (!claims) {
         router.push("/auth/login")
         return
       }
 
-      setUser({ email: authUser.email || "", name: authUser.user_metadata?.name || "" })
+      const email = (claims.email as string) || ""
+      setUser({ email, name: (claims.user_metadata?.name as string) || "" })
 
       let customer = null
       const { data: byUserId } = await supabase
         .from("customers")
         .select("id")
-        .eq("user_id", authUser.id)
+        .eq("user_id", claims.sub)
         .single()
 
       if (byUserId) {
         customer = byUserId
-      } else if (authUser.email) {
+      } else if (email) {
         const { data: byEmail } = await supabase
           .from("customers")
           .select("id")
-          .eq("email", authUser.email)
+          .eq("email", email)
           .single()
         customer = byEmail
       }
