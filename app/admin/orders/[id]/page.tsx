@@ -197,27 +197,24 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
   const handleCancel = async () => {
     if (!confirm("Cancel this order and restore stock?")) return
     setUpdating(true)
-    const supabase = createClient()
 
-    if (order?.order_items && (order.status === "paid" || order.status === "processing")) {
-      for (const item of order.order_items) {
-        await supabase.rpc("decrement_stock", {
-          p_product_id: item.product_id,
-          p_quantity: -item.quantity,
-        })
+    // Stock restore + status update happen server-side (service role) so the
+    // stock RPC stays off the browser and out of reach of non-admin users.
+    try {
+      const res = await fetch("/api/admin/orders/cancel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order_id: id }),
+      })
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: "Failed to cancel order" }))
+        toast.error(error || "Failed to cancel order")
+      } else {
+        toast.success("Order cancelled and stock restored")
+        setOrder((prev) => prev ? { ...prev, status: "cancelled" } : null)
       }
-    }
-
-    const { error } = await supabase
-      .from("orders")
-      .update({ status: "cancelled", updated_at: new Date().toISOString() })
-      .eq("id", id)
-
-    if (error) {
-      toast.error(error.message)
-    } else {
-      toast.success("Order cancelled and stock restored")
-      setOrder((prev) => prev ? { ...prev, status: "cancelled" } : null)
+    } catch {
+      toast.error("Failed to cancel order")
     }
     setUpdating(false)
   }

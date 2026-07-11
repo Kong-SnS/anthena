@@ -22,6 +22,7 @@ create or replace function public.custom_access_token_hook(event jsonb)
 returns jsonb
 language plpgsql
 stable
+set search_path = ''  -- pin search_path (security: 0011_function_search_path_mutable)
 as $$
 declare
   claims jsonb;
