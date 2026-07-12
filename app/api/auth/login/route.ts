@@ -51,6 +51,18 @@ export async function POST(request: NextRequest) {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
+      // Distinguish a real auth failure (bad credentials → 401) from a server
+      // problem (DB timeout / "Database error querying schema" → 5xx). GoTrue
+      // surfaces the latter with a 5xx status; a missing status means a
+      // network/timeout error. Both should be 503 so the client shows a
+      // "try again" message instead of a misleading "invalid credentials".
+      const status = (error as { status?: number }).status
+      if (!status || status >= 500) {
+        return NextResponse.json(
+          { error: "Sign-in is temporarily unavailable. Please try again in a moment." },
+          { status: 503 }
+        )
+      }
       return NextResponse.json({ error: error.message }, { status: 401 })
     }
 
