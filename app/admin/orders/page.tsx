@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { createClient } from "@/lib/supabase/client"
-import { Search, Eye } from "lucide-react"
+import { Search, Eye, Loader2 } from "lucide-react"
 import type { Order } from "@/types"
 
 const statusColors: Record<string, string> = {
@@ -30,23 +30,33 @@ const statusColors: Record<string, string> = {
 }
 
 export default function AdminOrdersPage() {
+  const router = useRouter()
   const [orders, setOrders] = useState<(Order & { customer: { name: string; email: string } | null })[]>([])
   const [search, setSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(true)
+  const [openingId, setOpeningId] = useState<string | null>(null)
   const PER_PAGE = 20
 
   useEffect(() => {
     async function load() {
+      setLoading(true)
       const supabase = createClient()
       const { data } = await supabase
         .from("orders")
         .select("*, customer:customers(name, email), payment_method")
         .order("created_at", { ascending: false })
       setOrders(data || [])
+      setLoading(false)
     }
     load()
   }, [])
+
+  const openOrder = (id: string) => {
+    setOpeningId(id)
+    router.push(`/admin/orders/${id}`)
+  }
 
   const filtered = orders.filter((o) => {
     const matchSearch =
@@ -90,6 +100,12 @@ export default function AdminOrdersPage() {
           </div>
         </CardHeader>
         <CardContent>
+          {/* Indeterminate loading bar: initial fetch or while navigating to an order */}
+          <div className="h-0.5 -mt-2 mb-2 overflow-hidden rounded-full bg-muted/60">
+            {(loading || openingId) && (
+              <div className="h-full w-1/5 rounded-full bg-primary animate-indeterminate-bar" />
+            )}
+          </div>
           <Table>
             <TableHeader>
               <TableRow>
@@ -103,7 +119,11 @@ export default function AdminOrdersPage() {
             </TableHeader>
             <TableBody>
               {paginate(filtered, page, PER_PAGE).map((order) => (
-                <TableRow key={order.id}>
+                <TableRow
+                  key={order.id}
+                  onClick={() => openOrder(order.id)}
+                  className="cursor-pointer hover:bg-muted/50 transition-colors"
+                >
                   <TableCell className="font-medium">#{order.order_number}</TableCell>
                   <TableCell>
                     <div>
@@ -119,13 +139,23 @@ export default function AdminOrdersPage() {
                     {new Date(order.created_at).toLocaleDateString("en-MY")}
                   </TableCell>
                   <TableCell>
-                    <Button variant="ghost" size="icon" render={<Link href={`/admin/orders/${order.id}`} />}>
-                      <Eye className="h-4 w-4" />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      aria-label="View order"
+                      className="text-muted-foreground"
+                      tabIndex={-1}
+                    >
+                      {openingId === order.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
                     </Button>
                   </TableCell>
                 </TableRow>
               ))}
-              {filtered.length === 0 && (
+              {!loading && filtered.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
                     No orders found
