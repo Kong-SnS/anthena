@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, Loader2, Truck, Package } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
+import { formatLocation } from "@/lib/utils"
 import { toast } from "sonner"
 import type { Order } from "@/types"
 
@@ -464,7 +465,7 @@ export default function AdminOrderDetailPage({ params }: { params: Promise<{ id:
                     {order.customer.address_line2 ? `, ${order.customer.address_line2}` : ""}
                   </p>
                   <p className="text-muted-foreground">
-                    {order.customer.city}, {order.customer.state} {order.customer.postcode}
+                    {formatLocation(order.customer.city, order.customer.state)} {order.customer.postcode}
                   </p>
                 </div>
               </div>

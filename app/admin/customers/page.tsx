@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Pagination, paginate } from "@/components/admin/pagination"
+import { formatLocation } from "@/lib/utils"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -78,7 +79,7 @@ export default function AdminCustomersPage() {
                   <TableCell>{customer.email}</TableCell>
                   <TableCell>{customer.phone}</TableCell>
                   <TableCell className="text-sm text-muted-foreground">
-                    {customer.city}, {customer.state}
+                    {formatLocation(customer.city, customer.state)}
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
                     {new Date(customer.created_at).toLocaleDateString("en-MY")}

@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Loader2, Save } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
+import { formatLocation } from "@/lib/utils"
 import { toast } from "sonner"
 import type { Customer, Order } from "@/types"
 
@@ -103,7 +104,7 @@ export default function AdminCustomerDetailPage({ params }: { params: Promise<{ 
                   {customer.address_line1}
                   {customer.address_line2 ? `, ${customer.address_line2}` : ""}
                   <br />
-                  {customer.city}, {customer.state} {customer.postcode}
+                  {formatLocation(customer.city, customer.state)} {customer.postcode}
                 </p>
               </div>
             </div>
