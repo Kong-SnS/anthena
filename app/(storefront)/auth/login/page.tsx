@@ -26,10 +26,17 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       })
 
-      const data = await res.json()
+      // Guard against non-JSON bodies (e.g. an HTML 5xx page from a slow DB),
+      // which otherwise throw a cryptic "Unexpected token '<'" parse error.
+      const data = await res.json().catch(() => ({}))
 
       if (!res.ok) {
-        toast.error(data.error || "Login failed")
+        toast.error(
+          data.error ||
+            (res.status >= 500
+              ? "Server is busy, please try again in a moment."
+              : "Login failed")
+        )
         return
       }
 

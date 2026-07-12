@@ -47,21 +47,46 @@ export async function POST(request: NextRequest) {
     }
   )
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 401 })
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 401 })
+    }
+
+    // Read the role from the freshly-minted JWT (the access-token hook injects
+    // `user_role`). Avoids a second DB round trip on the login hot path, which
+    // matters while the DB is under load. Falls back to a lookup only if the
+    // claim is somehow absent.
+    let role = "customer"
+    const token = data.session?.access_token
+    if (token) {
+      try {
+        const payload = JSON.parse(
+          Buffer.from(token.split(".")[1], "base64url").toString()
+        )
+        if (typeof payload.user_role === "string") {
+          role = payload.user_role
+        } else {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", data.user.id)
+            .single()
+          role = profile?.role ?? "customer"
+        }
+      } catch {
+        // Keep default role if the token can't be decoded.
+      }
+    }
+
+    return NextResponse.json({ role, remaining }, { status: 200 })
+  } catch {
+    // Never let a slow/failed DB bubble up as an HTML error page — the client
+    // parses this as JSON.
+    return NextResponse.json(
+      { error: "Sign-in is temporarily slow. Please try again in a moment." },
+      { status: 503 }
+    )
   }
-
-  // Fetch role for redirect
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", data.user.id)
-    .single()
-
-  return NextResponse.json(
-    { role: profile?.role ?? "customer", remaining },
-    { status: 200 }
-  )
 }
