@@ -9,6 +9,10 @@ create index if not exists idx_email_logs_customer_id on public.email_logs(custo
 create index if not exists idx_invoices_order_id       on public.invoices(order_id);
 create index if not exists idx_order_items_product_id  on public.order_items(product_id);
 
+-- Drop a redundant duplicate index: idx_products_slug duplicated the unique
+-- products_slug_key (both btree(slug)); keep the unique constraint's index.
+drop index if exists public.idx_products_slug;
+
 -- ─────────────────────────────────────────────────────────────────────────────
 -- 2. Lock down SECURITY DEFINER functions exposed via PostgREST RPC
 --    (advisor: 0028/0029). By default PUBLIC has EXECUTE; revoke it and grant
