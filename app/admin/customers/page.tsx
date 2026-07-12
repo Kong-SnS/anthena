@@ -78,8 +78,13 @@ export default function AdminCustomersPage() {
                   <TableCell className="font-medium">{customer.name}</TableCell>
                   <TableCell>{customer.email}</TableCell>
                   <TableCell>{customer.phone}</TableCell>
-                  <TableCell className="text-sm text-muted-foreground max-w-xs">
-                    {formatAddress(customer)}
+                  <TableCell className="text-sm text-muted-foreground">
+                    <div
+                      className="max-w-[280px] whitespace-normal break-words line-clamp-2"
+                      title={formatAddress(customer)}
+                    >
+                      {formatAddress(customer)}
+                    </div>
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">
                     {new Date(customer.created_at).toLocaleDateString("en-MY")}
