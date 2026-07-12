@@ -18,3 +18,27 @@ export function formatLocation(
     new Set([city, state].map((p) => p?.trim()).filter(Boolean))
   ).join(", ")
 }
+
+/**
+ * Format a full address on one line — line1, line2, city/state, postcode —
+ * dropping blank parts and collapsing a duplicate city/state (so Singapore
+ * shows "Singapore 238888", not "Singapore, Singapore 238888").
+ */
+export function formatAddress(a: {
+  address_line1?: string | null
+  address_line2?: string | null
+  city?: string | null
+  state?: string | null
+  postcode?: string | null
+}): string {
+  const cityStatePostcode = [formatLocation(a.city, a.state), a.postcode?.trim()]
+    .filter(Boolean)
+    .join(" ")
+  return [
+    a.address_line1?.trim(),
+    a.address_line2?.trim(),
+    cityStatePostcode,
+  ]
+    .filter(Boolean)
+    .join(", ")
+}
