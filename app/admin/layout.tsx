@@ -10,6 +10,7 @@ import {
   Users,
   FileText,
   Mail,
+  BarChart3,
   LogOut,
   Menu,
   X,
@@ -19,6 +20,7 @@ import { useState } from "react"
 
 const sidebarLinks = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/products", label: "Products", icon: Package },
   { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
   { href: "/admin/customers", label: "Customers", icon: Users },
