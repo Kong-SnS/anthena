@@ -2,7 +2,10 @@ import type { Metadata } from "next"
 import { Toaster } from "@/components/ui/sonner"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import "./globals.css"
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID
 
 const siteUrl = "https://www.boomingwellness.com.my"
 
@@ -89,6 +92,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   )
 }
