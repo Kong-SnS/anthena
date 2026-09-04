@@ -300,7 +300,10 @@ export default function OseoVitalPage() {
               {tiers.map((tier) => (
                 <button
                   key={tier.qty}
-                  onClick={() => setQuantity(tier.qty)}
+                  onClick={() => {
+                    setQuantity(tier.qty)
+                    scrollToOrder()
+                  }}
                   className="w-full px-5 py-4 text-left transition-all relative flex items-center justify-between gap-3"
                   style={{
                     border: quantity === tier.qty ? `2px solid ${NAVY}` : "2px solid #e5e7eb",
