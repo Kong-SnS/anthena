@@ -198,6 +198,7 @@ export default function OseoVitalPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const orderRef = useRef<HTMLDivElement>(null)
+  const packagesRef = useRef<HTMLDivElement>(null)
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -213,6 +214,7 @@ export default function OseoVitalPage() {
   const total = (subtotal + shippingSGD).toFixed(2)
 
   const scrollToOrder = () => orderRef.current?.scrollIntoView({ behavior: "smooth" })
+  const scrollToPackages = () => packagesRef.current?.scrollIntoView({ behavior: "smooth" })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -261,7 +263,7 @@ export default function OseoVitalPage() {
           <p className="text-sm text-white/80 max-w-lg mx-auto leading-relaxed mb-8">
             Advanced botanical formula for joint comfort, bone strength, and mobility. Clinically proven ingredients from Switzerland and Japan.
           </p>
-          <button onClick={scrollToOrder} className="inline-block px-8 py-3 text-xs font-bold tracking-[0.15em] uppercase text-white border-2 transition-all hover:opacity-90" style={{ background: GOLD_GRADIENT, borderColor: "#d4af37" }}>
+          <button onClick={scrollToPackages} className="inline-block px-8 py-3 text-xs font-bold tracking-[0.15em] uppercase text-white border-2 transition-all hover:opacity-90" style={{ background: GOLD_GRADIENT, borderColor: "#d4af37" }}>
             Order Now
           </button>
           <div className="flex justify-center gap-8 mt-8">
@@ -292,7 +294,7 @@ export default function OseoVitalPage() {
           </div>
 
           {/* Right: Package Selector + Accordion */}
-          <div>
+          <div ref={packagesRef} id="packages" className="scroll-mt-24">
             <h2 className="text-[25px] font-bold mb-2" style={{ color: NAVY }}>OseoVital</h2>
             <p className="text-sm text-gray-500 mb-6">Joint • Bone • Nerve • Muscle Health</p>
 
